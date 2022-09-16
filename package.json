@@ -7,7 +7,11 @@
     "build:production": "cross-env PUBLIC_URL='https://maker.blockanalitica.com' REACT_APP_API_ENDPOINT='papi.blockanalitica.com' REACT_APP_ENVIRONMENT='maker-js' node scripts/build.js",
     "start": "node scripts/start.js",
     "start:backend": "node scripts/start.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "lint": "cross-env NODE_ENV=development yarn lint:eslint && yarn lint:prettier",
+    "lint:prettier": "prettier --check './**/*.js'",
+    "lint:prettier-write": "prettier --write './**/*.js'",
+    "lint:eslint": "cross-env NODE_ENV=development eslint ./ --max-warnings=0 --ext .js"
   },
   "dependencies": {
     "@babel/core": "7.16.7",
@@ -22,6 +26,7 @@
     "@svgr/webpack": "^6.1.2",
     "animate.css": "4.1.1",
     "axios": "^0.24.0",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "27.4.6",
     "babel-loader": "8.2.3",
     "babel-plugin-named-asset-import": "0.3.8",
@@ -34,7 +39,9 @@
     "chart.js": "^3.7.1",
     "chartjs-adapter-luxon": "^1.1.0",
     "chartjs-chart-matrix": "^1.1.1",
+    "chartjs-plugin-annotation": "^1.4.0",
     "chartjs-plugin-datalabels": "^2.0.0",
+    "chartjs-plugin-labels": "^1.1.0",
     "chroma-js": "^2.4.2",
     "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
@@ -42,6 +49,14 @@
     "css-minimizer-webpack-plugin": "^3.3.1",
     "dotenv": "10.0.0",
     "dotenv-expand": "5.1.0",
+    "eslint": "8.6.0",
+    "eslint-config-react-app": "7.0.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-webpack-plugin": "^3.1.1",
     "ethereum-blockies-base64": "^1.0.2",
     "file-loader": "^6.2.0",
     "fs-extra": "10.0.0",
@@ -61,6 +76,7 @@
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "7.2.0",
     "postcss-safe-parser": "6.0.0",
+    "prettier": "^2.5.1",
     "query-string": "^7.1.0",
     "rc-slider": "^9.7.5",
     "react": "^17.0.2",
@@ -105,6 +121,17 @@
     "presets": [
       "react-app"
     ]
+  },
+  "resolutions": {
+    "postcss-preset-env/autoprefixer": "10.4.5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "prettier": {
+    "printWidth": 88
   },
   "jest": {
     "roots": [
