@@ -1,0 +1,19 @@
+@import "../../../styles/variables";
+
+.atRisk {
+  position: relative;
+  text-align: center;
+  border: 1px solid $border-color !important;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.atRisk .iconBox {
+  top: 50%;
+  transform: translateY(-50%);
+  color: $white;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 1rem;
+}

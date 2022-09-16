@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.title {
+  border-bottom: solid 1px $border-color;
+}
+
+.term {
+  padding-right: 0.5rem;
+}
+
+.explanation {
+  color: $gray;
+}

@@ -1,0 +1,53 @@
+@import "../../styles/variables";
+
+.title {
+    display: flex;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.title  h3 {
+    padding-left: 2rem;
+}
+
+
+.sectionWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section {
+  border-right: solid 1px $border-color;
+  width: 33%;
+  padding-left: 1rem;
+
+  &:last-child {
+    border: none;
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+
+.noBorder {
+   border: none;
+}
+
+.sectionTitle {
+  font-size: $small-text;
+  color: rgba(246, 247, 248, 0.6);
+}
+
+.valueBig {
+  font-size: $big-text;
+}
+
+.darkerColor {
+  font-size: 0.8rem;
+  color: rgba(246, 247, 248, 0.6);
+}

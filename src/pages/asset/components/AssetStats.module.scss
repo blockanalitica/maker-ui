@@ -1,0 +1,67 @@
+@import "../../../styles/variables";
+.link {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #fff;
+
+}
+
+.link:hover h3 {
+     font-size: 1.8rem;
+}
+
+.right {
+    text-align: right;
+}
+
+.icon{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+
+
+
+.sectionWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section {
+  border-right: solid 1px $border-color;
+  width: 33%;
+  padding-left: 1rem;
+
+  &:last-child {
+    border: none;
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+
+.noBorder {
+   border: none;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  color: rgba(246, 247, 248, 0.6);
+}
+
+.valueBig {
+  font-size: 2rem;
+}
+
+.darkerColor {
+  color: rgba(246, 247, 248, 0.6);
+}

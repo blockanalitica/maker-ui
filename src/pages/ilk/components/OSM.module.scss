@@ -1,0 +1,62 @@
+@import "../../../styles/variables";
+
+
+
+.sectionWrapper {
+  display: flex;
+    justify-content: space-between;
+  align-items: center;
+}
+
+.section {
+  border-right: solid 1px $border-color;
+  width: 33%;
+  padding-left: 1rem;
+
+  &:last-child {
+    border: none;
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+.sectionTitle {
+  font-size: $small-text;
+  color: rgba(246, 247, 248, 0.6);
+}
+
+.valueBig {
+  font-size: $big-text;
+}
+
+.darkerColor {
+  font-size: 0.8rem;
+  color: rgba(246, 247, 248, 0.6);
+}
+
+.icon{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.noBorder {
+   border: none;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #fff;
+   
+}
+
+.link:hover h3 {
+     font-size: 1.8rem;
+}
