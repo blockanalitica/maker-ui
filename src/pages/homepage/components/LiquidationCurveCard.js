@@ -23,10 +23,8 @@ function LiquidationCard(props) {
     <>
       <div className="d-flex mb-4 align-items-center">
         <h4 className="m-0 flex-grow-1">debt at risk</h4>
-
         <TimeSwitch activeOption={drop} onChange={setDrop} options={dropOptions} />
       </div>
-
       <IconTabs
         activeTab={currentTab}
         onTabChange={setCurrentTab}

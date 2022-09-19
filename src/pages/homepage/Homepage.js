@@ -101,9 +101,7 @@ function Homepage(props) {
                 content: (
                   <>
                     <div className="d-flex mb-4 align-items-center">
-                      <h4 className="m-0 flex-grow-1">
-                        Debt at Risk per Price Drop (History)
-                      </h4>
+                      <h4 className="m-0 flex-grow-1">debt at risk per drop history</h4>
                       <TimeSwitch
                         activeOption={riskTimePeriod}
                         onChange={setRiskTimePeriod}
