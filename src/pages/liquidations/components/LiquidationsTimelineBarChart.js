@@ -30,11 +30,16 @@ function LiquidationsTimelineBarChart(props) {
     xUnit = "month";
   } else if (daysAgo > 30) {
     xUnit = "week";
+  } else if (daysAgo === 0) {
+    xUnit = "quarter";
   }
 
   let startDate = new Date();
   let endDate = new Date();
   startDate.setDate(startDate.getDate() - daysAgo);
+  if (daysAgo === 0) {
+    startDate = "2021-02-01";
+  }
   endDate.setDate(endDate.getDate());
 
   const options = {
@@ -51,6 +56,7 @@ function LiquidationsTimelineBarChart(props) {
           unit: xUnit,
           displayFormats: {
             week: "W yyyy",
+            quarter: "MM yyyy",
           },
         },
         stacked: true,
