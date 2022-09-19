@@ -22,24 +22,11 @@ function LiquidationCard(props) {
   return (
     <>
       <div className="d-flex mb-4 align-items-center">
-        <h4 className="m-0 flex-grow-1">Debt at Risk per Price Drop (Current)</h4>
+        <h4 className="m-0 flex-grow-1">debt at risk</h4>
 
         <TimeSwitch activeOption={drop} onChange={setDrop} options={dropOptions} />
       </div>
-      <p className="gray">
-        Debt Amount at risk of liquidation, assuming a drop in collateral price without
-        any vault owner action to increase their position’s collateralization ratio. The
-        amounts are also split by{" "}
-        <a
-          href="https://forum.makerdao.com/t/vault-protection-score-model-validation/15633"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vault Protection Score
-        </a>{" "}
-        which represents individual vault’s likelihood of liquidation based on its
-        current state and historical behavior
-      </p>
+
       <IconTabs
         activeTab={currentTab}
         onTabChange={setCurrentTab}

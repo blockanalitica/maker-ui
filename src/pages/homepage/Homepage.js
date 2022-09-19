@@ -67,8 +67,8 @@ function Homepage(props) {
             activeTab={activeTab}
             toggleTab={(tab) => setActiveTab(tab)}
             tabs={[
-              { id: "1", text: "Debt at Risk per Price Drop" },
-              { id: "2", text: "Debt at Risk per Price Drop (History)" },
+              { id: "1", text: "debt at risk per drop" },
+              { id: "2", text: "debt at risk per drop history" },
               { id: "3", text: "protection score history" },
               { id: "4", text: "gas monitor" },
               { id: "5", text: "% of risky debt" },
@@ -84,7 +84,7 @@ function Homepage(props) {
                 content: (
                   <>
                     <div className="d-flex mb-4 align-items-center">
-                      <h4 className="m-0 flex-grow-1">Debt at Risk per Price Drop</h4>
+                      <h4 className="m-0 flex-grow-1">debt at risk per drop</h4>
                       <TimeSwitch
                         activeOption={riskTimePeriod}
                         onChange={setRiskTimePeriod}
