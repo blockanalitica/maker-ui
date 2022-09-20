@@ -6,8 +6,14 @@ import styles from "./LiquidationsInfo.module.scss";
 
 function LiquidationsInfo(props) {
   const { data } = props;
-  const { count, total_collateral_seized_usd, total_debt_repaid_usd, penalty_fee } =
-    data;
+  const {
+    count,
+    total_collateral_seized_usd,
+    total_debt_repaid_usd,
+    penalty_fee,
+    penalized_collateral,
+    penalized_debt,
+  } = data;
   return (
     <Card>
       <div className={styles.sectionWrapper}>
@@ -16,7 +22,7 @@ function LiquidationsInfo(props) {
           <Value value={count} decimals={0} className={styles.valueBig} />
         </div>
         <div className={styles.section}>
-          <div className={styles.sectionTitle}>dai auctioned</div>
+          <div className={styles.sectionTitle}>collateral auctioned</div>
           <Value
             value={total_collateral_seized_usd}
             decimals={2}
@@ -48,7 +54,7 @@ function LiquidationsInfo(props) {
         <div className={styles.section}>
           <div className={styles.sectionTitle}>penalty fee</div>
           <Value
-            value={(total_collateral_seized_usd / total_debt_repaid_usd - 1) * 100}
+            value={(penalized_collateral / penalized_debt - 1) * 100}
             decimals={2}
             className={styles.valueBig}
             suffix="%"
