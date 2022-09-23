@@ -17,4 +17,4 @@ For instructions on local development, deployment, configurations & feature prop
 
 # License
 
-The code in this project is free software under the [AGPL License version 3 or later](LICENSE).
+The code in this project is free software under the [Apache License 2.0](LICENSE).
