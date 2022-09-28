@@ -14,7 +14,7 @@ function IlksTable(props) {
   const { daysAgo } = props;
   let navigate = useNavigate();
 
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("maker/ilks/", {
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("/ilks/", {
     days_ago: daysAgo,
     type: "risky",
   });

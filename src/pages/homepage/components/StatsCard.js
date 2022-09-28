@@ -10,7 +10,7 @@ function StatsCard(props) {
   const { daysAgo } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/risk/stats/",
+    "/risk/stats/",
     { days_ago: daysAgo }
   );
 

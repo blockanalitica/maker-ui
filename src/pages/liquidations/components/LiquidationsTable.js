@@ -26,7 +26,7 @@ function LiquidationsTable(props) {
   }, [daysAgo]);
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    "maker/liquidations/table/",
+    "/liquidations/table/",
     { days_ago: daysAgo, p: page, p_size: pageSize, order },
     { keepPreviousData: true }
   );

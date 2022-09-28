@@ -15,7 +15,7 @@ function PSM(props) {
   const [order, setOrder] = useState(null);
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/psms/${ilk}/`,
+    `/psms/${ilk}/`,
     { p: page, p_size: pageSize, order },
     { keepPreviousData: true }
   );

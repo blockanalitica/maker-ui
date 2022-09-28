@@ -22,7 +22,7 @@ function VaultsAtRiskMarket(props) {
   usePageTitle("Vaults At Risk");
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/vaults-at-risk-market/"
+    "/vaults-at-risk-market/"
   );
 
   if (isLoading) {

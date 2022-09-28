@@ -10,7 +10,7 @@ import Loader from "../../../components/Loader/Loader.js";
 function LiquidationsAuctionsSingleBubbleChart(props) {
   const { ilk, date } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/liquidations/actions/`,
+    `/liquidations/actions/`,
     { date: date, ilk: ilk }
   );
 

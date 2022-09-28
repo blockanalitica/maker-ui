@@ -12,7 +12,7 @@ import Value from "../../components/Value/Value.js";
 function D3M(props) {
   usePageTitle("D3M");
   const navigate = useNavigate();
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("maker/d3ms/");
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("/d3ms/");
 
   if (isLoading) {
     return <Loader />;

@@ -16,7 +16,7 @@ function LiquidationsPerVaultType(props) {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState(null);
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/liquidations/per-ilks/${ilk}/`,
+    `/liquidations/per-ilks/${ilk}/`,
     { p: page, p_size: pageSize, order },
     { keepPreviousData: true }
   );

@@ -31,7 +31,7 @@ function AllVaults(props) {
     { key: "all", value: "All" },
   ];
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/vaults/all/`,
+    `/vaults/all/`,
     {
       p: page,
       p_size: pageSize,

@@ -18,7 +18,7 @@ function LiquidationsPerIlksTable(props) {
   let navigate = useNavigate();
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    "maker/liquidations/per-ilks/",
+    "/liquidations/per-ilks/",
     { p: page, p_size: pageSize, order },
     { keepPreviousData: true }
   );

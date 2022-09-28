@@ -21,7 +21,7 @@ function OracleHistoricStats(props) {
   ];
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `/maker/osm/${symbol}/`,
+    `/osm/${symbol}/`,
     { days_ago: daysAgo }
   );
 

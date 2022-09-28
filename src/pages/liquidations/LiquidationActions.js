@@ -14,7 +14,7 @@ import styles from "./LiquidationActions.module.scss";
 function LiquidationActions(props) {
   const { ilk, uid } = useParams();
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/liquidations/${ilk}/${uid}/`
+    `/liquidations/${ilk}/${uid}/`
   );
 
   if (isLoading) {

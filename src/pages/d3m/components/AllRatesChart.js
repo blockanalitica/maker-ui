@@ -7,8 +7,7 @@ import { useFetch } from "../../../hooks";
 import { tooltipLabelNumber } from "../../../utils/graph.js";
 
 function AllRatesChart(props) {
-  const { data, isLoading, isError, ErrorFallbackComponent } =
-    useFetch(`/maker/d3ms/rates/`);
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(`/d3ms/rates/`);
 
   if (isLoading) {
     return <Loader />;

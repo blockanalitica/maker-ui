@@ -14,7 +14,7 @@ function AaveD3M(props) {
   usePageTitle("Aave D3M");
   const { protocol } = useParams();
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/d3ms/${protocol}`
+    `/d3ms/${protocol}/`
   );
 
   if (isLoading) {

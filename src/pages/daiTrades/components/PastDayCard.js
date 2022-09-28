@@ -8,7 +8,7 @@ import { tooltipTitleDateTime } from "../../../utils/graph.js";
 
 function PastDayCard(props) {
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/dai-trades/last-day/"
+    "/dai-trades/last-day/"
   );
 
   if (isLoading) {

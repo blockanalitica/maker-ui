@@ -56,7 +56,7 @@ function DataTabs(props) {
   };
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/capital-at-risk/chart/`,
+    `/ilks/${ilk}/capital-at-risk/chart/`,
     { days_ago: timePeriod }
   );
 

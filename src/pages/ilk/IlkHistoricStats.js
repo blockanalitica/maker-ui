@@ -42,7 +42,7 @@ function IlkHistoricStats(props) {
   };
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `/maker/ilks/${ilk}/stats/history/`,
+    `/ilks/${ilk}/stats/history/`,
     { days_ago: daysAgo, type: statType },
     { keepPreviousData: true }
   );

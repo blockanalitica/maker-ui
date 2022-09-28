@@ -15,7 +15,7 @@ function Whale(props) {
   const { slug } = useParams();
   let navigate = useNavigate();
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/whales/${slug}/`
+    `/whales/${slug}/`
   );
 
   if (isLoading) {

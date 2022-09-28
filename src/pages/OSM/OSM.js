@@ -14,7 +14,7 @@ import { parseUTCDateTime } from "../../utils/datetime.js";
 function Ilks(props) {
   usePageTitle("Oracles");
   let navigate = useNavigate();
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("maker/osm/");
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("/osm/");
 
   if (isLoading) {
     return <Loader />;

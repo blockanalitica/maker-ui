@@ -16,7 +16,7 @@ function KeepersPage(props) {
   const queryParams = useQueryParams();
   const ilk = queryParams.get("ilk");
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/liquidations/keepers/",
+    "/liquidations/keepers/",
     { ilk }
   );
 

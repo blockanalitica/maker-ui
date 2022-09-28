@@ -8,7 +8,7 @@ import { compact } from "../../../utils/number.js";
 
 function VolumePerExchangeCard(props) {
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/dai-trades/volume/per-exchange/"
+    "/dai-trades/volume/per-exchange/"
   );
 
   if (isLoading) {

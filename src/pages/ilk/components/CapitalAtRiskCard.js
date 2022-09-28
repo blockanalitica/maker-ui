@@ -16,7 +16,7 @@ function CapitalAtRiskCard(props) {
   const { daysAgo, ilk } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/capital-at-risk/`,
+    `/ilks/${ilk}/capital-at-risk/`,
     { days_ago: daysAgo }
   );
 

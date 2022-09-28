@@ -18,7 +18,7 @@ function Ilks(props) {
 
   const [daysAgo, setDaysAgo] = useState(1);
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    "maker/ilks/",
+    "/ilks/",
     { days_ago: daysAgo },
     { keepPreviousData: true }
   );

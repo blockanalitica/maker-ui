@@ -13,7 +13,7 @@ function LiquidationsIlk(props) {
   const { ilk } = useParams();
   let navigate = useNavigate();
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/liquidations/${ilk}/`
+    `/liquidations/${ilk}/`
   );
 
   if (isLoading) {

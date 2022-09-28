@@ -6,9 +6,8 @@ import Graph from "../../../components/Graph/Graph.js";
 import { useFetch } from "../../../hooks";
 
 function PriceDrawdownsChart(props) {
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/assets/drawdowns/"
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } =
+    useFetch("/assets/drawdowns/");
 
   if (isLoading) {
     return <Loader />;

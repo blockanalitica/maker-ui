@@ -42,7 +42,7 @@ function AuctionThroughput(props) {
   const [previousExposure, setPreviousExposure] = useState();
   const [previousSlippage, setPreviousSlippage] = useState();
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/auctions/throughput/${ilk}/`,
+    `/auctions/throughput/${ilk}/`,
     {
       debt: queryDaiDebt,
       sim_hole: querySimHole,

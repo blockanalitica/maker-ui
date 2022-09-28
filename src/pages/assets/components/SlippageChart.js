@@ -7,9 +7,8 @@ import Graph from "../../../components/Graph/Graph.js";
 import { useFetch } from "../../../hooks";
 
 function SlippageChart(props) {
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/assets/slippages/"
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } =
+    useFetch("/assets/slippages/");
 
   if (isLoading) {
     return <Loader />;

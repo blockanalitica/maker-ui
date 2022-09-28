@@ -39,7 +39,7 @@ function RiskModel(props) {
     isError,
     ErrorFallbackComponent,
   } = useFetch(
-    "maker/simulations/risk-model/",
+    "/simulations/risk-model/",
     {
       ilk: ilk,
       jump_frequency: jumpFrequency,

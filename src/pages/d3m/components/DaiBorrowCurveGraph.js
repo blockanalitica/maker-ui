@@ -8,7 +8,7 @@ import { withErrorBoundary } from "../../../hoc.js";
 function DaiBorrowCurveGraph(props) {
   const { protocol } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/d3ms/${protocol}/dai-borrow-curve/`
+    `/d3ms/${protocol}/dai-borrow-curve/`
   );
 
   if (isLoading) {

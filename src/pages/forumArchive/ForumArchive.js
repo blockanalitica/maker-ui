@@ -20,7 +20,7 @@ function ForumArchive(props) {
   const category = queryParams.get("category");
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    "maker/forum-archive/",
+    "/forum-archive/",
     {
       p: page,
       p_size: pageSize,

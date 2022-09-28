@@ -17,8 +17,7 @@ import PerVaultTypePeriodicalCard from "./components/PerVaultTypePeriodicalCard.
 
 function DaiGrowth(props) {
   usePageTitle("DAI Supply Metrics");
-  const { data, isLoading, isError, ErrorFallbackComponent } =
-    useFetch("maker/dai-growth/");
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("/dai-growth/");
 
   if (isLoading) {
     return <Loader />;

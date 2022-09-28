@@ -9,7 +9,7 @@ import { useFetch } from "../../../hooks";
 function OSMDrawdownsChart(props) {
   const { symbol } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/assets/${symbol}/OSM/drawdowns/price-jumps/`
+    `/assets/${symbol}/OSM/drawdowns/price-jumps/`
   );
 
   if (isLoading) {

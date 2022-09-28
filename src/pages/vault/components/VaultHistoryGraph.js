@@ -20,7 +20,7 @@ function VaultHistoryGraph(props) {
   ];
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/vaults/${uid}/cr/`,
+    `/ilks/${ilk}/vaults/${uid}/cr/`,
     { days_ago: daysAgo },
     { keepPreviousData: false }
   );

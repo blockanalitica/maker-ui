@@ -32,10 +32,10 @@ function RatesSection(props) {
   if (type.includes("usdc")) {
     symbol = "USDC";
   }
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/rates/",
-    { days_ago: timePeriod, symbol }
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("/rates/", {
+    days_ago: timePeriod,
+    symbol,
+  });
 
   if (isLoading) {
     return <Loader />;
@@ -110,12 +110,12 @@ function RatesSection(props) {
                 text: "supply rate",
                 formatter: (cell, row) => (
                   <>
-                    <Value value={cell} decimals={2} suffix="%" />
+                    <Value value={cell * 100} decimals={2} suffix="%" />
                     <br />
                     <ValueChange
                       className="pl-2"
-                      value={row.supply_rate - row.change.supply_rate}
-                      tooltipValue={row.change.supply_rate}
+                      value={(row.supply_rate - row.change.supply_rate) * 100}
+                      tooltipValue={row.change.supply_rate * 100}
                       suffix="%"
                       decimals={2}
                       icon
@@ -129,12 +129,14 @@ function RatesSection(props) {
                 text: "supply reward",
                 formatter: (cell, row) => (
                   <>
-                    <Value value={cell} decimals={2} suffix="%" />
+                    <Value value={cell * 100} decimals={2} suffix="%" />
                     <br />
                     <ValueChange
                       className="pl-2"
-                      value={row.supply_reward_rate - row.change.supply_reward_rate}
-                      tooltipValue={row.change.supply_reward_rate}
+                      value={
+                        (row.supply_reward_rate - row.change.supply_reward_rate) * 100
+                      }
+                      tooltipValue={row.change.supply_reward_rate * 100}
                       suffix="%"
                       decimals={2}
                       icon
@@ -152,8 +154,8 @@ function RatesSection(props) {
                     <br />
                     <ValueChange
                       className="pl-2"
-                      value={row.supply_net_rate - row.change.supply_net_rate}
-                      tooltipValue={row.change.supply_net_rate}
+                      value={(row.supply_net_rate - row.change.supply_net_rate) * 100}
+                      tooltipValue={row.change.supply_net_rate * 100}
                       suffix="%"
                       decimals={2}
                       icon
@@ -167,12 +169,12 @@ function RatesSection(props) {
                 text: "borrow rate",
                 formatter: (cell, row) => (
                   <>
-                    <Value value={cell} decimals={2} suffix="%" />
+                    <Value value={cell * 100} decimals={2} suffix="%" />
                     <br />
                     <ValueChange
                       className="pl-2"
-                      value={row.borrow_rate - row.change.borrow_rate}
-                      tooltipValue={row.change.borrow_rate}
+                      value={(row.borrow_rate - row.change.borrow_rate) * 100}
+                      tooltipValue={row.change.borrow_rate * 100}
                       suffix="%"
                       decimals={2}
                       icon
@@ -186,12 +188,14 @@ function RatesSection(props) {
                 text: "borrow reward",
                 formatter: (cell, row) => (
                   <>
-                    <Value value={cell} decimals={2} suffix="%" />
+                    <Value value={cell * 100} decimals={2} suffix="%" />
                     <br />
                     <ValueChange
                       className="pl-2"
-                      value={row.borrow_reward_rate - row.change.borrow_reward_rate}
-                      tooltipValue={row.change.borrow_reward_rate}
+                      value={
+                        (row.borrow_reward_rate - row.change.borrow_reward_rate) * 100
+                      }
+                      tooltipValue={row.change.borrow_reward_rate * 100}
                       suffix="%"
                       decimals={2}
                       icon
@@ -205,12 +209,12 @@ function RatesSection(props) {
                 text: "borrow net",
                 formatter: (cell, row) => (
                   <>
-                    <Value value={cell} decimals={2} suffix="%" />
+                    <Value value={cell * 100} decimals={2} suffix="%" />
                     <br />
                     <ValueChange
                       className="pl-2"
-                      value={row.borrow_net_rate - row.change.borrow_net_rate}
-                      tooltipValue={row.change.borrow_net_rate}
+                      value={(row.borrow_net_rate - row.change.borrow_net_rate) * 100}
+                      tooltipValue={row.change.borrow_net_rate * 100}
                       suffix="%"
                       decimals={2}
                       icon
@@ -224,12 +228,12 @@ function RatesSection(props) {
                 text: "ETH supply rate",
                 formatter: (cell, row) => (
                   <>
-                    <Value value={cell} decimals={2} suffix="%" />
+                    <Value value={cell * 100} decimals={2} suffix="%" />
                     <br />
                     <ValueChange
                       className="pl-2"
-                      value={row.eth_rate - row.change.eth_rate}
-                      tooltipValue={row.change.eth_rate}
+                      value={(row.eth_rate - row.change.eth_rate) * 100}
+                      tooltipValue={row.change.eth_rate * 100}
                       suffix="%"
                       decimals={2}
                       icon
@@ -243,12 +247,12 @@ function RatesSection(props) {
                 text: "equivalent rate",
                 formatter: (cell, row) => (
                   <>
-                    <Value value={cell} decimals={2} suffix="%" />
+                    <Value value={cell * 100} decimals={2} suffix="%" />
                     <br />
                     <ValueChange
                       className="pl-2"
-                      value={row.real_rate - row.change.real_rate}
-                      tooltipValue={row.change.real_rate}
+                      value={(row.real_rate - row.change.real_rate) * 100}
+                      tooltipValue={row.change.real_rate * 100}
                       suffix="%"
                       decimals={2}
                       icon

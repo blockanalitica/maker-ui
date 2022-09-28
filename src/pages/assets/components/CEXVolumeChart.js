@@ -8,9 +8,8 @@ import Graph from "../../../components/Graph/Graph.js";
 import { useFetch } from "../../../hooks";
 
 function CEXVolumeChart(props) {
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/assets/cex/volume/"
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } =
+    useFetch("/assets/cex/volume/");
 
   if (isLoading) {
     return <Loader />;

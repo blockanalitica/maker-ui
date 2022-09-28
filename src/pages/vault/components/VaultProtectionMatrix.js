@@ -21,7 +21,7 @@ function VaultProtectionMatrix(props) {
     7: "Su",
   };
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/vaults/${uid}/protection-matrix/`
+    `/ilks/${ilk}/vaults/${uid}/protection-matrix/`
   );
 
   if (data === "no data") {

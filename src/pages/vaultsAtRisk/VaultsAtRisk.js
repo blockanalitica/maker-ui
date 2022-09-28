@@ -22,9 +22,8 @@ function VaultsAtRisk(props) {
   let navigate = useNavigate();
   usePageTitle("Vaults At Risk");
 
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/vaults-at-risk/"
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } =
+    useFetch("/vaults-at-risk/");
 
   if (isLoading) {
     return <Loader />;

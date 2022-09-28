@@ -12,7 +12,7 @@ function OSM(props) {
   const { ilk, isLp } = props;
   const navigate = useNavigate();
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/osm/`
+    `/ilks/${ilk}/osm/`
   );
 
   if (isLoading) {

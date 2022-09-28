@@ -10,7 +10,7 @@ function DailyVolatilityChart(props) {
   const { symbol } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/assets/${symbol}/historical-price/daily-volatility/`
+    `/assets/${symbol}/historical-price/daily-volatility/`
   );
 
   if (isLoading) {

@@ -9,7 +9,7 @@ import { useFetch } from "../../../hooks";
 function DrawdownsChart(props) {
   const { symbol } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/assets/${symbol}/historical-price/drawdowns-price-jumps/`
+    `/assets/${symbol}/historical-price/drawdowns-price-jumps/`
   );
 
   if (isLoading) {

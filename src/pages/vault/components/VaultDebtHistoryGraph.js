@@ -11,7 +11,7 @@ function VaultDebtHistoryGraph(props) {
   const { uid, ilk } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/vaults/${uid}/debt-history/`
+    `/ilks/${ilk}/vaults/${uid}/debt-history/`
   );
 
   if (isLoading) {

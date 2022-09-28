@@ -11,7 +11,7 @@ import Graph from "../../../components/Graph/Graph.js";
 function PerDropHistoryChart(props) {
   const { timePeriod } = props;
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    "maker/risk/per-drop/",
+    "/risk/per-drop/",
     { days_ago: timePeriod },
     { keepPreviousData: true }
   );

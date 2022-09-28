@@ -10,7 +10,7 @@ import { compact } from "../../../utils/number.js";
 function CapitalAtRiskTotalIlksChart(props) {
   const { timePeriod } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/risk/capital-at-risk/ilks/",
+    "/risk/capital-at-risk/ilks/",
     { days_ago: timePeriod }
   );
 

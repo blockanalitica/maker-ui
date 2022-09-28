@@ -14,7 +14,7 @@ function AuctionsThroughput(props) {
   usePageTitle("Auctions Throughput");
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/auctions/throughput/",
+    "/auctions/throughput/",
     {
       percent_liquidated: queryPercentLiquidated,
     }
