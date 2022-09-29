@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:staging": "cross-env PUBLIC_URL='https://staging.blockanalitica.com' REACT_APP_API_ENDPOINT='staging-papi.blockanalitica.com' REACT_APP_ENVIRONMENT='maker-js' node scripts/build.js",
+    "build:staging": "cross-env PUBLIC_URL='https://staging.blockanalitica.com' REACT_APP_API_ENDPOINT='staging-maker-api.blockanalitica.com' REACT_APP_ENVIRONMENT='maker-js' node scripts/build.js",
     "build:production": "cross-env PUBLIC_URL='https://maker.blockanalitica.com' REACT_APP_API_ENDPOINT='papi.blockanalitica.com' REACT_APP_ENVIRONMENT='maker-js' node scripts/build.js",
     "start": "node scripts/start.js",
     "start:backend": "node scripts/start.js",
