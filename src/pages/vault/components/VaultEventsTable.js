@@ -15,7 +15,7 @@ function VaultEventsTable(props) {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState(null);
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/vaults/${uid}/events/`,
+    `/ilks/${ilk}/vaults/${uid}/events/`,
     {
       p: page,
       p_size: pageSize,

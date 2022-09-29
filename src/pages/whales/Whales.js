@@ -6,8 +6,7 @@ import WhaleCard from "./components/WhaleCard.js";
 
 function Whales(props) {
   usePageTitle("Whales");
-  const { data, isLoading, isError, ErrorFallbackComponent } =
-    useFetch("maker/whales/");
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("/whales/");
 
   if (isLoading) {
     return <Loader />;

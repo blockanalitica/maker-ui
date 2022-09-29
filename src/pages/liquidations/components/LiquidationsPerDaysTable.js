@@ -15,7 +15,7 @@ function LiquidationsPerDaysTable(props) {
   let navigate = useNavigate();
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    "maker/liquidations/per-date/",
+    "/liquidations/per-date/",
     { p: page, p_size: pageSize, order },
     { keepPreviousData: true }
   );

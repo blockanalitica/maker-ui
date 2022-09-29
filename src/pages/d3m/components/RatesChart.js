@@ -19,7 +19,7 @@ function RatesChart(props) {
   ];
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `/maker/d3ms/${protocol}/rates/`,
+    `/d3ms/${protocol}/rates/`,
     { days_ago: daysAgo },
     { keepPreviousData: true }
   );
@@ -30,20 +30,20 @@ function RatesChart(props) {
     return <ErrorFallbackComponent />;
   }
 
-  const { results } = data;
+  const { aave_borrow_rates, target_borrow_rates } = data;
 
   const series = [];
   series.push({
     label: "aave borrow rate",
-    data: results.map((row) => ({
+    data: aave_borrow_rates.map((row) => ({
       x: row["datetime"],
       y: row["variable_borrow_rate"] * 100,
     })),
   });
   series.push({
     label: "target borrow rate",
-    data: results.map((row) => ({
-      x: row["datetime"],
+    data: target_borrow_rates.map((row) => ({
+      x: row["dt"],
       y: row["target_borrow_rate"] * 100,
     })),
   });

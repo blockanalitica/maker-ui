@@ -22,7 +22,7 @@ function PerLiquidationTab(props) {
   ];
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/liquidations/",
+    "/liquidations/",
     { days_ago: daysAgo },
     { keepPreviousData: true }
   );

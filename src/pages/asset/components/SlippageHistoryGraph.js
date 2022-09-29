@@ -9,7 +9,7 @@ import { useFetch } from "../../../hooks";
 function SlippageChart(props) {
   const { symbol } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/assets/${symbol}/slippage/history/`
+    `/assets/${symbol}/slippage/history/`
   );
 
   if (isLoading) {

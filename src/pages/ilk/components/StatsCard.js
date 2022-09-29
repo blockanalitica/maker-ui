@@ -13,7 +13,7 @@ function StatsCard(props) {
   const navigate = useNavigate();
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/stats/`,
+    `/ilks/${ilk}/stats/`,
     { days_ago }
   );
 

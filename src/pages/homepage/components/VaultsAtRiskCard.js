@@ -13,7 +13,7 @@ import styles from "./VaultsAtRiskCard.module.scss";
 function VaultsAtRiskCard(props) {
   const navigate = useNavigate();
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/vaults-at-risk/count/"
+    "/vaults-at-risk/count/"
   );
 
   if (isLoading) {

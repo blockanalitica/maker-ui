@@ -9,7 +9,7 @@ import { useFetch } from "../../../hooks";
 
 function DEXLiquidityChart(props) {
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/assets/dex/liquidity/"
+    "/assets/dex/liquidity/"
   );
 
   if (isLoading) {

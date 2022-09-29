@@ -13,7 +13,7 @@ function PSMs(props) {
   usePageTitle("PSMs");
   const navigate = useNavigate();
 
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("maker/psms/");
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("/psms/");
 
   if (isLoading) {
     return <Loader />;

@@ -69,7 +69,7 @@ function RevenueD3M(props) {
   };
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/d3ms/${protocol}/simulation/`,
+    `/d3ms/${protocol}/simulation/`,
     {
       debt_ceiling: queryDebtCeiling,
       target_borrow_rate: queryTargetBorrowRate,

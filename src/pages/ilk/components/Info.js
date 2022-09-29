@@ -10,7 +10,7 @@ function Info(props) {
   const { ilk, days_ago } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/`,
+    `/ilks/${ilk}/`,
     { days_ago }
   );
 

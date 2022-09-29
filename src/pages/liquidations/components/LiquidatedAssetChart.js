@@ -13,7 +13,7 @@ function LiquidatedAssetChart(props) {
   const { daysAgo } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/liquidations/assets/",
+    "/liquidations/assets/",
     { days_ago: daysAgo },
     { keepPreviousData: true }
   );

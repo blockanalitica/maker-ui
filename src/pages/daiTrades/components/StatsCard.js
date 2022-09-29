@@ -10,9 +10,8 @@ import BootstrapTable from "react-bootstrap-table-next";
 function StatsCard(props) {
   const [showPerExchange, setShowPerExchange] = useState(false);
 
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/dai-trades/stats/"
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } =
+    useFetch("/dai-trades/stats/");
 
   if (isLoading) {
     return <Loader />;

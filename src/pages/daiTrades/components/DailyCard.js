@@ -7,9 +7,8 @@ import { compact } from "../../../utils/number.js";
 import { tooltipTitleDateTime } from "../../../utils/graph.js";
 
 function DailyCard(props) {
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/dai-trades/daily/"
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } =
+    useFetch("/dai-trades/daily/");
 
   if (isLoading) {
     return <Loader />;

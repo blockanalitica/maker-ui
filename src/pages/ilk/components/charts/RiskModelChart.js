@@ -8,7 +8,7 @@ import { compact } from "../../../../utils/number.js";
 function RiskModelChart(props) {
   const { ilk } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/risk-premium/model/`
+    `/ilks/${ilk}/risk-premium/model/`
   );
 
   if (isLoading) {

@@ -9,7 +9,7 @@ import { useFetch } from "../../../hooks";
 function DropTable(props) {
   const { timePeriod } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/risk/gas",
+    "/risk/gas",
     { days_ago: timePeriod },
     {
       refetchInterval: 60000, // in ms

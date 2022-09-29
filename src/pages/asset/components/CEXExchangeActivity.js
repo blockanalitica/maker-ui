@@ -10,7 +10,7 @@ import { useFetch } from "../../../hooks";
 function CEXExchangeActivity(props) {
   const { symbol } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/assets/${symbol}/cex/trading-activity/per-exchange/`
+    `/assets/${symbol}/cex/trading-activity/per-exchange/`
   );
 
   if (isLoading) {

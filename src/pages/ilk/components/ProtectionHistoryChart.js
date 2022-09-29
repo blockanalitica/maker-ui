@@ -9,7 +9,7 @@ import Graph from "../../../components/Graph/Graph.js";
 function ProtectionHistoryChart(props) {
   const { timePeriod, ilk } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/risk/protection-score/history/",
+    "/risk/protection-score/history/",
     { days_ago: timePeriod, ilk: ilk }
   );
 

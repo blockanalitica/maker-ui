@@ -67,13 +67,13 @@ function AuctionKickSim(props) {
 
   let url;
   if (activeTab === "1") {
-    url = `/maker/auctions/kick-sim/per-day/${qParams.asset}/`;
+    url = `/auctions/kick-sim/per-day/${qParams.asset}/`;
   } else if (activeTab === "2") {
-    url = `/maker/auctions/kick-sim/per-param/${qParams.asset}/`;
+    url = `/auctions/kick-sim/per-param/${qParams.asset}/`;
   } else if (activeTab === "3") {
-    url = `/maker/auctions/kick-sim/per-day-osm/${qParams.asset}/`;
+    url = `/auctions/kick-sim/per-day-osm/${qParams.asset}/`;
   } else if (activeTab === "4") {
-    url = `/maker/auctions/kick-sim/per-param-osm/${qParams.asset}/`;
+    url = `/auctions/kick-sim/per-param-osm/${qParams.asset}/`;
   }
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(

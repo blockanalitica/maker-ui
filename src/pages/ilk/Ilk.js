@@ -20,7 +20,7 @@ function Ilk(props) {
   const [timePeriod, setTimePeriod] = useState(1);
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/`
+    `/ilks/${ilk}/`
   );
 
   if (isLoading) {

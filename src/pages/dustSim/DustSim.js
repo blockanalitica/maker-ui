@@ -66,7 +66,7 @@ function DustSim(props) {
   };
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    "/maker/simulations/dust/",
+    "/simulations/dust/",
     qParams,
     { keepPreviousData: true }
   );

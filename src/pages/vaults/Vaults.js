@@ -33,7 +33,7 @@ function Vaults(props) {
   let navigate = useNavigate();
   const { SearchBar } = Search;
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/vaults/`,
+    `/ilks/${ilk}/vaults/`,
     {
       p: page,
       p_size: pageSize,

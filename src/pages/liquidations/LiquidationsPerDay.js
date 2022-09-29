@@ -16,7 +16,7 @@ function LiquidationsPerDay(props) {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState(null);
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/liquidations/per-day/${date}/`,
+    `/liquidations/per-day/${date}/`,
     { p: page, p_size: pageSize, order },
     { keepPreviousData: true }
   );

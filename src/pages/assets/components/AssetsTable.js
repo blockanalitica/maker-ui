@@ -10,8 +10,7 @@ import { useFetch } from "../../../hooks";
 function AssetsTable(props) {
   const navigate = useNavigate();
 
-  const { data, isLoading, isError, ErrorFallbackComponent } =
-    useFetch("maker/assets/");
+  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch("/assets/");
 
   if (isLoading) {
     return <Loader />;

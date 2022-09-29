@@ -48,7 +48,7 @@ function LiquidationsPerDateIlk(props) {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState(null);
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/liquidations/per-date/${date}/${ilk}/`,
+    `/liquidations/per-date/${date}/${ilk}/`,
     { p: page, p_size: pageSize, order },
     { keepPreviousData: true }
   );

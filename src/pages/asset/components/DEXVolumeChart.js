@@ -11,7 +11,7 @@ function DEXVolumeChart(props) {
   const { symbol } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/assets/${symbol}/dex/trading-activity/volume/`
+    `/assets/${symbol}/dex/trading-activity/volume/`
   );
 
   if (isLoading) {

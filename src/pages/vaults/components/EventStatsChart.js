@@ -11,7 +11,7 @@ import { compact } from "../../../utils/number.js";
 function EventStatsChart(props) {
   const { ilk, timePeriod, isTokenCurrency, ...rest } = props;
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/event-stats/`,
+    `/ilks/${ilk}/event-stats/`,
     { days_ago: timePeriod },
     { keepPreviousData: true }
   );

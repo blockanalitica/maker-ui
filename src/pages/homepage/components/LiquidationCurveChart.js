@@ -10,7 +10,7 @@ import { compact } from "../../../utils/number.js";
 function LiquidationCurveChart(props) {
   const { drop } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "/maker/risk/liquidation-curve/"
+    "/risk/liquidation-curve/"
   );
 
   if (isLoading) {

@@ -7,7 +7,7 @@ import { useFetch } from "../../../../hooks";
 function LiquidityScoreChart(props) {
   const { symbol } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/assets/${symbol}/liquidity-score/`
+    `/assets/${symbol}/liquidity-score/`
   );
 
   if (isLoading) {

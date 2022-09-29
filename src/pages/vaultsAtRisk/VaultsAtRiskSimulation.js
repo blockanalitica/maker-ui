@@ -34,7 +34,7 @@ function VaultsAtRiskSimulation(props) {
   }, [drop]);
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    "maker/simulations/vaults-at-risk/",
+    "/simulations/vaults-at-risk/",
     {
       drop: queryParamDrop,
       p: page,

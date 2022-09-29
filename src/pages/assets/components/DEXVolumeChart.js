@@ -8,9 +8,8 @@ import Graph from "../../../components/Graph/Graph.js";
 import { useFetch } from "../../../hooks";
 
 function DEXVolumeChart(props) {
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/assets/dex/volume/"
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } =
+    useFetch("/assets/dex/volume/");
 
   if (isLoading) {
     return <Loader />;

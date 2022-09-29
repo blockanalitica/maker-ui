@@ -8,7 +8,7 @@ import { compact } from "../../../utils/number.js";
 
 function UniqueKeepersTakers(props) {
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/liquidations/keepers-takers/"
+    "/liquidations/keepers-takers/"
   );
 
   if (isLoading) {

@@ -12,7 +12,7 @@ function AssetPrices(props) {
   const { symbol, timePeriod } = props;
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `maker/assets/${symbol}/prices/`,
+    `/assets/${symbol}/prices/`,
     { days_ago: timePeriod },
     { keepPreviousData: true }
   );

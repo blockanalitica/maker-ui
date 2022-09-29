@@ -23,7 +23,7 @@ function Vault(props) {
   usePageTitle(`${ilk}: ${uid}`);
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/vaults/${uid}/`
+    `/ilks/${ilk}/vaults/${uid}/`
   );
 
   if (isLoading) {

@@ -8,7 +8,7 @@ import Graph from "../../../components/Graph/Graph.js";
 function RiskyDebtPercentageGraph(props) {
   const { timePeriod } = props;
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/risk/risky-debt/",
+    "/risk/risky-debt/",
     { days_ago: timePeriod }
   );
 

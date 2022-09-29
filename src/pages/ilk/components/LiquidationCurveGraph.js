@@ -11,7 +11,7 @@ function LiquidationsCurveGraph(props) {
   const { ilk, drop } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `/maker/ilks/${ilk}/liquidation-curve/`
+    `/ilks/${ilk}/liquidation-curve/`
   );
 
   if (isLoading) {

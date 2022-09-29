@@ -10,7 +10,7 @@ function CapitalAtRiskChartScore(props) {
   const { ilk, daysAgo } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    `maker/ilks/${ilk}/capital-at-risk/chart/`,
+    `/ilks/${ilk}/capital-at-risk/chart/`,
     { days_ago: daysAgo, type: "protection_score" }
   );
 

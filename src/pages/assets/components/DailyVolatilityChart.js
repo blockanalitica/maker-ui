@@ -8,9 +8,8 @@ import Graph from "../../../components/Graph/Graph.js";
 import { useFetch } from "../../../hooks";
 
 function DailyVolatilityChart(props) {
-  const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "maker/assets/volatility/"
-  );
+  const { data, isLoading, isError, ErrorFallbackComponent } =
+    useFetch("/assets/volatility/");
 
   if (isLoading) {
     return <Loader />;
