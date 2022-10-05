@@ -32,7 +32,7 @@ function FAQ(props) {
             a set maximum level of DAI that can be generated before a Surplus (FLAP)
             Action is triggered. outstanding DAI amount.{" "}
             <a
-              href="https://makerdao.world/en/learn/governance/param-system-surplus-buffer/"
+              href="https://manual.makerdao.com/parameter-index/core/param-system-surplus-buffer"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -73,7 +73,7 @@ function FAQ(props) {
             using Maker vaults. Maker governance manages and adjusts the Stability Fee
             on different vault types.{" "}
             <a
-              href="https://makerdao.world/en/learn/governance/param-stability-fee"
+              href="https://manual.makerdao.com/parameter-index/vault-risk/param-stability-fee"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -89,7 +89,7 @@ function FAQ(props) {
             collateral. Once the collateral ratio falls below the liquidation ratio a
             liquidation event is triggered.{" "}
             <a
-              href="https://makerdao.world/en/learn/governance/param-liquidation-ratio"
+              href="https://manual.makerdao.com/parameter-index/vault-risk/param-liquidation-ratio"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -139,7 +139,7 @@ function FAQ(props) {
             {" "}
             Sets the maximum amount of DAI minting for a specific collateral type.{" "}
             <a
-              href="https://makerdao.world/en/learn/governance/param-debt-ceiling"
+              href="https://manual.makerdao.com/parameter-index/vault-risk/param-debt-ceiling"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -154,7 +154,7 @@ function FAQ(props) {
             auctions, for a particular collateral type, allowed to be used at any one
             time.{" "}
             <a
-              href="https://makerdao.world/en/learn/governance/param-local-liquidation-limit"
+              href="https://manual.makerdao.com/parameter-index/collateral-auction/param-local-liquidation-limit"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -315,7 +315,7 @@ function FAQ(props) {
             Liquidated vault owners pay penalties that accrue to the system Surplus
             Buffer.{" "}
             <a
-              href="https://makerdao.world/en/learn/governance/param-liquidation-penalty"
+              href="https://manual.makerdao.com/parameter-index/vault-risk/param-liquidation-penalty#description"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -331,7 +331,7 @@ function FAQ(props) {
             Penalty Fee parameter controls the additional amount of collateral sold at
             auctions.{" "}
             <a
-              href="https://makerdao.world/en/learn/governance/param-liquidation-penalty"
+              href="https://manual.makerdao.com/parameter-index/vault-risk/param-liquidation-penalty"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -346,7 +346,7 @@ function FAQ(props) {
             the underlying collateral is sold to Keepers to buy back and burn the DAI
             generated from the liquidated vault.{" "}
             <a
-              href="https://makerdao.world/en/learn/vaults/liquidation/"
+              href="https://manual.makerdao.com/parameter-index/vault-risk/param-liquidation-penalty"
               target="_blank"
               rel="noopener noreferrer"
             >
