@@ -1,12 +1,12 @@
 import { Chart as ChartJS, registerables } from "chart.js";
 import "chartjs-adapter-luxon";
+import { MatrixController, MatrixElement } from "chartjs-chart-matrix";
 import annotationPlugin from "chartjs-plugin-annotation";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 import { Chart } from "react-chartjs-2";
-import { MatrixController, MatrixElement } from "chartjs-chart-matrix";
 
 ChartJS.register(...registerables, annotationPlugin, MatrixElement, MatrixController);
 ChartJS.defaults.color = "#F6F7F8";
@@ -55,6 +55,7 @@ const DEFAULT_PALETTE = [
 
 const PROTOCOLS_PALETTE = {
   aave: "#B6509E",
+  aaveV2: "#B6509E",
   compound: "#00D395",
   maker: "#F4B731",
 };

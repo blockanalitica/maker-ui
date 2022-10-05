@@ -1,8 +1,9 @@
 import React from "react";
 import { Col, Row } from "reactstrap";
 import { withErrorBoundary } from "../../hoc.js";
-import RatesSection from "./components/RatesSection.js";
 import { usePageTitle } from "../../hooks";
+import RatesSection from "./components/RatesSection.js";
+import TVLSection from "./components/TVLSection.js";
 
 function Defi(props) {
   usePageTitle("DeFi");
@@ -17,6 +18,11 @@ function Defi(props) {
       <Row className="mb-4">
         <Col xl={12}>
           <RatesSection />
+        </Col>
+      </Row>
+      <Row className="mb-4">
+        <Col xl={12}>
+          <TVLSection />
         </Col>
       </Row>
     </>
