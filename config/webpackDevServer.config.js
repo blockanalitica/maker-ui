@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 const fs = require("fs");
 const evalSourceMapMiddleware = require("react-dev-utils/evalSourceMapMiddleware");
 const noopServiceWorkerMiddleware = require("react-dev-utils/noopServiceWorkerMiddleware");

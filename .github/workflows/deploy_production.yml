@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 name: MKR Production
 on:
   push:
@@ -25,6 +29,8 @@ jobs:
       - name: Lint
         run: |
           yarn run lint
+      - name: REUSE Compliance Check
+        uses: fsfe/reuse-action@v1
       - name: Build
         run: |
           yarn run build:production

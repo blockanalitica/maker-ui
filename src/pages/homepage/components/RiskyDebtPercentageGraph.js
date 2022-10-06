@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import { withErrorBoundary } from "../../../hoc.js";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";

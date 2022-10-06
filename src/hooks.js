@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import axios from "axios";
 import queryString from "query-string";
 import { useEffect, useRef } from "react";

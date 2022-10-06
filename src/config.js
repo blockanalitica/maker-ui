@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 const apiEndpoint =
   process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_API_ENDPOINT

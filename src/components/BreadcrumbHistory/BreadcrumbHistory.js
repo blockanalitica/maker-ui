@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import React from "react";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { v4 as uuid } from "uuid";
