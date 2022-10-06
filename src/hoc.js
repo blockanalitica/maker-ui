@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import React from "react";
 import ErrorFallback from "./components/errorFallback/ErrorFallback.js";
 import * as Sentry from "@sentry/react";

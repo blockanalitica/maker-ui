@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 name: Lint
 on:
   pull_request:
@@ -9,8 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: main
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
@@ -24,3 +26,5 @@ jobs:
       - name: Lint
         run: |
           yarn run lint
+      - name: REUSE Compliance Check
+        uses: fsfe/reuse-action@v1

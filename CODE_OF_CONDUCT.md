@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge

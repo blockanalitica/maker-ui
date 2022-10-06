@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import { useNavigate } from "react-router";
 import { Input, Button } from "reactstrap";
 import Value from "../../../components/Value/Value.js";

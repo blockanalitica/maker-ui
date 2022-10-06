@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Maker ui
+Upstream-Contact: BlockAnalitica <>
+Source: https://github.com/blockanalitica/maker-ui
+
+Files: .yarn/*
+Copyright: 2022 Dai Foundation <www.daifoundation.org>
+License: CC0-1.0

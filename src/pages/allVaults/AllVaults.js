@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import classnames from "classnames";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";

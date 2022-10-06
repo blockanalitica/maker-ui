@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: © 2022 Dai Foundation <www.daifoundation.org>
+//
+// SPDX-License-Identifier: Apache-2.0
+
 import React, { useState } from "react";
 import { Col, Row, FormGroup, Label, Input, Button } from "reactstrap";
 import LoadingOverlay from "react-loading-overlay";
