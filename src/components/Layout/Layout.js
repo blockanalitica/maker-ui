@@ -29,6 +29,7 @@ import AuctionKickSim from "../../pages/auctionKickSim/AuctionKickSim.js";
 import AuctionsThroughput from "../../pages/auctionThroughputs/AuctionsThroughput.js";
 import AuctionThroughput from "../../pages/auctionThroughputs/AuctionThroughput.js";
 import AaveD3M from "../../pages/d3m/AaveD3M.js";
+import Changelog from "../../pages/changelog/Changelog.js";
 import D3M from "../../pages/d3m/D3M.js";
 import RevenueD3M from "../../pages/d3m/RevenueD3M.js";
 import DaiGrowth from "../../pages/daiGrowth/DaiGrowth.js";
@@ -192,6 +193,11 @@ function Layout(props) {
                         FAQ
                       </NavLink>
                     </DropdownItem>
+                    <DropdownItem>
+                      <NavLink tag={Link} to="changelog/">
+                        Changelog
+                      </NavLink>
+                    </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </Nav>
@@ -261,6 +267,7 @@ function Layout(props) {
             <Route path="/vaults/all/" element={<AllVaults />} />
             <Route path="/defi/" element={<Defi />} />
             <Route path="/faq/" element={<FAQ />} />
+            <Route path="/changelog/" element={<Changelog />} />
 
             {/* Redirects from old maker dashboard */}
             <Route path="/vaults/" element={<Navigate replace to="/vault-types/" />} />
