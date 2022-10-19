@@ -22,11 +22,9 @@ function EtherscanShort(props) {
     text = address.slice(0, 5) + "..." + address.slice(-5);
   }
   return (
-    <>
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        {text}
-      </a>
-    </>
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {text}
+    </a>
   );
 }
 

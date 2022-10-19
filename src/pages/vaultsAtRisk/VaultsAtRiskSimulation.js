@@ -8,7 +8,6 @@ import { Badge, Col, Row, FormGroup, Label, Input } from "reactstrap";
 import Card from "../../components/Card/Card.js";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
-import EtherscanShort from "../../components/EtherscanShort/EtherscanShort.js";
 import StatsBar from "../../components/Stats/StatsBar.js";
 import Loader from "../../components/Loader/Loader.js";
 import RemoteTable from "../../components/Table/RemoteTable.js";
@@ -17,6 +16,7 @@ import Value from "../../components/Value/Value.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch, usePageTitle, useDidMountEffect, useQueryParams } from "../../hooks";
 import { parseUTCDateTime } from "../../utils/datetime.js";
+import { shorten } from "../../utils/address.js";
 
 function VaultsAtRiskSimulation(props) {
   const navigate = useNavigate();
@@ -65,6 +65,11 @@ function VaultsAtRiskSimulation(props) {
 
   const onRowClick = (row) => {
     navigate(`/vault-types/${row.ilk}/vaults/${row.uid}/`);
+  };
+
+  const onOwnerClick = (e, url) => {
+    navigate(url);
+    e.stopPropagation();
   };
 
   const { count, results, aggregate_data: aggregateData, osm_prices: osmPrices } = data;
@@ -280,7 +285,15 @@ function VaultsAtRiskSimulation(props) {
                     formatter: (cell, row) => (
                       <>
                         {cell && cell !== "None" ? (
-                          <EtherscanShort address={cell} name={row.owner_name} />
+                          <span
+                            role="button"
+                            className="link"
+                            onClick={(e) => onOwnerClick(e, `/wallets/${cell}/`)}
+                          >
+                            {row.owner_name && row.owner_name !== "None"
+                              ? row.owner_name
+                              : shorten(cell)}
+                          </span>
                         ) : (
                           "-"
                         )}
