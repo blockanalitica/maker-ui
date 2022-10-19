@@ -11,7 +11,6 @@ import { Badge, Col, Row, Button } from "reactstrap";
 import Card from "../../components/Card/Card.js";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
-import EtherscanShort from "../../components/EtherscanShort/EtherscanShort.js";
 import StatsBar from "../../components/Stats/StatsBar.js";
 import Loader from "../../components/Loader/Loader.js";
 import LinkTable from "../../components/Table/LinkTable.js";
@@ -19,6 +18,7 @@ import Value from "../../components/Value/Value.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch, usePageTitle } from "../../hooks";
 import { parseUTCDateTime } from "../../utils/datetime.js";
+import { shorten } from "../../utils/address.js";
 import successImg from "../../images/success_meme.jpg";
 import styles from "./VaultsAtRisk.module.scss";
 
@@ -37,6 +37,11 @@ function VaultsAtRisk(props) {
 
   const onRowClick = (row) => {
     navigate(`/vault-types/${row.ilk}/vaults/${row.uid}/`);
+  };
+
+  const onOwnerClick = (e, url) => {
+    navigate(url);
+    e.stopPropagation();
   };
 
   const { vaults, aggregate_data: aggregateData, osm_prices: osmPrices } = data;
@@ -225,7 +230,15 @@ function VaultsAtRisk(props) {
                   formatter: (cell, row) => (
                     <>
                       {cell && cell !== "None" ? (
-                        <EtherscanShort address={cell} name={row.owner_name} />
+                        <span
+                          role="button"
+                          className="link"
+                          onClick={(e) => onOwnerClick(e, `/wallets/${cell}/`)}
+                        >
+                          {row.owner_name && row.owner_name !== "None"
+                            ? row.owner_name
+                            : shorten(cell)}
+                        </span>
                       ) : (
                         "-"
                       )}

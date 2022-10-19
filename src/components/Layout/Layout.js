@@ -62,7 +62,7 @@ import Vaults from "../../pages/vaults/Vaults.js";
 import VaultsAtRisk from "../../pages/vaultsAtRisk/VaultsAtRisk.js";
 import VaultsAtRiskMarket from "../../pages/vaultsAtRisk/VaultsAtRiskMarket.js";
 import VaultsAtRiskSimulation from "../../pages/vaultsAtRisk/VaultsAtRiskSimulation.js";
-import Whale from "../../pages/whales/Whale.js";
+import Wallet from "../../pages/wallets/Wallet.js";
 import Whales from "../../pages/whales/Whales.js";
 import BreadcrumbHistory from "../BreadcrumbHistory/BreadcrumbHistory.js";
 import styles from "./Layout.module.scss";
@@ -260,7 +260,7 @@ function Layout(props) {
             <Route path="/dai/growth/" element={<DaiGrowth />} />
             <Route path="/dai/trades/" element={<DaiTrades />} />
             <Route path="/whales/" element={<Whales />} />
-            <Route path="/whales/:slug/" element={<Whale />} />
+            <Route path="/wallets/:address/" element={<Wallet />} />
             <Route path="/forum-archive/" element={<ForumArchive />} />
             <Route path="/psms/:ilk/" element={<PSM />} />
             <Route path="/psms/" element={<PSMs />} />

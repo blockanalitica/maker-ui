@@ -8,7 +8,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Badge, Col, Row } from "reactstrap";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
-import EtherscanShort from "../../components/EtherscanShort/EtherscanShort.js";
 import Loader from "../../components/Loader/Loader.js";
 import RemoteTable from "../../components/Table/RemoteTable.js";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
@@ -19,6 +18,7 @@ import EventStatsChart from "./components/EventStatsChart.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch } from "../../hooks";
 import { parseUTCDateTime } from "../../utils/datetime.js";
+import { shorten } from "../../utils/address.js";
 import styles from "./Vaults.module.scss";
 
 function Vaults(props) {
@@ -58,6 +58,11 @@ function Vaults(props) {
 
   const onRowClick = (row) => {
     navigate(`/vault-types/${ilk}/vaults/${row.uid}/`);
+  };
+
+  const onOwnerClick = (e, url) => {
+    navigate(url);
+    e.stopPropagation();
   };
 
   const priceChangeFormatter = (cell, row) => (
@@ -159,7 +164,15 @@ function Vaults(props) {
       formatter: (cell, row) => (
         <>
           {cell && cell !== "None" ? (
-            <EtherscanShort address={cell} name={row.owner_name} />
+            <span
+              role="button"
+              className="link"
+              onClick={(e) => onOwnerClick(e, `/wallets/${cell}/`)}
+            >
+              {row.owner_name && row.owner_name !== "None"
+                ? row.owner_name
+                : shorten(cell)}
+            </span>
           ) : (
             "-"
           )}
