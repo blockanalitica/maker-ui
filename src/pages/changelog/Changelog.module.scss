@@ -17,7 +17,9 @@
 
 .date {
   font-size: 1.2rem;
-  
+  border-bottom: solid 1px $border-color;
+  margin-bottom: 1rem;
+  padding-bottom: 0.3rem;
 }
 
 .changeSection {
