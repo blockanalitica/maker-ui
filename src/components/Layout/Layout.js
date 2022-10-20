@@ -260,6 +260,7 @@ function Layout(props) {
             <Route path="/dai/growth/" element={<DaiGrowth />} />
             <Route path="/dai/trades/" element={<DaiTrades />} />
             <Route path="/whales/" element={<Whales />} />
+            <Route path="/wallets/" element={<Navigate replace to="/vaults/all/" />} />
             <Route path="/wallets/:address/" element={<Wallet />} />
             <Route path="/forum-archive/" element={<ForumArchive />} />
             <Route path="/psms/:ilk/" element={<PSM />} />

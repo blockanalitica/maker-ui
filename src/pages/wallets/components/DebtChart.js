@@ -32,9 +32,8 @@ function DebtChart(props) {
 
   Object.entries(grouped).forEach(([key, rows]) => {
     series.push({
-      label: key,
+      label: (rows.length > 0 ? rows[0]["ilk"] : "") + " " + key,
       stepped: true,
-      pointRadius: 3,
       data: rows.map((row) => ({
         x: parseUTCDateTimestamp(row["timestamp"]),
         y: row["after_principal"],
@@ -43,6 +42,7 @@ function DebtChart(props) {
   });
 
   const options = {
+    fill: true,
     interaction: {
       axis: "x",
     },
@@ -51,6 +51,7 @@ function DebtChart(props) {
         type: "time",
       },
       y: {
+        stacked: true,
         ticks: {
           callback: (value) => "$" + compact(value, 2, true),
         },
@@ -68,6 +69,13 @@ function DebtChart(props) {
           },
           label: (tooltipItem) => {
             return tooltipLabelNumber(tooltipItem, "$");
+          },
+          footer: (tooltipItems) => {
+            const total = tooltipItems.reduce(
+              (total, tooltip) => total + tooltip.parsed.y,
+              0
+            );
+            return "Total: $" + compact(total, 2, true);
           },
         },
       },
