@@ -229,15 +229,17 @@ function VaultsAtRisk(props) {
                   sort: true,
                   formatter: (cell, row) => (
                     <>
-                      {cell && cell !== "None" ? (
+                      {cell ? (
                         <span
                           role="button"
                           className="link"
                           onClick={(e) => onOwnerClick(e, `/wallets/${cell}/`)}
                         >
-                          {row.owner_name && row.owner_name !== "None"
-                            ? row.owner_name
-                            : shorten(cell)}
+                          {row.owner_name ||
+                            (row.owner_ens && row.owner_ens.length < 25
+                              ? row.owner_ens
+                              : null) ||
+                            shorten(cell)}
                         </span>
                       ) : (
                         "-"

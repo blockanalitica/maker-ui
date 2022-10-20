@@ -17,6 +17,7 @@ import { parseUTCDateTime } from "../../utils/datetime.js";
 import StatsBar from "../../components/Stats/StatsBar.js";
 import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
 import DebtChart from "./components/DebtChart.js";
+import EventsTable from "./components/EventsTable.js";
 import makeBlockie from "ethereum-blockies-base64";
 import styles from "./Wallet.module.scss";
 
@@ -81,7 +82,10 @@ function Wallet(props) {
               alt={walletAddress}
             />
           </a>
-          <h1 className="h3 m-0"> {name || ens || walletAddress} vaults</h1>
+          <h1 className="h3 m-0">
+            {" "}
+            {name || (ens && ens.length < 25 ? ens : null) || walletAddress} vaults
+          </h1>
         </div>
         <div className="d-flex align-items-center">
           Show vaults:{" "}
@@ -212,6 +216,8 @@ function Wallet(props) {
       />
       <h3 className="my-4">debt history</h3>
       <DebtChart address={walletAddress} showAllVaults={showAllVaults} />
+      <h3 className="my-4">events</h3>
+      <EventsTable address={walletAddress} showAllVaults={showAllVaults} />
     </>
   );
 }
