@@ -5,7 +5,7 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import makeBlockie from "ethereum-blockies-base64";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Col, Row } from "reactstrap";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import Loader from "../../components/Loader/Loader.js";
@@ -18,6 +18,10 @@ import VaultHistoryGraph from "./components/VaultHistoryGraph.js";
 import VaultDebtHistoryGraph from "./components/VaultDebtHistoryGraph.js";
 import VaultProfileCard from "./components/VaultProfileCard.js";
 import VaultProtectionMatrix from "./components/VaultProtectionMatrix.js";
+import DebankWallet from "../../components/DebankWallet/DebankWallet.js";
+import ZapperWallet from "../../components/ZapperWallet/ZapperWallet.js";
+import EtherscanWallet from "../../components/EtherscanWallet/EtherscanWallet.js";
+import { shorten } from "../../utils/address.js";
 import styles from "./Vault.module.scss";
 
 function Vault(props) {
@@ -43,30 +47,51 @@ function Vault(props) {
   };
 
   let blockie;
-  let link;
   if (data.owner_address) {
     blockie = makeBlockie(data.owner_address);
-    link = `https://etherscan.io/address/${data.owner_address}`;
   }
 
   return (
     <>
       <Row>
         <div className="d-flex mb-4 align-items-center">
-          <div className="me-3">
-            {blockie ? (
-              <a href={link}>
+          <div className="d-flex align-items-center flex-grow-1">
+            <div className="me-3">
+              {blockie ? (
                 <img
                   className={classnames(styles.roundedCircle, styles.walletLogo)}
                   src={blockie}
                   alt={data.owner_address}
                 />
-              </a>
-            ) : (
-              <CryptoIcon key={data.symbol} name={data.symbol} size="3rem" />
-            )}
+              ) : (
+                <CryptoIcon key={data.symbol} name={data.symbol} size="3rem" />
+              )}
+            </div>
+            <h1 className="h3 m-0">#{uid}</h1>
           </div>
-          <h1 className="h3 m-0">#{uid}</h1>
+          <div>
+            {data.owner_address ? (
+              <div className="w-100 text-end">
+                <span className="small me-2">Owner:</span>
+                <Link to={`/wallets/${data.owner_address}/`} className="small me-2">
+                  {shorten(data.owner_address)}
+                </Link>
+
+                <EtherscanWallet className="me-2" address={data.owner_address} />
+                <DebankWallet className="me-2" address={data.owner_address} />
+                <ZapperWallet className="me-2" address={data.owner_address} />
+              </div>
+            ) : null}
+            {data.ds_proxy_address ? (
+              <div className="w-100 text-end">
+                <span className="small me-2">DSProxy:</span>
+                <span className="small me-2">{shorten(data.ds_proxy_address)}</span>
+                <EtherscanWallet className="me-2" address={data.ds_proxy_address} />
+                <DebankWallet className="me-2" address={data.ds_proxy_address} />
+                <ZapperWallet className="me-2" address={data.ds_proxy_address} />
+              </div>
+            ) : null}
+          </div>
         </div>
       </Row>
       <Row>
