@@ -64,10 +64,13 @@ function Vault(props) {
                   alt={data.owner_address}
                 />
               ) : (
-                <CryptoIcon key={data.symbol} name={data.symbol} size="3rem" />
+                <CryptoIcon key={data.symbol} name={data.symbol} size="4rem" />
               )}
             </div>
-            <h1 className="h3 m-0">#{uid}</h1>
+            <div>
+              <h1 className="h3 m-0">#{uid}</h1>
+              <div className="small gray">{data.owner_name || data.owner_ens}</div>
+            </div>
           </div>
           <div>
             {data.owner_address ? (
