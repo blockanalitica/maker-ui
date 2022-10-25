@@ -83,7 +83,7 @@ function CapitalAtRiskChartScore(props) {
 
         title: {
           display: true,
-          text: "capital at risk",
+          text: "risky debt",
         },
       },
     },
