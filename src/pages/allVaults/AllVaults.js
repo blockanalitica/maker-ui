@@ -90,6 +90,12 @@ function AllVaults(props) {
       )}
     </>
   );
+
+  const onDSProxyClick = (e, address, url) => {
+    window.open(`${url}${address}`, "_blank");
+    e.stopPropagation();
+  };
+
   return (
     <>
       <h1 className="h3 mb-4">vault positions</h1>
@@ -192,13 +198,45 @@ function AllVaults(props) {
                     return null;
                   },
                 },
+
                 {
-                  dataField: "last_activity",
-                  text: "Last activity",
+                  dataField: "ds_proxy_address",
+                  text: "DS Proxy",
                   formatter: (cell, row) => (
-                    <DateTimeAgo dateTime={parseUTCDateTime(cell)} />
+                    <>
+                      {cell ? (
+                        <>
+                          <div className="small">{shorten(cell)}</div>
+                          <div>
+                            <CryptoIcon
+                              name="etherscan"
+                              className="me-2"
+                              onClick={(e) =>
+                                onDSProxyClick(e, cell, "https://etherscan.io/address/")
+                              }
+                            />
+                            <CryptoIcon
+                              name="debank"
+                              className="me-2"
+                              onClick={(e) =>
+                                onDSProxyClick(e, cell, "https://debank.com/profile/")
+                              }
+                            />
+                            <CryptoIcon
+                              name="zapper"
+                              onClick={(e) =>
+                                onDSProxyClick(e, cell, "https://zapper.fi/account/")
+                              }
+                            />
+                          </div>
+                        </>
+                      ) : (
+                        "-"
+                      )}
+                    </>
                   ),
-                  sort: true,
+                  headerAlign: "center",
+                  align: "center",
                 },
                 {
                   dataField: "owner_address",
@@ -223,6 +261,18 @@ function AllVaults(props) {
                       )}
                     </>
                   ),
+                  headerAlign: "center",
+                  align: "center",
+                },
+                {
+                  dataField: "last_activity",
+                  text: "Last activity",
+                  formatter: (cell, row) => (
+                    <DateTimeAgo dateTime={parseUTCDateTime(cell)} />
+                  ),
+                  sort: true,
+                  headerAlign: "right",
+                  align: "right",
                 },
               ]}
             >
