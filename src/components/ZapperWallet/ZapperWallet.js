@@ -6,28 +6,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import CryptoIcon from "../CryptoIcon/CryptoIcon.js";
 
-function DebankWallet(props) {
+function ZapperWallet(props) {
   const { name, address, iconOnly, ...rest } = props;
   return (
     <a
-      href={`https://debank.com/profile/${address}`}
+      href={`https://zapper.fi/account/${address}`}
       target="_blank"
       rel="noopener noreferrer"
       {...rest}
     >
-      {iconOnly ? <CryptoIcon name="debank" /> : <>{name ? name : address}</>}
+      {iconOnly ? <CryptoIcon name="zapper" /> : <>{name ? name : address}</>}
     </a>
   );
 }
 
-DebankWallet.propTypes = {
+ZapperWallet.propTypes = {
   name: PropTypes.string,
   address: PropTypes.string,
   iconOnly: PropTypes.bool.isRequired,
 };
 
-DebankWallet.defaultProps = {
+ZapperWallet.defaultProps = {
   iconOnly: true,
 };
 
-export default DebankWallet;
+export default ZapperWallet;

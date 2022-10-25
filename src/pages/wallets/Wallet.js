@@ -16,9 +16,13 @@ import { useFetch } from "../../hooks";
 import { parseUTCDateTime } from "../../utils/datetime.js";
 import StatsBar from "../../components/Stats/StatsBar.js";
 import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
+import DebankWallet from "../../components/DebankWallet/DebankWallet.js";
+import ZapperWallet from "../../components/ZapperWallet/ZapperWallet.js";
+import EtherscanWallet from "../../components/EtherscanWallet/EtherscanWallet.js";
 import DebtChart from "./components/DebtChart.js";
 import EventsTable from "./components/EventsTable.js";
 import makeBlockie from "ethereum-blockies-base64";
+import { shorten } from "../../utils/address.js";
 import styles from "./Wallet.module.scss";
 
 function Wallet(props) {
@@ -41,7 +45,19 @@ function Wallet(props) {
     navigate(`/vault-types/${row.ilk}/vaults/${row.uid}/`);
   };
 
-  const { vaults, name, ens, address: walletAddress } = data;
+  const onDSProxyClick = (e, address, url) => {
+    window.open(`${url}${address}`, "_blank");
+    e.stopPropagation();
+  };
+
+  const onOwnerClick = (e, url) => {
+    navigate(url);
+    e.stopPropagation();
+  };
+
+  const { vaults, name, ens, address: walletAddress, slug } = data;
+
+  const addressParam = slug || walletAddress;
 
   const vaultOptions = [
     { key: null, value: "Active" },
@@ -70,22 +86,195 @@ function Wallet(props) {
     },
   ];
 
-  const blockie = makeBlockie(walletAddress);
+  let blockie = null;
+  if (walletAddress) {
+    blockie = makeBlockie(walletAddress);
+  }
+
+  const columns = [
+    {
+      dataField: "collateral_symbol",
+      text: "",
+      sort: false,
+      formatter: (cell, row) => <CryptoIcon className="me-2" name={cell} size="2rem" />,
+    },
+    {
+      dataField: "ilk",
+      text: "vault type",
+    },
+    {
+      dataField: "uid",
+      text: "vault id",
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      dataField: "collateral",
+      text: "collateral",
+      sort: true,
+      formatter: (cell, row) => <Value value={cell} decimals={2} compact />,
+      headerAlign: "right",
+      align: "right",
+    },
+    {
+      dataField: "debt",
+      text: "debt",
+      sort: true,
+      formatter: (cell, row) => <Value value={cell} decimals={2} prefix="$" compact />,
+      headerAlign: "right",
+      align: "right",
+    },
+    {
+      dataField: "liquidation_drop",
+      text: "Liq. drop",
+      sort: true,
+      formatter: (cell, row) => <Value value={cell * 100} decimals={2} suffix="%" />,
+      headerAlign: "right",
+      align: "right",
+    },
+    {
+      dataField: "liquidation_price",
+      text: "Liq. price",
+      sort: true,
+      formatter: (cell, row) => <Value value={cell} decimals={0} prefix="$" />,
+      headerAlign: "right",
+      align: "right",
+    },
+    {
+      dataField: "collateralization",
+      text: "CR",
+      sort: true,
+      formatter: (cell, row) => <Value value={cell} decimals={0} suffix="%" />,
+      headerAlign: "right",
+      align: "right",
+    },
+    {
+      dataField: "protection_score",
+      text: "protection score",
+      sort: true,
+      formatter: (cell, row) => {
+        if (row.protection_service) {
+          return <CryptoIcon name={row.protection_service} size="2rem" />;
+        } else if (cell === "low") {
+          return (
+            <Badge color="success" className="mr-1">
+              {cell} risk
+            </Badge>
+          );
+        } else if (cell === "medium") {
+          return (
+            <Badge color="warning" className="mr-1">
+              {cell} risk
+            </Badge>
+          );
+        } else if (cell === "high") {
+          return (
+            <Badge color="danger" className="mr-1">
+              {cell} risk
+            </Badge>
+          );
+        }
+        return null;
+      },
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      dataField: "ds_proxy_address",
+      text: "DS Proxy",
+      formatter: (cell, row) => (
+        <>
+          {cell ? (
+            <>
+              <div className="small">{shorten(cell)}</div>
+              <div>
+                <CryptoIcon
+                  name="etherscan"
+                  className="me-2"
+                  onClick={(e) =>
+                    onDSProxyClick(e, cell, "https://etherscan.io/address/")
+                  }
+                />
+                <CryptoIcon
+                  name="debank"
+                  className="me-2"
+                  onClick={(e) =>
+                    onDSProxyClick(e, cell, "https://debank.com/profile/")
+                  }
+                />
+                <CryptoIcon
+                  name="zapper"
+                  onClick={(e) => onDSProxyClick(e, cell, "https://zapper.fi/account/")}
+                />
+              </div>
+            </>
+          ) : (
+            "-"
+          )}
+        </>
+      ),
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      dataField: "last_activity",
+      text: "Last activity",
+      formatter: (cell, row) => <DateTimeAgo dateTime={parseUTCDateTime(cell)} />,
+      sort: true,
+      headerAlign: "right",
+      align: "right",
+    },
+  ];
+
+  if (slug) {
+    columns.splice(10, 0, {
+      dataField: "owner_address",
+      text: "owner address",
+      formatter: (cell, row) => (
+        <>
+          {cell ? (
+            <span
+              role="button"
+              className="link"
+              onClick={(e) => onOwnerClick(e, `/wallets/${cell}/`)}
+            >
+              {row.owner_name ||
+                (row.owner_ens && row.owner_ens.length < 25 ? row.owner_ens : null) ||
+                shorten(cell)}
+            </span>
+          ) : (
+            "-"
+          )}
+        </>
+      ),
+      headerAlign: "center",
+      align: "center",
+    });
+  }
+
   return (
     <>
       <div className="d-flex mb-4 align-items-center">
         <div className="d-flex align-items-center flex-grow-1">
-          <a href={`https://etherscan.io/address/${walletAddress}`} className="me-3">
+          {blockie ? (
             <img
-              className={classnames(styles.roundedCircle, styles.walletLogo)}
+              className={classnames("me-3", styles.roundedCircle, styles.walletLogo)}
               src={blockie}
               alt={walletAddress}
             />
-          </a>
-          <h1 className="h3 m-0">
-            {" "}
-            {name || (ens && ens.length < 25 ? ens : null) || walletAddress} vaults
-          </h1>
+          ) : null}
+          <div>
+            <h1 className="h3 m-0">
+              {name || (ens && ens.length < 25 ? ens : null) || walletAddress}
+            </h1>
+            {walletAddress ? (
+              <div>
+                <EtherscanWallet className="me-2" address={walletAddress} />
+                <DebankWallet className="me-2" address={walletAddress} />
+                <ZapperWallet address={walletAddress} />
+              </div>
+            ) : null}
+          </div>
         </div>
         <div className="d-flex align-items-center">
           Show vaults:{" "}
@@ -110,114 +299,12 @@ function Wallet(props) {
             order: "desc",
           },
         ]}
-        columns={[
-          {
-            dataField: "collateral_symbol",
-            text: "",
-            sort: false,
-            formatter: (cell, row) => (
-              <CryptoIcon className="me-2" name={cell} size="2rem" />
-            ),
-          },
-          {
-            dataField: "ilk",
-            text: "vault type",
-          },
-          {
-            dataField: "uid",
-            text: "vault id",
-            headerAlign: "center",
-            align: "center",
-          },
-          {
-            dataField: "collateral",
-            text: "collateral",
-            sort: true,
-            formatter: (cell, row) => <Value value={cell} decimals={2} compact />,
-            headerAlign: "right",
-            align: "right",
-          },
-          {
-            dataField: "debt",
-            text: "debt",
-            sort: true,
-            formatter: (cell, row) => (
-              <Value value={cell} decimals={2} prefix="$" compact />
-            ),
-            headerAlign: "right",
-            align: "right",
-          },
-          {
-            dataField: "liquidation_drop",
-            text: "Liq. drop",
-            sort: true,
-            formatter: (cell, row) => (
-              <Value value={cell * 100} decimals={2} suffix="%" />
-            ),
-            headerAlign: "right",
-            align: "right",
-          },
-          {
-            dataField: "liquidation_price",
-            text: "Liq. price",
-            sort: true,
-            formatter: (cell, row) => <Value value={cell} decimals={0} prefix="$" />,
-            headerAlign: "right",
-            align: "right",
-          },
-          {
-            dataField: "collateralization",
-            text: "CR",
-            sort: true,
-            formatter: (cell, row) => <Value value={cell} decimals={0} suffix="%" />,
-            headerAlign: "right",
-            align: "right",
-          },
-          {
-            dataField: "protection_score",
-            text: "protection score",
-            sort: true,
-            formatter: (cell, row) => {
-              if (row.protection_service) {
-                return <CryptoIcon name={row.protection_service} size="2rem" />;
-              } else if (cell === "low") {
-                return (
-                  <Badge color="success" className="mr-1">
-                    {cell} risk
-                  </Badge>
-                );
-              } else if (cell === "medium") {
-                return (
-                  <Badge color="warning" className="mr-1">
-                    {cell} risk
-                  </Badge>
-                );
-              } else if (cell === "high") {
-                return (
-                  <Badge color="danger" className="mr-1">
-                    {cell} risk
-                  </Badge>
-                );
-              }
-              return null;
-            },
-            headerAlign: "center",
-            align: "center",
-          },
-          {
-            dataField: "last_activity",
-            text: "Last activity",
-            formatter: (cell, row) => <DateTimeAgo dateTime={parseUTCDateTime(cell)} />,
-            sort: true,
-            headerAlign: "right",
-            align: "right",
-          },
-        ]}
+        columns={columns}
       />
       <h3 className="my-4">debt history</h3>
-      <DebtChart address={walletAddress} showAllVaults={showAllVaults} />
+      <DebtChart address={addressParam} showAllVaults={showAllVaults} />
       <h3 className="my-4">events</h3>
-      <EventsTable address={walletAddress} showAllVaults={showAllVaults} />
+      <EventsTable address={addressParam} showAllVaults={showAllVaults} />
     </>
   );
 }

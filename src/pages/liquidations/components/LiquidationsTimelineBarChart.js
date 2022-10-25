@@ -95,11 +95,7 @@ function LiquidationsTimelineBarChart(props) {
     },
   };
 
-  return (
-    <>
-      <Graph series={series} type="bar" options={options} />
-    </>
-  );
+  return <Graph series={series} type="bar" options={options} />;
 }
 
 export default withErrorBoundary(LiquidationsTimelineBarChart);

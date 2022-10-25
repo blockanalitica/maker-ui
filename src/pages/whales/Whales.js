@@ -66,7 +66,7 @@ function Whales(props) {
         return (
           <Col xl={4} className="mb-4" key={row.name}>
             <Link
-              to={`/wallets/${row.address}/`}
+              to={`/wallets/${row.slug}/`}
               key={row.protocol}
               className={styles.link}
             >
