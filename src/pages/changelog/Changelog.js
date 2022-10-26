@@ -22,6 +22,10 @@ function Changelog(props) {
         <h3 className={styles.date}>October 2022</h3>
         <h4 className={styles.changeSection}>Added</h4>
         <ul className={styles.changes}>
+          <li>
+            Added totals sections to PSM page and now showing diff from 1|7|30 days ago
+          </li>
+          <li>Added links to Etherscan, Debank and Zapper on pages where needed</li>
           <li>Added wallet view for showing all vaults from the same owner</li>
           <li>Linking owner addresses to their ENS</li>
           <li>New changelog page for tracking notable changes to this project</li>
