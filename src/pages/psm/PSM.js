@@ -23,7 +23,7 @@ function PSM(props) {
   const pageSize = 15;
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState(null);
-  const [timePeriod, setTimePeriod] = useState(1);
+  const [timePeriod, setTimePeriod] = useState(30);
   const [historyTimePeriod, setHistoryTimePeriod] = useState(30);
   const [activeTab, setActiveTab] = useState("1");
 
