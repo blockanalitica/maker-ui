@@ -125,7 +125,7 @@ function PSMs(props) {
 
             return (
               <Col xl={4} key={psm.name} className="mb-4">
-                <Card role="button" onClick={() => navigate(`/psms/${psm.ilk}`)}>
+                <Card role="button" onClick={() => navigate(`/psms/${psm.ilk}/`)}>
                   <div className="d-flex align-items-center mb-4">
                     <CryptoIcon name={psm.collateral} size="3rem" className="me-2" />
                     <h3 className="m-0">{psm.name}</h3>
