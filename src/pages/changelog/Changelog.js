@@ -23,7 +23,19 @@ function Changelog(props) {
         <h4 className={styles.changeSection}>Added</h4>
         <ul className={styles.changes}>
           <li>
-            Added totals sections to PSM page and now showing diff from 1|7|30 days ago
+            Added new things to the PSM pages
+            <ul>
+              <li>total amounts at the top of the PSMs page</li>
+              <li>showing diff from 1|7|30 days ago on the PSMs page</li>
+              <li>
+                showing total amount of generate and payback events in graph form for
+                1|7|30 days ago on the PSM page
+              </li>
+              <li>
+                showing total DAI supply in a graph form for historical 7|30|90 days on
+                the PSM page
+              </li>
+            </ul>
           </li>
           <li>Added links to Etherscan, Debank and Zapper on pages where needed</li>
           <li>Added wallet view for showing all vaults from the same owner</li>
