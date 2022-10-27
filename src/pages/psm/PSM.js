@@ -4,6 +4,9 @@
 
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { Col, Row } from "reactstrap";
+import SideTabNav from "../../components/SideTab/SideTabNav.js";
+import SideTabContent from "../../components/SideTab/SideTabContent.js";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import EtherscanShort from "../../components/EtherscanShort/EtherscanShort.js";
 import Loader from "../../components/Loader/Loader.js";
@@ -22,6 +25,7 @@ function PSM(props) {
   const [order, setOrder] = useState(null);
   const [timePeriod, setTimePeriod] = useState(1);
   const [historyTimePeriod, setHistoryTimePeriod] = useState(30);
+  const [activeTab, setActiveTab] = useState("1");
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
     `/psms/${ilk}/`,
@@ -34,6 +38,12 @@ function PSM(props) {
   } else if (isError) {
     return <ErrorFallbackComponent />;
   }
+
+  const toggleTab = (tab) => {
+    if (activeTab !== tab) {
+      setActiveTab(tab);
+    }
+  };
 
   const historyTimeOptions = [
     { key: 7, value: "7 days" },
@@ -49,10 +59,58 @@ function PSM(props) {
       <div className="d-flex mb-4 justify-content-space-between align-items-center">
         <CryptoIcon name={symbol} size="3rem" className="me-2" />
         <h1 className="h3 m-0 flex-grow-1">{ilk} events</h1>
-        <TimeSwitch activeOption={timePeriod} onChange={setTimePeriod} />
       </div>
 
-      <EventStatsChart className="mb-4" ilk={ilk} timePeriod={timePeriod} />
+      <Row className="mb-4">
+        <Col xl={3}>
+          <SideTabNav
+            activeTab={activeTab}
+            toggleTab={toggleTab}
+            tabs={[
+              { id: "1", text: "change per day" },
+              { id: "2", text: "total supply" },
+            ]}
+          />
+        </Col>
+        <Col xl={9}>
+          <SideTabContent
+            activeTab={activeTab}
+            tabs={[
+              {
+                id: "1",
+                content: (
+                  <>
+                    <TimeSwitch activeOption={timePeriod} onChange={setTimePeriod} />
+                    <EventStatsChart
+                      className="mb-4"
+                      ilk={ilk}
+                      timePeriod={timePeriod}
+                    />
+                  </>
+                ),
+              },
+              {
+                id: "2",
+                content: (
+                  <>
+                    <TimeSwitch
+                      options={historyTimeOptions}
+                      activeOption={historyTimePeriod}
+                      onChange={setHistoryTimePeriod}
+                    />
+                    <DAISupplyHistoryChart
+                      className="mb-4"
+                      ilk={ilk}
+                      timePeriod={historyTimePeriod}
+                    />
+                  </>
+                ),
+              },
+            ]}
+          />
+        </Col>
+      </Row>
+
       <RemoteTable
         loading={isPreviousData}
         keyField="tx_hash"
@@ -98,17 +156,6 @@ function PSM(props) {
         totalPageSize={count}
         onSortChange={setOrder}
         onPageChange={setPage}
-      />
-      <h3 className="mb-4">total DAI supply over time</h3>
-      <TimeSwitch
-        options={historyTimeOptions}
-        activeOption={historyTimePeriod}
-        onChange={setHistoryTimePeriod}
-      />
-      <DAISupplyHistoryChart
-        className="mb-4"
-        ilk={ilk}
-        timePeriod={historyTimePeriod}
       />
     </>
   );
