@@ -14,12 +14,9 @@ import { ReactComponent as celIcon } from "../../images/crypto/color/cel.svg";
 import { ReactComponent as compIcon } from "../../images/crypto/color/comp.svg";
 import { ReactComponent as crvIcon } from "../../images/crypto/color/crv.svg";
 import { ReactComponent as daiIcon } from "../../images/crypto/color/dai.svg";
-import { ReactComponent as debankIcon } from "../../images/debank.svg";
-import { ReactComponent as defisaverIcon } from "../../images/defisaver.svg";
 import { ReactComponent as dpiIcon } from "../../images/crypto/color/dpi.svg";
 import { ReactComponent as enjIcon } from "../../images/crypto/color/enj.svg";
 import { ReactComponent as ensIcon } from "../../images/crypto/color/ens.svg";
-import { ReactComponent as etherscanIcon } from "../../images/etherscan.svg";
 import { ReactComponent as ethIcon } from "../../images/crypto/color/eth.svg";
 import { ReactComponent as feiIcon } from "../../images/crypto/color/fei.svg";
 import { ReactComponent as filIcon } from "../../images/crypto/color/fil.svg";
@@ -54,8 +51,11 @@ import { ReactComponent as usdtIcon } from "../../images/crypto/color/usdt.svg";
 import { ReactComponent as ustIcon } from "../../images/crypto/color/ust.svg";
 import { ReactComponent as wbtcIcon } from "../../images/crypto/color/wbtc.svg";
 import { ReactComponent as yfiIcon } from "../../images/crypto/color/yfi.svg";
-import { ReactComponent as zapperIcon } from "../../images/zapper.svg";
 import { ReactComponent as zrxIcon } from "../../images/crypto/color/zrx.svg";
+import { ReactComponent as debankIcon } from "../../images/debank.svg";
+import { ReactComponent as defisaverIcon } from "../../images/defisaver.svg";
+import { ReactComponent as etherscanIcon } from "../../images/etherscan.svg";
+import { ReactComponent as zapperIcon } from "../../images/zapper.svg";
 
 function CryptoIcon(props) {
   const { name, size, address, ...rest } = props;
@@ -127,6 +127,10 @@ function CryptoIcon(props) {
     etherscan: etherscanIcon,
     debank: debankIcon,
     zapper: zapperIcon,
+    "yearn-treasury": yfiIcon,
+    "yearn-strategies": yfiIcon,
+    "mana-treasury": manaIcon,
+    "matic-treasury": maticIcon,
   };
   const Icon = mapping[name];
   if (!Icon) {
