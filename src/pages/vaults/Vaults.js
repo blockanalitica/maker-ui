@@ -4,21 +4,21 @@
 
 import classnames from "classnames";
 import React, { useState } from "react";
+import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import { useNavigate, useParams } from "react-router-dom";
 import { Badge, Col, Row } from "reactstrap";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
 import Loader from "../../components/Loader/Loader.js";
 import RemoteTable from "../../components/Table/RemoteTable.js";
-import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
 import Value from "../../components/Value/Value.js";
 import ValueChange from "../../components/Value/ValueChange.js";
-import EventStatsChart from "./components/EventStatsChart.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch } from "../../hooks";
-import { parseUTCDateTime } from "../../utils/datetime.js";
 import { shorten } from "../../utils/address.js";
+import { parseUTCDateTime } from "../../utils/datetime.js";
+import EventStatsChart from "./components/EventStatsChart.js";
 import styles from "./Vaults.module.scss";
 
 function Vaults(props) {
@@ -163,7 +163,7 @@ function Vaults(props) {
         <>
           {cell ? (
             <>
-              <div className="small">{shorten(cell)}</div>
+              <div className="small">{row["ds_proxy_name"] || shorten(cell)}</div>
               <div>
                 <CryptoIcon
                   name="etherscan"

@@ -2,27 +2,27 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
-import React, { useState } from "react";
 import classnames from "classnames";
+import makeBlockie from "ethereum-blockies-base64";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Badge } from "reactstrap";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
+import DebankWallet from "../../components/DebankWallet/DebankWallet.js";
+import EtherscanWallet from "../../components/EtherscanWallet/EtherscanWallet.js";
 import Loader from "../../components/Loader/Loader.js";
+import StatsBar from "../../components/Stats/StatsBar.js";
 import LinkTable from "../../components/Table/LinkTable.js";
+import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
 import Value from "../../components/Value/Value.js";
+import ZapperWallet from "../../components/ZapperWallet/ZapperWallet.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch } from "../../hooks";
+import { shorten } from "../../utils/address.js";
 import { parseUTCDateTime } from "../../utils/datetime.js";
-import StatsBar from "../../components/Stats/StatsBar.js";
-import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
-import DebankWallet from "../../components/DebankWallet/DebankWallet.js";
-import ZapperWallet from "../../components/ZapperWallet/ZapperWallet.js";
-import EtherscanWallet from "../../components/EtherscanWallet/EtherscanWallet.js";
 import DebtChart from "./components/DebtChart.js";
 import EventsTable from "./components/EventsTable.js";
-import makeBlockie from "ethereum-blockies-base64";
-import { shorten } from "../../utils/address.js";
 import styles from "./Wallet.module.scss";
 
 function Wallet(props) {
@@ -186,7 +186,7 @@ function Wallet(props) {
         <>
           {cell ? (
             <>
-              <div className="small">{shorten(cell)}</div>
+              <div className="small">{row["ds_proxy_name"] || shorten(cell)}</div>
               <div>
                 <CryptoIcon
                   name="etherscan"
