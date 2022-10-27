@@ -11,6 +11,7 @@ import RemoteTable from "../../components/Table/RemoteTable.js";
 import ValueChange from "../../components/Value/ValueChange.js";
 import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
 import EventStatsChart from "./components/EventStatsChart.js";
+import DAISupplyHistoryChart from "./components/DAISupplyHistoryChart.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch } from "../../hooks";
 
@@ -20,6 +21,7 @@ function PSM(props) {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState(null);
   const [timePeriod, setTimePeriod] = useState(1);
+  const [historyTimePeriod, setHistoryTimePeriod] = useState(30);
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
     `/psms/${ilk}/`,
@@ -32,6 +34,12 @@ function PSM(props) {
   } else if (isError) {
     return <ErrorFallbackComponent />;
   }
+
+  const historyTimeOptions = [
+    { key: 7, value: "7 days" },
+    { key: 30, value: "30 days" },
+    { key: 90, value: "90 days" },
+  ];
 
   const { results, count } = data;
   const symbol = results[0].symbol;
@@ -90,6 +98,17 @@ function PSM(props) {
         totalPageSize={count}
         onSortChange={setOrder}
         onPageChange={setPage}
+      />
+      <h3 className="mb-4">total DAI supply over time</h3>
+      <TimeSwitch
+        options={historyTimeOptions}
+        activeOption={historyTimePeriod}
+        onChange={setHistoryTimePeriod}
+      />
+      <DAISupplyHistoryChart
+        className="mb-4"
+        ilk={ilk}
+        timePeriod={historyTimePeriod}
       />
     </>
   );
