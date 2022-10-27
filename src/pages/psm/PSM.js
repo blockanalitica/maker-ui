@@ -9,6 +9,8 @@ import EtherscanShort from "../../components/EtherscanShort/EtherscanShort.js";
 import Loader from "../../components/Loader/Loader.js";
 import RemoteTable from "../../components/Table/RemoteTable.js";
 import ValueChange from "../../components/Value/ValueChange.js";
+import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
+import EventStatsChart from "./components/EventStatsChart.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch } from "../../hooks";
 
@@ -17,6 +19,7 @@ function PSM(props) {
   const pageSize = 15;
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState(null);
+  const [timePeriod, setTimePeriod] = useState(1);
 
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
     `/psms/${ilk}/`,
@@ -35,10 +38,13 @@ function PSM(props) {
 
   return (
     <>
-      <div className="d-flex align-items-center mb-4">
+      <div className="d-flex mb-4 justify-content-space-between align-items-center">
         <CryptoIcon name={symbol} size="3rem" className="me-2" />
-        <h1 className="h3 m-0">{ilk} events</h1>
+        <h1 className="h3 m-0 flex-grow-1">{ilk} events</h1>
+        <TimeSwitch activeOption={timePeriod} onChange={setTimePeriod} />
       </div>
+
+      <EventStatsChart className="mb-4" ilk={ilk} timePeriod={timePeriod} />
       <RemoteTable
         loading={isPreviousData}
         keyField="tx_hash"
