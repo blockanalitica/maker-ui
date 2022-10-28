@@ -46,6 +46,10 @@ function Changelog(props) {
               <li>showing fee in (tin) and fee out (tout) on PSMs</li>
             </ul>
           </li>
+          <li>
+            Added new whales (YEARN Treasury, MANA Treasury, MATIC Treasury, YEARN
+            Strategies)
+          </li>
           <li>Added links to Etherscan, Debank and Zapper on pages where needed</li>
           <li>Added wallet view for showing all vaults from the same owner</li>
           <li>Linking owner addresses to their ENS</li>
