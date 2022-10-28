@@ -4,7 +4,8 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Progress } from "reactstrap";
+import { Button } from "reactstrap";
+import ProgressBar from "../../../components/ProgressBar/ProgressBar.js";
 import Card from "../../../components/Card/Card.js";
 import Value from "../../../components/Value/Value.js";
 import { withErrorBoundary } from "../../../hoc.js";
@@ -54,12 +55,13 @@ function InfoCard(props) {
             </li>
             <li>
               <div className="section-title mb-1">exposure / real supply</div>
-              <Progress
+              <ProgressBar
                 animated
                 value={stats.supply_utilization * 100}
                 color={progressLabel}
-              ></Progress>
-              <Value value={stats.supply_utilization * 100} decimals={2} suffix="%" />
+              >
+                <Value value={stats.supply_utilization * 100} decimals={2} suffix="%" />
+              </ProgressBar>
             </li>
           </ul>
           <Link to={`/d3m/aave/revenue/`} key={"aave"}>

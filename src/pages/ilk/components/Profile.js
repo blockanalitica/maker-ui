@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from "react";
-import { Progress } from "reactstrap";
+import ProgressBar from "../../../components/ProgressBar/ProgressBar.js";
 import Card from "../../../components/Card/Card.js";
 import Value from "../../../components/Value/Value.js";
 import { withErrorBoundary } from "../../../hoc.js";
@@ -76,13 +76,14 @@ function Profile(props) {
             </li>
             <li>
               <div className="section-title">utilization</div>
-              <Progress
+              <ProgressBar
                 animated
                 value={data.utilization * 100}
                 color={progressLabel}
                 className={styles.progress}
-              ></Progress>
-              <Value value={data.utilization * 100} decimals={2} suffix="%" />
+              >
+                <Value value={data.utilization * 100} decimals={2} suffix="%" />
+              </ProgressBar>
             </li>
           </ul>
         </div>
