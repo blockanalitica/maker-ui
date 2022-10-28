@@ -9,7 +9,6 @@ import {
   FormGroup,
   Input,
   Label,
-  Progress,
   Row,
   Modal,
   ModalBody,
@@ -22,6 +21,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch, usePageTitle, useQueryParams } from "../../hooks";
+import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
 import DaiBorrowCurveGraph from "./components/DaiBorrowCurveGraph.js";
 import Loader from "../../components/Loader/Loader.js";
 import InfoIcon from "../../components/Icon/InfoIcon.js";
@@ -310,15 +310,16 @@ function RevenueD3M(props) {
       title: "exposure / real supply",
       normalValue: (
         <div className="text-center mt-2">
-          <Progress
+          <ProgressBar
             animated
             value={(result.d3m_exposure_total / stats.real_supply) * 100}
-          />
-          <Value
-            value={(result.d3m_exposure_total / stats.real_supply) * 100}
-            decimals={2}
-            suffix="%"
-          />
+          >
+            <Value
+              value={(result.d3m_exposure_total / stats.real_supply) * 100}
+              decimals={2}
+              suffix="%"
+            />
+          </ProgressBar>
         </div>
       ),
     },

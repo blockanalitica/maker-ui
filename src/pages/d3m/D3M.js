@@ -3,11 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from "react";
-import { Badge, Col, Progress, Row } from "reactstrap";
+import { Badge, Col, Row } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch, usePageTitle } from "../../hooks";
+import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
 import StatsBar from "../../components/Stats/StatsBar.js";
 import Card from "../../components/Card/Card.js";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
@@ -98,12 +99,13 @@ function D3M(props) {
                     <StatsBar className="mb-3" stats={statsD3M} cardTag="div" />
                     <div className="text-center">
                       <div className="section-title">utilization</div>
-                      <Progress
+                      <ProgressBar
                         animated
                         value={row.utilization * 100}
                         color="success"
-                      ></Progress>
-                      <Value value={row.utilization * 100} decimals={2} suffix="%" />
+                      >
+                        <Value value={row.utilization * 100} decimals={2} suffix="%" />
+                      </ProgressBar>
                     </div>
                   </div>
                 </div>

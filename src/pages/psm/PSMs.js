@@ -145,19 +145,11 @@ function PSMs(props) {
             const bla = [
               {
                 title: "fee in",
-                smallValue: psm.fee_in ? (
-                  <Value value={psm.fee_in} decimals={2} suffix="%" />
-                ) : (
-                  "-"
-                ),
+                smallValue: <Value value={psm.fee_in || 0} decimals={2} suffix="%" />,
               },
               {
                 title: "fee out",
-                smallValue: psm.fee_out ? (
-                  <Value value={psm.fee_out} decimals={2} suffix="%" />
-                ) : (
-                  "-"
-                ),
+                smallValue: <Value value={psm.fee_out || 0} decimals={2} suffix="%" />,
               },
             ];
 

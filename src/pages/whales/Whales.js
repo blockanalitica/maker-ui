@@ -9,7 +9,8 @@ import slugify from "slugify";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch, usePageTitle } from "../../hooks";
 import { Link } from "react-router-dom";
-import { Col, Progress, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
+import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import Value from "../../components/Value/Value.js";
 import StatsBar from "../../components/Stats/StatsBar.js";
@@ -79,13 +80,14 @@ function Whales(props) {
                   <StatsBar stats={stats} cardTag="div" />
                   <div className="text-center mt-3">
                     <div className={styles.smallText}>share of risky debt</div>
-                    <Progress
+                    <ProgressBar
                       animated
                       value={row.share * 100}
                       color="success"
                       className={styles.progress}
-                    ></Progress>
-                    <Value value={row.share * 100} decimals={2} suffix="%" />
+                    >
+                      <Value value={row.share * 100} decimals={2} suffix="%" />
+                    </ProgressBar>
                   </div>
                 </div>
               </div>
