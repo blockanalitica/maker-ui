@@ -35,6 +35,15 @@ function Changelog(props) {
                 showing total DAI supply in a graph form for historical 7|30|90 days on
                 the PSM page
               </li>
+              <li>
+                showing combined total DAI supply in a graph form for historical 7|30|90
+                days on the PSMs page
+              </li>
+              <li>
+                showing combined total amount of generate and payback events in graph
+                form for 7|30|90 days ago on the PSMs page
+              </li>
+              <li>showing fee in (tin) and fee out (tout) on PSMs</li>
             </ul>
           </li>
           <li>Added links to Etherscan, Debank and Zapper on pages where needed</li>
