@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useState } from "react";
-import { Row, Col, Progress } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
 import SideTabNav from "../../components/SideTab/SideTabNav.js";

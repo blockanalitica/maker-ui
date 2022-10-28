@@ -65,7 +65,7 @@ function CombinedDAISupplyHistoryChart(props) {
     },
     plugins: {
       legend: {
-        display: false,
+        display: true,
       },
       tooltip: {
         callbacks: {
@@ -76,9 +76,6 @@ function CombinedDAISupplyHistoryChart(props) {
             return tooltipLabelNumber(tooltipItem, "$", null);
           },
         },
-      },
-      legend: {
-        display: true,
       },
     },
   };
