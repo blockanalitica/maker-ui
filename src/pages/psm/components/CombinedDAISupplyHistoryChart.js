@@ -12,10 +12,10 @@ import { useFetch } from "../../../hooks";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
 
-function EventStatsChart(props) {
+function CombinedDAISupplyHistoryChart(props) {
   const { ilk, timePeriod, ...rest } = props;
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `/psms/${ilk}/event-stats/`,
+    "/psms/dai-supply-history/",
     { days_ago: timePeriod },
     { keepPreviousData: true }
   );
@@ -30,56 +30,50 @@ function EventStatsChart(props) {
     return null;
   }
 
-  const colorMap = {
-    GENERATE: "#11613c",
-    PAYBACK: "#7d161f",
-  };
-
-  let grouped;
-  grouped = _.groupBy(data, "operation");
+  const grouped = _.groupBy(data, "ilk");
   const series = [];
   Object.entries(grouped).forEach(([key, rows]) => {
-    const label = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
     let item = {
-      label: label,
+      label: key,
       data: rows.map((row) => ({
-        x: row["dt"],
-        y: row["amount"],
+        x: row["datetime"],
+        y: row["total_supply"],
       })),
-      backgroundColor: colorMap[key],
-      borderColor: colorMap[key],
     };
     series.push(item);
   });
 
   const options = {
-    aspectRatio: 3,
+    fill: true,
     interaction: {
       axis: "x",
     },
     scales: {
       x: {
-        stacked: true,
         type: "time",
-        time: {
-          unit: "day",
-        },
       },
       y: {
         stacked: true,
+        title: {
+          display: true,
+          text: "total DAI supply",
+        },
         ticks: {
           callback: (value) => "$" + compact(value, 2, true),
         },
       },
     },
     plugins: {
+      legend: {
+        display: true,
+      },
       tooltip: {
         callbacks: {
           title: (tooltipItems) => {
-            return tooltipTitleDateTime(tooltipItems, true, false);
+            return tooltipTitleDateTime(tooltipItems);
           },
           label: (tooltipItem) => {
-            return tooltipLabelNumber(tooltipItem, "$");
+            return tooltipLabelNumber(tooltipItem, "$", null);
           },
         },
       },
@@ -89,10 +83,10 @@ function EventStatsChart(props) {
   return (
     <div {...rest}>
       <LoadingOverlay active={isPreviousData} spinner>
-        <Graph series={series} options={options} type="bar" />
+        <Graph series={series} options={options} />
       </LoadingOverlay>
     </div>
   );
 }
 
-export default withErrorBoundary(EventStatsChart);
+export default withErrorBoundary(CombinedDAISupplyHistoryChart);

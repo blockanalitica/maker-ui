@@ -11,11 +11,12 @@ import { withErrorBoundary } from "../../../hoc.js";
 import { useFetch } from "../../../hooks";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
+import { lightenDarkenColor } from "../../../utils/color.js";
 
-function EventStatsChart(props) {
+function CombinedEventStatsChart(props) {
   const { ilk, timePeriod, ...rest } = props;
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
-    `/psms/${ilk}/event-stats/`,
+    "/psms/event-stats/",
     { days_ago: timePeriod },
     { keepPreviousData: true }
   );
@@ -30,26 +31,35 @@ function EventStatsChart(props) {
     return null;
   }
 
-  const colorMap = {
-    GENERATE: "#11613c",
-    PAYBACK: "#7d161f",
-  };
-
-  let grouped;
-  grouped = _.groupBy(data, "operation");
+  let generateColor = "#11613c";
+  let paybackColor = "#7d161f";
+  const grouped = _.groupBy(data, (item) => {
+    return (
+      item["operation"].charAt(0).toUpperCase() +
+      item["operation"].slice(1).toLowerCase() +
+      " " +
+      item["ilk"]
+    );
+  });
   const series = [];
   Object.entries(grouped).forEach(([key, rows]) => {
-    const label = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
+    const isGenerate = key.includes("Generate");
     let item = {
-      label: label,
+      label: key,
       data: rows.map((row) => ({
         x: row["dt"],
         y: row["amount"],
       })),
-      backgroundColor: colorMap[key],
-      borderColor: colorMap[key],
+      backgroundColor: isGenerate ? generateColor : paybackColor,
+      borderColor: isGenerate ? generateColor : paybackColor,
     };
     series.push(item);
+
+    if (isGenerate) {
+      generateColor = lightenDarkenColor(generateColor, -10);
+    } else {
+      paybackColor = lightenDarkenColor(paybackColor, -10);
+    }
   });
 
   const options = {
@@ -95,4 +105,4 @@ function EventStatsChart(props) {
   );
 }
 
-export default withErrorBoundary(EventStatsChart);
+export default withErrorBoundary(CombinedEventStatsChart);
