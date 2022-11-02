@@ -27,6 +27,7 @@ function CEXVolumeChart(props) {
   Object.entries(grouped).forEach(([key, rows]) => {
     series.push({
       label: key,
+      asset: key,
       data: rows.map((row) => ({
         x: parseUTCDateTimestamp(row["timestamp"]),
         y: row["amount"],

@@ -21,7 +21,7 @@ const PROTECTION_SCORE_PALETTE = {
   high: "#9e0d25",
 };
 
-const DEFAULT_PALETTE = [
+export const DEFAULT_PALETTE = [
   "#03A9F4",
   "#FF4560",
   "#775DD0",
@@ -62,6 +62,22 @@ const PROTOCOLS_PALETTE = {
   aaveV2: "#B6509E",
   compound: "#00D395",
   maker: "#F4B731",
+};
+
+export const ASSETS_PALETTE = {
+  ETH: "#5d73e0",
+  WETH: "#5d73e0",
+  LINK: "#1a2b6b",
+  MANA: "#ff2d55",
+  MATIC: "#7b3fe4",
+  BTC: "#e68d31",
+  WBTC: "#e68d31",
+  RENBTC: "#e65231",
+  STETH: "#f3827b",
+  WSTETH: "#f3827b",
+  YFI: "#40957c",
+  UNI: "#ff007a",
+  TUSD: "#810012",
 };
 
 function Graph(props) {
@@ -224,6 +240,9 @@ function Graph(props) {
       }
       if (serie.protocol) {
         bgColor = PROTOCOLS_PALETTE[serie.protocol];
+      }
+      if (serie.asset) {
+        bgColor = ASSETS_PALETTE[serie.asset] || bgColor;
       }
       return {
         backgroundColor: bgColor,
