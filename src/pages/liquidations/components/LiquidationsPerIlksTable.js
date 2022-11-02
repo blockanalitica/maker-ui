@@ -48,7 +48,7 @@ function LiquidationsPerIlksTable(props) {
     <div className="mt-4">
       <LinkTable
         loading={isPreviousData}
-        keyField="id"
+        keyField="ilk"
         hover={true}
         onRowClick={onRowClick}
         data={results}

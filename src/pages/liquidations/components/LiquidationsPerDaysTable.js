@@ -45,7 +45,7 @@ function LiquidationsPerDaysTable(props) {
     <div className="mt-4">
       <RemoteTable
         loading={isPreviousData}
-        keyField="id"
+        keyField="auction_date"
         hover={true}
         onRowClick={onRowClick}
         data={results}
