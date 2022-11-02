@@ -3,7 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from "react";
-import Graph from "../../../components/Graph/Graph.js";
+import Graph, {
+  ASSETS_PALETTE,
+  DEFAULT_PALETTE,
+} from "../../../components/Graph/Graph.js";
 import Loader from "../../../components/Loader/Loader.js";
 import { withErrorBoundary } from "../../../hoc.js";
 import { useFetch } from "../../../hooks";
@@ -11,6 +14,7 @@ import {
   barGraphSeriesCountLimiter,
   tooltipLabelNumber,
 } from "../../../utils/graph.js";
+
 import { compact } from "../../../utils/number.js";
 
 function LiquidatedAssetChart(props) {
@@ -30,13 +34,22 @@ function LiquidatedAssetChart(props) {
 
   const results = data;
 
-  const { series } = barGraphSeriesCountLimiter(
+  let { series } = barGraphSeriesCountLimiter(
     results,
     "collateral_symbol",
     "collateral_seized_usd",
     5,
     true
   );
+
+  series = [
+    {
+      ...series[0],
+      backgroundColor: series[0].data.map(
+        (sData) => ASSETS_PALETTE[sData.x] || DEFAULT_PALETTE[0]
+      ),
+    },
+  ];
 
   const options = {
     interaction: {

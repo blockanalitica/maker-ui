@@ -24,8 +24,10 @@ function SlippageChart(props) {
   const series = [];
 
   Object.entries(grouped).forEach(([key, rows]) => {
+    const asset = key.split("-")[0].toUpperCase();
     series.push({
       label: key,
+      asset: asset,
       data: rows.map((row) => ({
         x: row["usd_amount"],
         y: row["amount"],

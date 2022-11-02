@@ -25,6 +25,7 @@ function PriceDrawdownsChart(props) {
   Object.entries(grouped).forEach(([key, rows]) => {
     series.push({
       label: key,
+      asset: key,
       data: rows.map((row) => ({
         x: row["drop"],
         y: row["amount"],
