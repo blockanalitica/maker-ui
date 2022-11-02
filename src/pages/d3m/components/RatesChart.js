@@ -64,7 +64,7 @@ function RatesChart(props) {
       },
       y: {
         ticks: {
-          callback: (value) => compact(value, 2, true),
+          callback: (value) => compact(value, 2, true) + "%",
         },
       },
     },
@@ -75,7 +75,7 @@ function RatesChart(props) {
       tooltip: {
         callbacks: {
           label: (tooltipItem) => {
-            return tooltipLabelNumber(tooltipItem, "$");
+            return tooltipLabelNumber(tooltipItem, null, "%");
           },
         },
       },
