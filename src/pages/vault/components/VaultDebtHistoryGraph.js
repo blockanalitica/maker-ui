@@ -24,13 +24,37 @@ function VaultDebtHistoryGraph(props) {
     return <ErrorFallbackComponent />;
   }
 
+  let debts;
+  let events;
+  // TODO: Remove this if statement. Endpoint will only be returning {results, events}
+  // from 2022-10-02 onwards.
+  if (data instanceof Array) {
+    debts = data;
+  } else {
+    debts = data.debts;
+    events = data.events;
+  }
+
   const series = [
     {
       label: "debt",
       stepped: true,
-      data: data.map((row) => ({
+      data: debts.map((row) => ({
         x: parseUTCDateTimestamp(row["timestamp"]),
         y: row["after_principal"],
+      })),
+    },
+    {
+      label: "events",
+      backgroundColor: "#775DD0",
+      borderColor: "#775DD0",
+      yAxisID: "y2",
+      type: "scatter",
+      radius: 5,
+      data: events.map((row) => ({
+        x: parseUTCDateTimestamp(row["timestamp"]),
+        y: 0,
+        name: row["human_operation"],
       })),
     },
   ];
@@ -48,6 +72,12 @@ function VaultDebtHistoryGraph(props) {
           callback: (value) => "$" + compact(value, 2, true),
         },
       },
+      y2: {
+        position: "left",
+        display: false,
+        min: -0.02,
+        max: 1,
+      },
     },
     plugins: {
       legend: {
@@ -59,7 +89,13 @@ function VaultDebtHistoryGraph(props) {
             return tooltipTitleDateTime(tooltipItems);
           },
           label: (tooltipItem) => {
-            return tooltipLabelNumber(tooltipItem, "$", null);
+            let label;
+            if (tooltipItem["dataset"]["label"] === "events") {
+              label = "event: " + tooltipItem.raw.name;
+            } else {
+              label = tooltipLabelNumber(tooltipItem, "$", null);
+            }
+            return label;
           },
         },
       },

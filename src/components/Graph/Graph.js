@@ -65,19 +65,26 @@ const PROTOCOLS_PALETTE = {
 };
 
 export const ASSETS_PALETTE = {
-  ETH: "#5d73e0",
-  WETH: "#5d73e0",
-  LINK: "#1a2b6b",
+  ETH: "#858585",
+  WETH: "#858585",
+  LINK: "#2a5ada",
   MANA: "#ff2d55",
   MATIC: "#7b3fe4",
-  BTC: "#e68d31",
-  WBTC: "#e68d31",
+  BTC: "#ef8e19",
+  WBTC: "#ef8e19",
   RENBTC: "#e65231",
-  STETH: "#f3827b",
-  WSTETH: "#f3827b",
-  YFI: "#40957c",
+  STETH: "#00a3ff",
+  WSTETH: "#00a3ff",
+  YFI: "#006ae3",
   UNI: "#ff007a",
-  TUSD: "#810012",
+  TUSD: "#2b2e7f",
+  ZRX: "#FFFFF0",
+  AAVE: "#2ebac6",
+  BAT: "#ff5000",
+  Other: "#FFFFFF",
+  other: "#FFFFFF",
+  Others: "#FFFFFF",
+  others: "#FFFFFF",
 };
 
 function Graph(props) {

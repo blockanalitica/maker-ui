@@ -47,9 +47,19 @@ function VaultHistoryGraph(props) {
     collateralization: "Collateralization",
   };
 
-  const grouped = _.groupBy(data, "key");
-  const series = [];
+  let results;
+  let events;
+  // TODO: Remove this if statement. Endpoint will only be returning {results, events}
+  // from 2022-10-02 onwards.
+  if (data instanceof Array) {
+    results = data;
+  } else {
+    results = data.results;
+    events = data.events;
+  }
 
+  const grouped = _.groupBy(results, "key");
+  const series = [];
   Object.entries(grouped).forEach(([key, rows]) => {
     let item = {
       label: graphLabels[key],
@@ -68,10 +78,27 @@ function VaultHistoryGraph(props) {
     series.push(item);
   });
 
+  if (events && events.length > 0) {
+    series.push({
+      label: "events",
+      backgroundColor: "#775DD0",
+      borderColor: "#775DD0",
+      yAxisID: "y2",
+      type: "scatter",
+      radius: 5,
+      data: events.map((row) => ({
+        x: parseUTCDateTimestamp(row["timestamp"]),
+        y: 0,
+        name: row["human_operation"],
+      })),
+    });
+  }
+
   const options = {
     fill: false,
     interaction: {
       axis: "x",
+      mode: "nearest",
     },
     scales: {
       x: {
@@ -101,6 +128,12 @@ function VaultHistoryGraph(props) {
           callback: (value) => value + "%",
         },
       },
+      y2: {
+        position: "left",
+        display: false,
+        min: -0.02,
+        max: 1,
+      },
     },
     plugins: {
       tooltip: {
@@ -112,6 +145,8 @@ function VaultHistoryGraph(props) {
             let label;
             if (tooltipItem["dataset"]["label"] === "osm_price") {
               label = tooltipLabelNumber(tooltipItem, "$", null);
+            } else if (tooltipItem["dataset"]["label"] === "events") {
+              label = "event: " + tooltipItem.raw.name;
             } else {
               label = tooltipLabelNumber(tooltipItem, null, "%");
             }

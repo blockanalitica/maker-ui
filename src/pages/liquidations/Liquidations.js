@@ -23,12 +23,10 @@ function Liquidations(props) {
     tab: queryParams.get("tab") || "per-liquidation",
   };
 
-  const [activeTab, setActiveTab] = useState(qParams.tab);
   const [params, setParams] = useState(qParams);
 
   const toggleTab = (tab) => {
-    if (activeTab !== tab) {
-      setActiveTab(tab);
+    if (qParams.tab !== tab) {
       setParams({
         ...params,
         tab: tab,
@@ -48,7 +46,7 @@ function Liquidations(props) {
       <Row>
         <Col xl={2}>
           <SideTabNav
-            activeTab={activeTab}
+            activeTab={qParams.tab}
             toggleTab={toggleTab}
             tabs={[
               { id: "per-liquidation", text: "per liquidation" },
@@ -60,7 +58,7 @@ function Liquidations(props) {
         </Col>
         <Col xl={10}>
           <SideTabContent
-            activeTab={activeTab}
+            activeTab={qParams.tab}
             tabs={[
               {
                 id: "per-liquidation",
