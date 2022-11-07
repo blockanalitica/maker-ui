@@ -40,6 +40,7 @@ function StatsCard(props) {
           value={data.change.capital_at_risk_30d_avg_diff}
           tooltipValue={data.change.capital_at_risk_30d_avg}
           decimals={2}
+          prefix="$"
           compact100k
           icon
           hideIfZero
@@ -57,6 +58,7 @@ function StatsCard(props) {
           value={data.change.surplus_buffer_diff}
           tooltipValue={data.change.surplus_buffer}
           decimals={2}
+          prefix="$"
           compact100k
           icon
           hideIfZero
@@ -88,6 +90,7 @@ function StatsCard(props) {
           value={data.change.total_risky_debt_diff}
           tooltipValue={data.change.total_risky_debt}
           decimals={2}
+          prefix="$"
           compact100k
           icon
           hideIfZero

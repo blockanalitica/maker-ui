@@ -25,7 +25,7 @@ function LiquidationCard(props) {
   return (
     <>
       <div className="d-flex mb-4 align-items-center">
-        <h4 className="mb-0 flex-grow-1">capital at risk</h4>
+        <h4 className="mb-0 flex-grow-1">Capital at risk</h4>
         <TimeSwitch
           activeOption={timePeriod}
           onChange={setTimePeriod}

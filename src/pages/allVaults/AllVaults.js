@@ -98,7 +98,7 @@ function AllVaults(props) {
 
   return (
     <>
-      <h1 className="h3 mb-4">vault positions</h1>
+      <h1 className="h3 mb-4">Vault positions</h1>
       <Row>
         <Col xl={12} className="mb-4 text-center">
           <Col className="mb-4 text-center">

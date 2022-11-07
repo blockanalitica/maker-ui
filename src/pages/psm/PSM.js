@@ -67,8 +67,8 @@ function PSM(props) {
             activeTab={activeTab}
             toggleTab={toggleTab}
             tabs={[
-              { id: "1", text: "change per day" },
-              { id: "2", text: "total supply" },
+              { id: "1", text: "Change per day" },
+              { id: "2", text: "Total supply" },
             ]}
           />
         </Col>

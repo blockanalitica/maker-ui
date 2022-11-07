@@ -28,7 +28,7 @@ function AssetsTable(props) {
 
   return (
     <>
-      <h1 className="h3 mb-4">assets</h1>
+      <h1 className="h3 mb-4">Assets</h1>
       <LinkTable
         keyField="symbol"
         data={data}

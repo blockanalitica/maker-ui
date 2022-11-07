@@ -32,7 +32,7 @@ function AuctionsThroughput(props) {
 
   return (
     <>
-      <h1 className="h3 mb-4">auctions throughput</h1>
+      <h1 className="h3 mb-4">Auctions throughput</h1>
       <Row>
         <Col xl={12} className="mb-5">
           <ThroughputsTable

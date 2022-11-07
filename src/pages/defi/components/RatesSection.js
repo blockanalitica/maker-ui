@@ -55,7 +55,7 @@ function RatesSection(props) {
       <div className="d-flex align-items-center mb-4">
         <div className="mb-2 flex-grow-1 d-flex align-items-center">
           <CryptoIcon name={data.collateral} size="3rem" className="me-2" />
-          <h1 className="h3 m-0">rates</h1>
+          <h1 className="h3 m-0">Rates</h1>
         </div>
         <TimeSwitch
           activeOption={timePeriod}
@@ -72,11 +72,11 @@ function RatesSection(props) {
           <Row className="mb-4">
             <Col className="mb-4" xl={12}>
               <p>
-                historical maker equivalent borrow rate movement for depositing ETH and
+                Historical maker equivalent borrow rate movement for depositing ETH and
                 borrowing {symbol}
               </p>
               <small>
-                maker equivalent borrow rate = (borrow rate - borrow reward rate) - 2 *
+                Maker equivalent borrow rate = (borrow rate - borrow reward rate) - 2 *
                 (eth supply rate + eth supply reward rate)
               </small>
             </Col>

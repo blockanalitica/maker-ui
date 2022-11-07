@@ -232,7 +232,7 @@ function RiskModel(props) {
 
   return (
     <>
-      <h1 className="h3 mb-4">risk model</h1>
+      <h1 className="h3 mb-4">Risk Model</h1>
       <LoadingOverlay active={isPreviousData || isRefetching} spinner>
         <Row>
           <Col xl={3} className="mb-4">

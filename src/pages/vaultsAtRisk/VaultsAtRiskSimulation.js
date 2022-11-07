@@ -109,7 +109,7 @@ function VaultsAtRiskSimulation(props) {
 
   return (
     <>
-      <h1 className="h3 mb-4">vaults at risk simulation</h1>
+      <h1 className="h3 mb-4">Vaults at risk simulation</h1>
       <FormGroup row className="mb-4">
         <Label xl={3} for="drop">
           Next OSM price will drop for:

@@ -49,10 +49,10 @@ function Liquidations(props) {
             activeTab={qParams.tab}
             toggleTab={toggleTab}
             tabs={[
-              { id: "per-liquidation", text: "per liquidation" },
-              { id: "per-date", text: "per date" },
-              { id: "per-vault-type", text: "per vault type" },
-              { id: "keppers-takers", text: "keepers/takers" },
+              { id: "per-liquidation", text: "Per liquidation" },
+              { id: "per-date", text: "Per date" },
+              { id: "per-vault-type", text: "Per vault type" },
+              { id: "keppers-takers", text: "Keepers/Takers" },
             ]}
           />
         </Col>
