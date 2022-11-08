@@ -49,26 +49,12 @@ function RatesSection(props) {
 
   let content = null;
   let smallText;
-  let WithoutRewards =
-    "Maker Equivalent Borrow Rate = (Borrow Rate ) - 2 * (ETH Supply Rate)";
-  let WithRewards =
-    "Maker Equivalent Borrow Rate = (Borrow Rate - Borrow Reward Rate) - 2 * (ETH Supply Rate + ETH Supply Reward Rate)";
 
-  switch (type) {
-    case "dai":
-      smallText = WithoutRewards;
-      break;
-    case "dai_w_rewards":
-      smallText = WithRewards;
-      break;
-    case "usdc":
-      smallText = WithoutRewards;
-      break;
-    case "usdc_w_rewards":
-      smallText = WithRewards;
-      break;
-    default:
-      smallText = "Something's wrong, I can feel it";
+  if (type === "dai_w_rewards" || type === "usdc_w_rewards") {
+    smallText =
+      "Maker Equivalent Borrow Rate = (Borrow Rate - Borrow Reward Rate) - 2 * (ETH Supply Rate + ETH Supply Reward Rate)";
+  } else {
+    smallText = "Maker Equivalent Borrow Rate = (Borrow Rate ) - 2 * (ETH Supply Rate)";
   }
 
   content = <RatesChart timePeriod={timePeriod} type={type} data={data.results} />;

@@ -36,22 +36,10 @@ function Homepage(props) {
   ];
 
   let Current =
-    "The amounts are also split by Vault Protection Score which represents individual vault’s likelihood of liquidation based on its current state and historical behavior";
+    "The amounts are also split by Vault Protection Score which represents individual vault’s likelihood of liquidation based on its current state and historical behavior ";
   let History = "Historical overview across different price drop levels.";
-  let DescriptionCurrent =
-    "Debt Amount at risk of liquidation, assuming a drop in collateral price without any vault owner action to increase their position’s collateralization ratio." +
-    " " +
-    Current;
-  let DescriptionHistory =
-    "Debt Amount at risk of liquidation, assuming a drop in collateral price without any vault owner action to increase their position’s collateralization ratio." +
-    " " +
-    History;
-  let RiskyDebt =
-    "Risky Debt (debt collateralized by volatile assets) split by Vault Protection Score (individual vault’s likelihood of liquidation based on its current state and historical behavior).";
-  let MonitorGas =
-    "An overview of the cost structure for interacting with the Maker system given the current and historical Ethereum gas prices. This includes creation of a vault, its position management and also participation in auctions.";
-  let CapitalDebtRisk =
-    "Capital at Risk, Maker’s portfolio risk measure is compared to its Risky Debt (debt collateralized by volatile assets).";
+  let Description =
+    "Debt Amount at risk of liquidation, assuming a drop in collateral price without any vault owner action to increase their position’s collateralization ratio. ";
 
   return (
     <>
@@ -116,7 +104,10 @@ function Homepage(props) {
                         options={timeSwitchOptions}
                       />
                     </div>
-                    <p className="gray">{DescriptionCurrent}</p>
+                    <p className="gray">
+                      {Description}
+                      {Current}
+                    </p>
 
                     <DropTable timePeriod={riskTimePeriod} />
                   </>
@@ -136,7 +127,10 @@ function Homepage(props) {
                         options={timeSwitchOptions}
                       />
                     </div>
-                    <p className="gray">{DescriptionHistory}</p>
+                    <p className="gray">
+                      {Description}
+                      {History}
+                    </p>
 
                     <PerDropHistoryChart timePeriod={riskTimePeriod} />
                   </>
@@ -154,7 +148,11 @@ function Homepage(props) {
                         options={timeSwitchOptions}
                       />
                     </div>
-                    <p className="gray">{RiskyDebt}</p>
+                    <p className="gray">
+                      {
+                        "Risky Debt (debt collateralized by volatile assets) split by Vault Protection Score (individual vault’s likelihood of liquidation based on its current state and historical behavior)."
+                      }
+                    </p>
 
                     <ProtectionHistoryChart timePeriod={riskTimePeriod} />
                   </>
@@ -172,7 +170,11 @@ function Homepage(props) {
                         options={timeSwitchOptions}
                       />
                     </div>
-                    <p className="gray">{MonitorGas}</p>
+                    <p className="gray">
+                      {
+                        "An overview of the cost structure for interacting with the Maker system given the current and historical Ethereum gas prices. This includes creation of a vault, its position management and also participation in auctions."
+                      }
+                    </p>
                     <GasMonitor timePeriod={riskTimePeriod} />
                   </>
                 ),
@@ -189,7 +191,11 @@ function Homepage(props) {
                         options={timeSwitchOptions}
                       />
                     </div>
-                    <p className="gray">{CapitalDebtRisk}</p>
+                    <p className="gray">
+                      {
+                        "Capital at Risk, Maker’s portfolio risk measure is compared to its Risky Debt (debt collateralized by volatile assets)."
+                      }
+                    </p>
                     <RiskyDebtPercentageGraph timePeriod={riskTimePeriod} />
                   </>
                 ),
