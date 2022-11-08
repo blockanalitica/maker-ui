@@ -35,7 +35,7 @@ function Homepage(props) {
     { key: 365, value: "1 year" },
   ];
 
-  let Description =
+  let description =
     "Debt Amount at risk of liquidation, assuming a drop in collateral price without any vault owner action to increase their position’s collateralization ratio. ";
 
   return (
@@ -102,7 +102,7 @@ function Homepage(props) {
                       />
                     </div>
                     <p className="gray">
-                      {Description} "The amounts are also split by Vault Protection
+                      {description} "The amounts are also split by Vault Protection
                       Score which represents individual vault’s likelihood of
                       liquidation based on its current state and historical behavior ";
                     </p>
@@ -126,7 +126,7 @@ function Homepage(props) {
                       />
                     </div>
                     <p className="gray">
-                      {Description} Historical overview across different price drop
+                      {description} Historical overview across different price drop
                       levels.
                     </p>
 
