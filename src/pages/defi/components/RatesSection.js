@@ -48,6 +48,28 @@ function RatesSection(props) {
   }
 
   let content = null;
+  let smallText;
+  let WithoutRewards =
+    "Maker Equivalent Borrow Rate = (Borrow Rate ) - 2 * (ETH Supply Rate)";
+  let WithRewards =
+    "Maker Equivalent Borrow Rate = (Borrow Rate - Borrow Reward Rate) - 2 * (ETH Supply Rate + ETH Supply Reward Rate)";
+
+  switch (type) {
+    case "dai":
+      smallText = WithoutRewards;
+      break;
+    case "dai_w_rewards":
+      smallText = WithRewards;
+      break;
+    case "usdc":
+      smallText = WithoutRewards;
+      break;
+    case "usdc_w_rewards":
+      smallText = WithRewards;
+      break;
+    default:
+      smallText = "Something's wrong, I can feel it";
+  }
 
   content = <RatesChart timePeriod={timePeriod} type={type} data={data.results} />;
   return (
@@ -55,7 +77,7 @@ function RatesSection(props) {
       <div className="d-flex align-items-center mb-4">
         <div className="mb-2 flex-grow-1 d-flex align-items-center">
           <CryptoIcon name={data.collateral} size="3rem" className="me-2" />
-          <h1 className="h3 m-0">Rates</h1>
+          <h1 className="h3 m-0">Rate Market</h1>
         </div>
         <TimeSwitch
           activeOption={timePeriod}
@@ -72,13 +94,10 @@ function RatesSection(props) {
           <Row className="mb-4">
             <Col className="mb-4" xl={12}>
               <p>
-                Historical maker equivalent borrow rate movement for depositing ETH and
-                borrowing {symbol}
+                To make a comparative analysis we use Maker equivalent borrow rate of
+                depositing ETH and borrowing {symbol} (rate calculation methodology)
               </p>
-              <small>
-                Maker equivalent borrow rate = (borrow rate - borrow reward rate) - 2 *
-                (eth supply rate + eth supply reward rate)
-              </small>
+              <small>{smallText}</small>
             </Col>
             <Col className="mt-4" xl={12}>
               {content}
