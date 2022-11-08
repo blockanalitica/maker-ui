@@ -35,9 +35,6 @@ function Homepage(props) {
     { key: 365, value: "1 year" },
   ];
 
-  let Current =
-    "The amounts are also split by Vault Protection Score which represents individual vault’s likelihood of liquidation based on its current state and historical behavior ";
-  let History = "Historical overview across different price drop levels.";
   let Description =
     "Debt Amount at risk of liquidation, assuming a drop in collateral price without any vault owner action to increase their position’s collateralization ratio. ";
 
@@ -105,8 +102,9 @@ function Homepage(props) {
                       />
                     </div>
                     <p className="gray">
-                      {Description}
-                      {Current}
+                      {Description} "The amounts are also split by Vault Protection
+                      Score which represents individual vault’s likelihood of
+                      liquidation based on its current state and historical behavior ";
                     </p>
 
                     <DropTable timePeriod={riskTimePeriod} />
@@ -128,8 +126,8 @@ function Homepage(props) {
                       />
                     </div>
                     <p className="gray">
-                      {Description}
-                      {History}
+                      {Description} Historical overview across different price drop
+                      levels.
                     </p>
 
                     <PerDropHistoryChart timePeriod={riskTimePeriod} />
