@@ -122,7 +122,7 @@ function AuctionKickSim(props) {
 
   return (
     <div>
-      <h1 className="h3 mb-4">auction kick simulation</h1>
+      <h1 className="h3 mb-4">Auction kick simulation</h1>
       <Row>
         <Col xl={3} className="mb-4">
           <SideTabNav

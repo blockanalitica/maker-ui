@@ -35,6 +35,9 @@ function Homepage(props) {
     { key: 365, value: "1 year" },
   ];
 
+  let description =
+    "Debt Amount at risk of liquidation, assuming a drop in collateral price without any vault owner action to increase their position’s collateralization ratio. ";
+
   return (
     <>
       <VaultsAtRiskCard />
@@ -64,18 +67,18 @@ function Homepage(props) {
 
       <Row className="mb-4">
         <Col sm={12}>
-          <h4 className="mb-4">risk</h4>
+          <h4 className="mb-4">Risk</h4>
         </Col>
         <Col xl={3}>
           <SideTabNav
             activeTab={activeTab}
             toggleTab={(tab) => setActiveTab(tab)}
             tabs={[
-              { id: "1", text: "debt at risk per drop" },
-              { id: "2", text: "debt at risk per drop history" },
-              { id: "3", text: "protection score history" },
-              { id: "4", text: "gas monitor" },
-              { id: "5", text: "% of risky debt" },
+              { id: "1", text: "Debt at Risk per Price Drop (Current)" },
+              { id: "2", text: "Debt at Risk per Drop (History)" },
+              { id: "3", text: "Protection Score History" },
+              { id: "4", text: "Gas Monitor" },
+              { id: "5", text: "% of Risky Debt" },
             ]}
           />
         </Col>
@@ -88,13 +91,21 @@ function Homepage(props) {
                 content: (
                   <>
                     <div className="d-flex mb-4 align-items-center">
-                      <h4 className="m-0 flex-grow-1">debt at risk per drop</h4>
+                      <h4 className="m-0 flex-grow-1">
+                        Debt at Risk per Price Drop (Current)
+                      </h4>
+
                       <TimeSwitch
                         activeOption={riskTimePeriod}
                         onChange={setRiskTimePeriod}
                         options={timeSwitchOptions}
                       />
                     </div>
+                    <p className="gray">
+                      {description} "The amounts are also split by Vault Protection
+                      Score which represents individual vault’s likelihood of
+                      liquidation based on its current state and historical behavior ";
+                    </p>
 
                     <DropTable timePeriod={riskTimePeriod} />
                   </>
@@ -105,13 +116,19 @@ function Homepage(props) {
                 content: (
                   <>
                     <div className="d-flex mb-4 align-items-center">
-                      <h4 className="m-0 flex-grow-1">debt at risk per drop history</h4>
+                      <h4 className="m-0 flex-grow-1">
+                        Debt at Risk per Drop (History)
+                      </h4>
                       <TimeSwitch
                         activeOption={riskTimePeriod}
                         onChange={setRiskTimePeriod}
                         options={timeSwitchOptions}
                       />
                     </div>
+                    <p className="gray">
+                      {description} Historical overview across different price drop
+                      levels.
+                    </p>
 
                     <PerDropHistoryChart timePeriod={riskTimePeriod} />
                   </>
@@ -122,13 +139,18 @@ function Homepage(props) {
                 content: (
                   <>
                     <div className="d-flex mb-4 align-items-center">
-                      <h4 className="m-0 flex-grow-1">protection score history</h4>
+                      <h4 className="m-0 flex-grow-1">Protection Score History</h4>
                       <TimeSwitch
                         activeOption={riskTimePeriod}
                         onChange={setRiskTimePeriod}
                         options={timeSwitchOptions}
                       />
                     </div>
+                    <p className="gray">
+                      {
+                        "Risky Debt (debt collateralized by volatile assets) split by Vault Protection Score (individual vault’s likelihood of liquidation based on its current state and historical behavior)."
+                      }
+                    </p>
 
                     <ProtectionHistoryChart timePeriod={riskTimePeriod} />
                   </>
@@ -139,13 +161,18 @@ function Homepage(props) {
                 content: (
                   <>
                     <div className="d-flex mb-4 align-items-center">
-                      <h4 className="m-0 flex-grow-1">gas monitor</h4>
+                      <h4 className="m-0 flex-grow-1">Gas Monitor</h4>
                       <TimeSwitch
                         activeOption={riskTimePeriod}
                         onChange={setRiskTimePeriod}
                         options={timeSwitchOptions}
                       />
                     </div>
+                    <p className="gray">
+                      {
+                        "An overview of the cost structure for interacting with the Maker system given the current and historical Ethereum gas prices. This includes creation of a vault, its position management and also participation in auctions."
+                      }
+                    </p>
                     <GasMonitor timePeriod={riskTimePeriod} />
                   </>
                 ),
@@ -155,13 +182,18 @@ function Homepage(props) {
                 content: (
                   <>
                     <div className="d-flex mb-4 align-items-center">
-                      <h4 className="m-0 flex-grow-1">% risky debt</h4>
+                      <h4 className="m-0 flex-grow-1">% Risky Debt</h4>
                       <TimeSwitch
                         activeOption={riskTimePeriod}
                         onChange={setRiskTimePeriod}
                         options={timeSwitchOptions}
                       />
                     </div>
+                    <p className="gray">
+                      {
+                        "Capital at Risk, Maker’s portfolio risk measure is compared to its Risky Debt (debt collateralized by volatile assets)."
+                      }
+                    </p>
                     <RiskyDebtPercentageGraph timePeriod={riskTimePeriod} />
                   </>
                 ),

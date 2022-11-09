@@ -52,7 +52,7 @@ function Ilks(props) {
   return (
     <>
       <div className="d-flex mb-5 align-items-center">
-        <h1 className="h3 mb-0 flex-grow-1">vault types</h1>
+        <h1 className="h3 mb-0 flex-grow-1">Vault types</h1>
         <TimeSwitch
           activeOption={daysAgo}
           label={""}

@@ -35,7 +35,7 @@ function IlksTable(props) {
 
   return (
     <>
-      <h4 className="mb-4">vault types</h4>
+      <h4 className="mb-4">Vault types</h4>
       <LinkTable
         keyField="ilk"
         data={data}

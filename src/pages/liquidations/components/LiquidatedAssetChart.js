@@ -89,7 +89,7 @@ function LiquidatedAssetChart(props) {
 
   return (
     <>
-      <h3>liquidated collateral</h3>
+      <h3>Liquidated collateral</h3>
       <Graph series={series} type="bar" options={options} />
     </>
   );

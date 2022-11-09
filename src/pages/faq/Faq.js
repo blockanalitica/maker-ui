@@ -9,7 +9,7 @@ import styles from "./Faq.module.scss";
 function FAQ(props) {
   return (
     <>
-      <h1 className="h3 mb-4">faq</h1>
+      <h1 className="h3 mb-4">Faq</h1>
       <h5 className={styles.title}>What do the different terms mean?</h5>
       <ul>
         <li>

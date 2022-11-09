@@ -99,7 +99,7 @@ function DustSim(props) {
 
   return (
     <div>
-      <h1 className="h3 mb-4">dust simulation</h1>
+      <h1 className="h3 mb-4">Dust simulation</h1>
       <Row>
         <Col xl={3} className="mb-4">
           <Card fullHeight={false}>

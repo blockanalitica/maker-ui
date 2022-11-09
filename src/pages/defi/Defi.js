@@ -17,6 +17,10 @@ function Defi(props) {
       <Row className="mb-4">
         <Col>
           <h1>DeFi</h1>
+          <p>
+            An overview of the cost of borrowing across major DeFi lending protocols
+            (Maker, Aave, Compound) either DAI or USDC.
+          </p>
         </Col>
       </Row>
       <Row className="mb-4">

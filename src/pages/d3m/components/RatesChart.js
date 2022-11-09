@@ -86,7 +86,7 @@ function RatesChart(props) {
     <>
       <div className="d-flex mb-4align-items-center mb-4">
         <div className="flex-grow-1">
-          <h4 className="m-0">historic DAI borrow rate</h4>
+          <h4 className="m-0">Historic DAI borrow rate</h4>
         </div>
         <TimeSwitch
           className="justify-content-end"

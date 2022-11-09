@@ -17,7 +17,7 @@ import styles from "./Changelog.module.scss";
 function Changelog(props) {
   return (
     <>
-      <h1 className="h3 mb-4">changelog</h1>
+      <h1 className="h3 mb-4">Changelog</h1>
       <div className={styles.section}>
         <h3 className={styles.date}>October 2022</h3>
         <h4 className={styles.changeSection}>Added</h4>

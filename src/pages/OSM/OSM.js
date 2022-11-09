@@ -34,7 +34,7 @@ function Ilks(props) {
 
   const assetsTable = (
     <Row>
-      <h4>assets</h4>
+      <h4>Assets</h4>
       <Col className="mb-4">
         <LinkTable
           keyField="symbol"

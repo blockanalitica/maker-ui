@@ -22,7 +22,7 @@ function LiquidationsInfo(props) {
     <Card>
       <div className={styles.sectionWrapper}>
         <div className={styles.section}>
-          <div className={styles.sectionTitle}>liquidations</div>
+          <div className={styles.sectionTitle}>Liquidations</div>
           <Value value={count} decimals={0} className={styles.valueBig} />
         </div>
         <div className={styles.section}>

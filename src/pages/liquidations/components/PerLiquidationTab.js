@@ -54,7 +54,7 @@ function PerLiquidationTab(props) {
       {results.length > 0 ? (
         <>
           <Col xl={6} className="mb-4">
-            <h3>liquidations</h3>
+            <h3>Liquidations</h3>
             <LiquidationsTimelineBarChart results={results} daysAgo={daysAgo} />
           </Col>
           <Col xl={6} className="mb-4">
