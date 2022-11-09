@@ -108,7 +108,7 @@ function LiquidationsTable(props) {
             formatter: (cell, row) => (
               <>
                 <Value
-                  value={row.debt_repaid}
+                  value={cell}
                   decimals={2}
                   suffix={<small>{` ${row.debt_symbol}`}</small>}
                   compact
