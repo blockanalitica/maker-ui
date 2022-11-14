@@ -3,20 +3,20 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useState } from "react";
+import LoadingOverlay from "react-loading-overlay";
 import { useNavigate } from "react-router-dom";
-import { Badge, Col, Row, FormGroup, Label, Input } from "reactstrap";
+import { Badge, Col, FormGroup, Input, Label, Row } from "reactstrap";
 import Card from "../../components/Card/Card.js";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
-import StatsBar from "../../components/Stats/StatsBar.js";
 import Loader from "../../components/Loader/Loader.js";
+import StatsBar from "../../components/Stats/StatsBar.js";
 import RemoteTable from "../../components/Table/RemoteTable.js";
-import LoadingOverlay from "react-loading-overlay";
 import Value from "../../components/Value/Value.js";
 import { withErrorBoundary } from "../../hoc.js";
-import { useFetch, usePageTitle, useDidMountEffect, useQueryParams } from "../../hooks";
-import { parseUTCDateTime } from "../../utils/datetime.js";
+import { useDidMountEffect, useFetch, usePageTitle, useQueryParams } from "../../hooks";
 import { shorten } from "../../utils/address.js";
+import { parseUTCDateTime } from "../../utils/datetime.js";
 
 function VaultsAtRiskSimulation(props) {
   const navigate = useNavigate();
@@ -212,7 +212,7 @@ function VaultsAtRiskSimulation(props) {
                     text: "Liq. price",
                     sort: true,
                     formatter: (cell, row) => (
-                      <Value value={cell} decimals={0} prefix="$" />
+                      <Value value={cell} decimals={2} prefix="$" />
                     ),
                     headerAlign: "right",
                     align: "right",

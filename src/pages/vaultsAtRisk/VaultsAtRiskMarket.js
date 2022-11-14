@@ -17,8 +17,8 @@ import Value from "../../components/Value/Value.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch, usePageTitle } from "../../hooks";
 import successImg from "../../images/success_meme.jpg";
-import { parseUTCDateTime } from "../../utils/datetime.js";
 import { shorten } from "../../utils/address.js";
+import { parseUTCDateTime } from "../../utils/datetime.js";
 import styles from "./VaultsAtRisk.module.scss";
 
 function VaultsAtRiskMarket(props) {
@@ -150,7 +150,7 @@ function VaultsAtRiskMarket(props) {
                   text: "Liq. price",
                   sort: true,
                   formatter: (cell, row) => (
-                    <Value value={cell} decimals={0} prefix="$" compact100k />
+                    <Value value={cell} decimals={2} prefix="$" compact100k />
                   ),
                 },
                 {

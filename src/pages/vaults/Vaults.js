@@ -144,7 +144,7 @@ function Vaults(props) {
       dataField: "liquidation_price",
       text: "Liq. price",
       sort: true,
-      formatter: (cell, row) => <Value value={cell} decimals={0} prefix="$" />,
+      formatter: (cell, row) => <Value value={cell} decimals={2} prefix="$" />,
       headerAlign: "right",
       align: "right",
     },

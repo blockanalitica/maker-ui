@@ -4,20 +4,20 @@
 
 import classnames from "classnames";
 import React, { useState } from "react";
+import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import { useNavigate } from "react-router-dom";
 import { Badge, Col, Row } from "reactstrap";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
 import Loader from "../../components/Loader/Loader.js";
 import RemoteTable from "../../components/Table/RemoteTable.js";
-import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
 import Value from "../../components/Value/Value.js";
 import ValueChange from "../../components/Value/ValueChange.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch } from "../../hooks";
-import { parseUTCDateTime } from "../../utils/datetime.js";
 import { shorten } from "../../utils/address.js";
+import { parseUTCDateTime } from "../../utils/datetime.js";
 import styles from "./AllVaults.module.scss";
 
 function AllVaults(props) {
@@ -158,7 +158,7 @@ function AllVaults(props) {
                   text: "Liq. price",
                   sort: true,
                   formatter: (cell, row) => (
-                    <Value value={cell} decimals={0} prefix="$" />
+                    <Value value={cell} decimals={2} prefix="$" />
                   ),
                 },
                 {

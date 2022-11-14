@@ -2,24 +2,23 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
+import classnames from "classnames";
 import React from "react";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import classnames from "classnames";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Badge, Col, Row, Button } from "reactstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Badge, Button, Col, Row } from "reactstrap";
 import Card from "../../components/Card/Card.js";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
-import StatsBar from "../../components/Stats/StatsBar.js";
 import Loader from "../../components/Loader/Loader.js";
+import StatsBar from "../../components/Stats/StatsBar.js";
 import LinkTable from "../../components/Table/LinkTable.js";
 import Value from "../../components/Value/Value.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch, usePageTitle } from "../../hooks";
-import { parseUTCDateTime } from "../../utils/datetime.js";
-import { shorten } from "../../utils/address.js";
 import successImg from "../../images/success_meme.jpg";
+import { shorten } from "../../utils/address.js";
+import { parseUTCDateTime } from "../../utils/datetime.js";
 import styles from "./VaultsAtRisk.module.scss";
 
 function VaultsAtRisk(props) {
@@ -167,7 +166,7 @@ function VaultsAtRisk(props) {
                   text: "Liq. price",
                   sort: true,
                   formatter: (cell, row) => (
-                    <Value value={cell} decimals={0} prefix="$" compact100k />
+                    <Value value={cell} decimals={2} prefix="$" compact100k />
                   ),
                 },
                 {
