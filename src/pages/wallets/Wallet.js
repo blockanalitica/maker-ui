@@ -16,6 +16,7 @@ import StatsBar from "../../components/Stats/StatsBar.js";
 import LinkTable from "../../components/Table/LinkTable.js";
 import TimeSwitch from "../../components/TimeSwitch/TimeSwitch.js";
 import Value from "../../components/Value/Value.js";
+import ValueChange from "../../components/Value/ValueChange.js";
 import ZapperWallet from "../../components/ZapperWallet/ZapperWallet.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch } from "../../hooks";
@@ -29,11 +30,19 @@ function Wallet(props) {
   const { address } = useParams();
   let navigate = useNavigate();
   const [showAllVaults, setShowAllVaults] = useState(null);
-
+  const [timePeriod, setTimePeriod] = useState(1);
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
     `/wallets/${address}/`,
     { all_vaults: showAllVaults }
   );
+
+  const timeSwitchOptions = [
+    { key: 1, value: "1 day" },
+    { key: 7, value: "7 days" },
+    { key: 30, value: "30 days" },
+  ];
+
+  console.log(timePeriod);
 
   if (isLoading) {
     return <Loader />;
@@ -112,7 +121,29 @@ function Wallet(props) {
       dataField: "collateral",
       text: "collateral",
       sort: true,
-      formatter: (cell, row) => <Value value={cell} decimals={2} compact />,
+      formatExtraData: { timePeriod },
+      formatter: (cell, row) => (
+        <>
+          <div className="text-nowrap">
+            <Value value={cell} decimals={2} compact />
+            <br />
+            <ValueChange
+              className="pl-2"
+              value={
+                timePeriod === 1
+                  ? row.collateral_change_1d
+                  : timePeriod === 7
+                  ? row.collateral_change_7d
+                  : row.collateral_change_30d
+              }
+              decimals={2}
+              hideIfZero
+              compact
+              icon
+            />
+          </div>
+        </>
+      ),
       headerAlign: "right",
       align: "right",
     },
@@ -120,7 +151,30 @@ function Wallet(props) {
       dataField: "debt",
       text: "debt",
       sort: true,
-      formatter: (cell, row) => <Value value={cell} decimals={2} prefix="$" compact />,
+      formatExtraData: { timePeriod },
+      formatter: (cell, row) => (
+        <>
+          <div className="text-nowrap">
+            <Value value={cell} decimals={2} prefix="$" compact />
+            <br />
+            <ValueChange
+              className="pl-2"
+              value={
+                timePeriod === 1
+                  ? row.principal_change_1d
+                  : timePeriod === 7
+                  ? row.principal_change_7d
+                  : row.principal_change_30d
+              }
+              decimals={2}
+              hideIfZero
+              prefix="$"
+              compact
+              icon
+            />
+          </div>
+        </>
+      ),
       headerAlign: "right",
       align: "right",
     },
@@ -284,6 +338,14 @@ function Wallet(props) {
             options={vaultOptions}
           />
         </div>
+      </div>
+      <div className="text-end mb-4">
+        Period:{" "}
+        <TimeSwitch
+          activeOption={timeSwitchOptions}
+          onChange={setTimePeriod}
+          options={timeSwitchOptions}
+        />
       </div>
 
       <div className="d-flex align-items-center justify-content-end"></div>
