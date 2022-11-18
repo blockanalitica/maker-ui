@@ -42,8 +42,6 @@ function Wallet(props) {
     { key: 30, value: "30 days" },
   ];
 
-  console.log(timePeriod);
-
   if (isLoading) {
     return <Loader />;
   } else if (isError) {
@@ -123,26 +121,18 @@ function Wallet(props) {
       sort: true,
       formatExtraData: { timePeriod },
       formatter: (cell, row) => (
-        <>
-          <div className="text-nowrap">
-            <Value value={cell} decimals={2} compact />
-            <br />
-            <ValueChange
-              className="pl-2"
-              value={
-                timePeriod === 1
-                  ? row.collateral_change_1d
-                  : timePeriod === 7
-                  ? row.collateral_change_7d
-                  : row.collateral_change_30d
-              }
-              decimals={2}
-              hideIfZero
-              compact
-              icon
-            />
-          </div>
-        </>
+        <div className="text-nowrap">
+          <Value value={cell} decimals={2} compact />
+          <br />
+          <ValueChange
+            className="pl-2"
+            value={row[`collateral_change_${timePeriod}d`]}
+            decimals={2}
+            hideIfZero
+            compact
+            icon
+          />
+        </div>
       ),
       headerAlign: "right",
       align: "right",
@@ -153,27 +143,19 @@ function Wallet(props) {
       sort: true,
       formatExtraData: { timePeriod },
       formatter: (cell, row) => (
-        <>
-          <div className="text-nowrap">
-            <Value value={cell} decimals={2} prefix="$" compact />
-            <br />
-            <ValueChange
-              className="pl-2"
-              value={
-                timePeriod === 1
-                  ? row.principal_change_1d
-                  : timePeriod === 7
-                  ? row.principal_change_7d
-                  : row.principal_change_30d
-              }
-              decimals={2}
-              hideIfZero
-              prefix="$"
-              compact
-              icon
-            />
-          </div>
-        </>
+        <div className="text-nowrap">
+          <Value value={cell} decimals={2} prefix="$" compact />
+          <br />
+          <ValueChange
+            className="pl-2"
+            value={row[`principal_change_${timePeriod}d`]}
+            decimals={2}
+            hideIfZero
+            prefix="$"
+            compact
+            icon
+          />
+        </div>
       ),
       headerAlign: "right",
       align: "right",
