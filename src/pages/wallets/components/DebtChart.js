@@ -11,14 +11,15 @@ import { useFetch } from "../../../hooks";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
 import { parseUTCDateTimestamp } from "../../../utils/datetime.js";
+import { row } from "mathjs";
 
 function DebtChart(props) {
-  const { address, showAllVaults } = props;
+  const { address, showAllVaults, daysAgo } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
     `/wallets/${address}/debt-history/`,
-    { all_vaults: showAllVaults }
-  );
+    { all_vaults: showAllVaults },
+     );
 
   if (isLoading) {
     return <Loader />;
@@ -41,14 +42,41 @@ function DebtChart(props) {
     });
   });
 
+  let xUnit = "day";
+  if (daysAgo >= 180) {
+    xUnit = "month";
+  } else if (daysAgo > 30) {
+    xUnit = "week";
+  } else if (daysAgo === 0) {
+    xUnit = "quarter";
+  }
+
+  let startDate = new Date();
+  let endDate = new Date();
+  startDate.setDate(startDate.getDate() - daysAgo);
+  if (daysAgo === 0) {
+    startDate = "2021-02-01";
+  }
+  endDate.setDate(endDate.getDate());
+
   const options = {
     fill: true,
     interaction: {
       axis: "x",
     },
-    scales: {
+  scales: {
       x: {
+        min: startDate,
+        max: endDate,
         type: "time",
+        time: {
+          unit: xUnit,
+          displayFormats: {
+            week: "W yyyy",
+            quarter: "MM yyyy",
+          },
+        },
+        stacked: true,
       },
       y: {
         stacked: true,

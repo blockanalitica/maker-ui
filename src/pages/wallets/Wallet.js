@@ -29,18 +29,13 @@ import styles from "./Wallet.module.scss";
 function Wallet(props) {
   const { address } = useParams();
   let navigate = useNavigate();
-  const [showAllVaults, setShowAllVaults] = useState(null);
+  const [daysAgo, setDaysAgo] = useState(90);
   const [timePeriod, setTimePeriod] = useState(1);
+  const [showAllVaults, setShowAllVaults] = useState(null);
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
     `/wallets/${address}/`,
     { all_vaults: showAllVaults }
   );
-
-  const timeSwitchOptions = [
-    { key: 1, value: "1 day" },
-    { key: 7, value: "7 days" },
-    { key: 30, value: "30 days" },
-  ];
 
   if (isLoading) {
     return <Loader />;
@@ -65,6 +60,19 @@ function Wallet(props) {
   const { vaults, name, ens, address: walletAddress, slug } = data;
 
   const addressParam = slug || walletAddress;
+
+    const timeSwitchOptions = [
+    { key: 1, value: "1 day" },
+    { key: 7, value: "7 days" },
+    { key: 30, value: "30 days" },
+  ];
+
+   const timeOptions = [
+    { key: 7, value: "7 day" },
+    { key: 30, value: "30 days" },
+    { key: 90, value: "90 days" },
+    { key: 180, value: "180 days" }, 
+  ];
 
   const vaultOptions = [
     { key: null, value: "Active" },
@@ -321,16 +329,14 @@ function Wallet(props) {
           />
         </div>
       </div>
-      <div className="text-end mb-4">
+  <div className="d-flex align-items-center justify-content-end">
         Period:{" "}
         <TimeSwitch
           activeOption={timeSwitchOptions}
           onChange={setTimePeriod}
           options={timeSwitchOptions}
         />
-      </div>
-
-      <div className="d-flex align-items-center justify-content-end"></div>
+      </div>     
 
       <StatsBar className="mb-4" stats={stats} />
       <LinkTable
@@ -346,7 +352,15 @@ function Wallet(props) {
         columns={columns}
       />
       <h3 className="my-4">debt history</h3>
-      <DebtChart address={addressParam} showAllVaults={showAllVaults} />
+      <div className="d-flex align-items-center justify-content-end">
+        Period:{" "}
+        <TimeSwitch
+          activeOption={daysAgo}
+          onChange={setDaysAgo}
+          options={timeOptions}
+        />
+      </div>
+      <DebtChart address={addressParam} showAllVaults={showAllVaults} daysAgo={daysAgo} />
       <h3 className="my-4">events</h3>
       <EventsTable address={addressParam} showAllVaults={showAllVaults} />
     </>
