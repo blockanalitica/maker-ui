@@ -30,7 +30,7 @@ function Wallet(props) {
   const { address } = useParams();
   let navigate = useNavigate();
   const [daysAgo, setDaysAgo] = useState(90);
-  const [timePeriod, setTimePeriod] = useState(1);
+  const [timePeriod, setTimePeriod] = useState(7);
   const [showAllVaults, setShowAllVaults] = useState(null);
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
     `/wallets/${address}/`,
