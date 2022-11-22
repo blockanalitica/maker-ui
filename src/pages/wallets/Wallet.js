@@ -61,17 +61,17 @@ function Wallet(props) {
 
   const addressParam = slug || walletAddress;
 
-    const timeSwitchOptions = [
+  const timeSwitchOptions = [
     { key: 1, value: "1 day" },
     { key: 7, value: "7 days" },
     { key: 30, value: "30 days" },
   ];
 
-   const timeOptions = [
+  const timeOptions = [
     { key: 7, value: "7 day" },
     { key: 30, value: "30 days" },
     { key: 90, value: "90 days" },
-    { key: 180, value: "180 days" }, 
+    { key: 180, value: "180 days" },
   ];
 
   const vaultOptions = [
@@ -329,14 +329,14 @@ function Wallet(props) {
           />
         </div>
       </div>
-  <div className="d-flex align-items-center justify-content-end">
+      <div className="d-flex align-items-center justify-content-end">
         Period:{" "}
         <TimeSwitch
           activeOption={timeSwitchOptions}
           onChange={setTimePeriod}
           options={timeSwitchOptions}
         />
-      </div>     
+      </div>
 
       <StatsBar className="mb-4" stats={stats} />
       <LinkTable
@@ -360,7 +360,11 @@ function Wallet(props) {
           options={timeOptions}
         />
       </div>
-      <DebtChart address={addressParam} showAllVaults={showAllVaults} daysAgo={daysAgo} />
+      <DebtChart
+        address={addressParam}
+        showAllVaults={showAllVaults}
+        daysAgo={daysAgo}
+      />
       <h3 className="my-4">events</h3>
       <EventsTable address={addressParam} showAllVaults={showAllVaults} />
     </>

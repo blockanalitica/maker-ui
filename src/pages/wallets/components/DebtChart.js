@@ -11,15 +11,14 @@ import { useFetch } from "../../../hooks";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
 import { parseUTCDateTimestamp } from "../../../utils/datetime.js";
-import { row } from "mathjs";
 
 function DebtChart(props) {
   const { address, showAllVaults, daysAgo } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
     `/wallets/${address}/debt-history/`,
-    { all_vaults: showAllVaults },
-     );
+    { all_vaults: showAllVaults }
+  );
 
   if (isLoading) {
     return <Loader />;
@@ -64,7 +63,7 @@ function DebtChart(props) {
     interaction: {
       axis: "x",
     },
-  scales: {
+    scales: {
       x: {
         min: startDate,
         max: endDate,
