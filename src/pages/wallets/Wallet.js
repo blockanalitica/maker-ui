@@ -72,6 +72,7 @@ function Wallet(props) {
     { key: 30, value: "30 days" },
     { key: 90, value: "90 days" },
     { key: 180, value: "180 days" },
+    { key: 0, value: "all" },
   ];
 
   const vaultOptions = [
