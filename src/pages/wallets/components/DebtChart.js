@@ -54,7 +54,7 @@ function DebtChart(props) {
   let endDate = new Date();
   startDate.setDate(startDate.getDate() - daysAgo);
   if (daysAgo === 0) {
-    startDate = "2021-02-01";
+    startDate = new Date(data["timestamp"]);
   }
   endDate.setDate(endDate.getDate());
 
@@ -71,6 +71,7 @@ function DebtChart(props) {
         time: {
           unit: xUnit,
           displayFormats: {
+            day: "D ",
             week: "W yyyy",
             quarter: "MM yyyy",
           },
