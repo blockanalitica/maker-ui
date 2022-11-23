@@ -42,7 +42,6 @@ function DebtChart(props) {
   });
 
   let startDate = new Date();
-  let endDate = new Date();
   startDate.setDate(startDate.getDate() - daysAgo);
   if (daysAgo === 0) {
     startDate = new Date(data["timestamp"]);
@@ -55,7 +54,6 @@ function DebtChart(props) {
     scales: {
       x: {
         min: startDate,
-        max: endDate,
         type: "time",
       },
       y: {
