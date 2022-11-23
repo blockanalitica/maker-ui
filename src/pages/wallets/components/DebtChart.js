@@ -41,15 +41,6 @@ function DebtChart(props) {
     });
   });
 
-  let xUnit = "day";
-  if (daysAgo >= 180) {
-    xUnit = "month";
-  } else if (daysAgo > 30) {
-    xUnit = "week";
-  } else if (daysAgo === 0) {
-    xUnit = "quarter";
-  }
-
   let startDate = new Date();
   let endDate = new Date();
   startDate.setDate(startDate.getDate() - daysAgo);
@@ -68,14 +59,7 @@ function DebtChart(props) {
         min: startDate,
         max: endDate,
         type: "time",
-        time: {
-          unit: xUnit,
-          displayFormats: {
-            day: "D ",
-            week: "W yyyy",
-            quarter: "MM yyyy",
-          },
-        },
+
         stacked: true,
       },
       y: {
