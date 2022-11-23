@@ -44,8 +44,9 @@ function DebtChart(props) {
   let startDate = new Date();
   startDate.setDate(startDate.getDate() - daysAgo);
   if (daysAgo === 0) {
-    startDate = new Date(data["timestamp"]);
+    startDate = null;
   }
+
   const options = {
     fill: true,
     interaction: {
