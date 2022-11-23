@@ -47,8 +47,6 @@ function DebtChart(props) {
   if (daysAgo === 0) {
     startDate = new Date(data["timestamp"]);
   }
-  endDate.setDate(endDate.getDate());
-
   const options = {
     fill: true,
     interaction: {
@@ -59,8 +57,6 @@ function DebtChart(props) {
         min: startDate,
         max: endDate,
         type: "time",
-
-        stacked: true,
       },
       y: {
         stacked: true,
