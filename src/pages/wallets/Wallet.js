@@ -29,18 +29,13 @@ import styles from "./Wallet.module.scss";
 function Wallet(props) {
   const { address } = useParams();
   let navigate = useNavigate();
+  const [daysAgo, setDaysAgo] = useState(90);
+  const [timePeriod, setTimePeriod] = useState(7);
   const [showAllVaults, setShowAllVaults] = useState(null);
-  const [timePeriod, setTimePeriod] = useState(1);
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
     `/wallets/${address}/`,
     { all_vaults: showAllVaults }
   );
-
-  const timeSwitchOptions = [
-    { key: 1, value: "1 day" },
-    { key: 7, value: "7 days" },
-    { key: 30, value: "30 days" },
-  ];
 
   if (isLoading) {
     return <Loader />;
@@ -65,6 +60,20 @@ function Wallet(props) {
   const { vaults, name, ens, address: walletAddress, slug } = data;
 
   const addressParam = slug || walletAddress;
+
+  const timePeriodOptions = [
+    { key: 1, value: "1 day" },
+    { key: 7, value: "7 days" },
+    { key: 30, value: "30 days" },
+  ];
+
+  const timeOptions = [
+    { key: 7, value: "7 day" },
+    { key: 30, value: "30 days" },
+    { key: 90, value: "90 days" },
+    { key: 180, value: "180 days" },
+    { key: 0, value: "all" },
+  ];
 
   const vaultOptions = [
     { key: null, value: "Active" },
@@ -290,28 +299,29 @@ function Wallet(props) {
 
   return (
     <>
-      <div className="d-flex mb-4 align-items-center">
-        <div className="d-flex align-items-center flex-grow-1">
-          {blockie ? (
-            <img
-              className={classnames("me-3", styles.roundedCircle, styles.walletLogo)}
-              src={blockie}
-              alt={walletAddress}
-            />
+      <div className="d-flex align-items-center flex-grow-1">
+        {blockie ? (
+          <img
+            className={classnames("me-3", styles.roundedCircle, styles.walletLogo)}
+            src={blockie}
+            alt={walletAddress}
+          />
+        ) : null}
+        <div>
+          <h1 className="h3 m-0">
+            {name || (ens && ens.length < 25 ? ens : null) || walletAddress}
+          </h1>
+          {walletAddress ? (
+            <div>
+              <EtherscanWallet className="me-2" address={walletAddress} />
+              <DebankWallet className="me-2" address={walletAddress} />
+              <ZapperWallet address={walletAddress} />
+            </div>
           ) : null}
-          <div>
-            <h1 className="h3 m-0">
-              {name || (ens && ens.length < 25 ? ens : null) || walletAddress}
-            </h1>
-            {walletAddress ? (
-              <div>
-                <EtherscanWallet className="me-2" address={walletAddress} />
-                <DebankWallet className="me-2" address={walletAddress} />
-                <ZapperWallet address={walletAddress} />
-              </div>
-            ) : null}
-          </div>
         </div>
+      </div>
+
+      <div className="d-flex flex-direction-row justify-content-between mt-4">
         <div className="d-flex align-items-center">
           Show vaults:{" "}
           <TimeSwitch
@@ -320,18 +330,15 @@ function Wallet(props) {
             options={vaultOptions}
           />
         </div>
+        <div className="d-flex align-items-center justify-content-end">
+          Period:{" "}
+          <TimeSwitch
+            activeOption={timePeriod}
+            onChange={setTimePeriod}
+            options={timePeriodOptions}
+          />
+        </div>
       </div>
-      <div className="text-end mb-4">
-        Period:{" "}
-        <TimeSwitch
-          activeOption={timeSwitchOptions}
-          onChange={setTimePeriod}
-          options={timeSwitchOptions}
-        />
-      </div>
-
-      <div className="d-flex align-items-center justify-content-end"></div>
-
       <StatsBar className="mb-4" stats={stats} />
       <LinkTable
         keyField="uid"
@@ -346,7 +353,19 @@ function Wallet(props) {
         columns={columns}
       />
       <h3 className="my-4">debt history</h3>
-      <DebtChart address={addressParam} showAllVaults={showAllVaults} />
+      <div className="d-flex align-items-center justify-content-end">
+        Period:{" "}
+        <TimeSwitch
+          activeOption={daysAgo}
+          onChange={setDaysAgo}
+          options={timeOptions}
+        />
+      </div>
+      <DebtChart
+        address={addressParam}
+        showAllVaults={showAllVaults}
+        daysAgo={daysAgo}
+      />
       <h3 className="my-4">events</h3>
       <EventsTable address={addressParam} showAllVaults={showAllVaults} />
     </>

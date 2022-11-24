@@ -13,7 +13,7 @@ import { compact } from "../../../utils/number.js";
 import { parseUTCDateTimestamp } from "../../../utils/datetime.js";
 
 function DebtChart(props) {
-  const { address, showAllVaults } = props;
+  const { address, showAllVaults, daysAgo } = props;
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
     `/wallets/${address}/debt-history/`,
@@ -41,6 +41,12 @@ function DebtChart(props) {
     });
   });
 
+  let startDate = new Date();
+  startDate.setDate(startDate.getDate() - daysAgo);
+  if (daysAgo === 0) {
+    startDate = null;
+  }
+
   const options = {
     fill: true,
     interaction: {
@@ -48,6 +54,7 @@ function DebtChart(props) {
     },
     scales: {
       x: {
+        min: startDate,
         type: "time",
       },
       y: {
