@@ -299,29 +299,28 @@ function Wallet(props) {
 
   return (
     <>
-      <div className="d-flex mb-4 align-items-center">
-        <div className="d-flex align-items-center flex-grow-1">
-          {blockie ? (
-            <img
-              className={classnames("me-3", styles.roundedCircle, styles.walletLogo)}
-              src={blockie}
-              alt={walletAddress}
-            />
+      <div className="d-flex align-items-center flex-grow-1">
+        {blockie ? (
+          <img
+            className={classnames("me-3", styles.roundedCircle, styles.walletLogo)}
+            src={blockie}
+            alt={walletAddress}
+          />
+        ) : null}
+        <div>
+          <h1 className="h3 m-0">
+            {name || (ens && ens.length < 25 ? ens : null) || walletAddress}
+          </h1>
+          {walletAddress ? (
+            <div>
+              <EtherscanWallet className="me-2" address={walletAddress} />
+              <DebankWallet className="me-2" address={walletAddress} />
+              <ZapperWallet address={walletAddress} />
+            </div>
           ) : null}
-          <div>
-            <h1 className="h3 m-0">
-              {name || (ens && ens.length < 25 ? ens : null) || walletAddress}
-            </h1>
-            {walletAddress ? (
-              <div>
-                <EtherscanWallet className="me-2" address={walletAddress} />
-                <DebankWallet className="me-2" address={walletAddress} />
-                <ZapperWallet address={walletAddress} />
-              </div>
-            ) : null}
-          </div>
         </div>
       </div>
+
       <div className="d-flex flex-direction-row justify-content-between mt-4">
         <div className="d-flex align-items-center">
           Show vaults:{" "}
@@ -331,7 +330,6 @@ function Wallet(props) {
             options={vaultOptions}
           />
         </div>
-
         <div className="d-flex align-items-center justify-content-end">
           Period:{" "}
           <TimeSwitch
@@ -341,7 +339,6 @@ function Wallet(props) {
           />
         </div>
       </div>
-
       <StatsBar className="mb-4" stats={stats} />
       <LinkTable
         keyField="uid"
