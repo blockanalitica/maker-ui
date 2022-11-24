@@ -299,7 +299,6 @@ function Wallet(props) {
 
   return (
     <>
-      <div className="d-flex flex-direction-row justify-content-between mt-4"></div>
       <div className="d-flex mb-4 align-items-center">
         <div className="d-flex align-items-center flex-grow-1">
           {blockie ? (
@@ -324,7 +323,7 @@ function Wallet(props) {
         </div>
       </div>
       <div className="d-flex flex-direction-row justify-content-between mt-4">
-        <div className="d-flex react-bootstrap-table-filter align-items-center justify-content-end">
+        <div className="d-flex align-items-center">
           Show vaults:{" "}
           <TimeSwitch
             activeOption={showAllVaults}
@@ -333,7 +332,7 @@ function Wallet(props) {
           />
         </div>
 
-        <div className="d-flex react-bootstrap-table-filter align-items-center justify-content-end">
+        <div className="d-flex align-items-center justify-content-end">
           Period:{" "}
           <TimeSwitch
             activeOption={timePeriod}
