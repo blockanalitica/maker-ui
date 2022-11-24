@@ -61,7 +61,7 @@ function Wallet(props) {
 
   const addressParam = slug || walletAddress;
 
-  const timeSwitchOptions = [
+  const timePeriodOptions = [
     { key: 1, value: "1 day" },
     { key: 7, value: "7 days" },
     { key: 30, value: "30 days" },
@@ -299,6 +299,7 @@ function Wallet(props) {
 
   return (
     <>
+      <div className="d-flex flex-direction-row justify-content-between mt-4"></div>
       <div className="d-flex mb-4 align-items-center">
         <div className="d-flex align-items-center flex-grow-1">
           {blockie ? (
@@ -321,7 +322,9 @@ function Wallet(props) {
             ) : null}
           </div>
         </div>
-        <div className="d-flex align-items-center">
+      </div>
+      <div className="d-flex flex-direction-row justify-content-between mt-4">
+        <div className="d-flex react-bootstrap-table-filter align-items-center justify-content-end">
           Show vaults:{" "}
           <TimeSwitch
             activeOption={showAllVaults}
@@ -329,14 +332,15 @@ function Wallet(props) {
             options={vaultOptions}
           />
         </div>
-      </div>
-      <div className="d-flex align-items-center justify-content-end">
-        Period:{" "}
-        <TimeSwitch
-          activeOption={timeSwitchOptions}
-          onChange={setTimePeriod}
-          options={timeSwitchOptions}
-        />
+
+        <div className="d-flex react-bootstrap-table-filter align-items-center justify-content-end">
+          Period:{" "}
+          <TimeSwitch
+            activeOption={timePeriod}
+            onChange={setTimePeriod}
+            options={timePeriodOptions}
+          />
+        </div>
       </div>
 
       <StatsBar className="mb-4" stats={stats} />
