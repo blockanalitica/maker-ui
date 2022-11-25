@@ -17,16 +17,16 @@
   
       li {
         padding: 0 0.3rem;
-        color: $primary;
+        color: white;
         cursor: pointer;
   
         &:hover {
-          color: white;
+          color: $primary;
         }
       }
     }
   }
   
   .currencySelectorActive {
-    color: white !important;
+    color: $primary !important;
   }
