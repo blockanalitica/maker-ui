@@ -129,7 +129,7 @@ function Wallet(props) {
       dataField: "collateral",
       text: "collateral",
       sort: true,
-      formatExtraData: { isTokenCurrency },
+      formatExtraData: { timePeriod, isTokenCurrency },
       formatter: (cell, row) => (
         <>
           {isTokenCurrency ? (
