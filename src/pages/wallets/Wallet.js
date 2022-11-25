@@ -32,6 +32,7 @@ function Wallet(props) {
   const [daysAgo, setDaysAgo] = useState(90);
   const [timePeriod, setTimePeriod] = useState(7);
   const [showAllVaults, setShowAllVaults] = useState(null);
+  const [isTokenCurrency, setIsTokenCurrency] = useState(false);
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
     `/wallets/${address}/`,
     { all_vaults: showAllVaults }
@@ -128,20 +129,35 @@ function Wallet(props) {
       dataField: "collateral",
       text: "collateral",
       sort: true,
-      formatExtraData: { timePeriod },
+      formatExtraData: { isTokenCurrency },
       formatter: (cell, row) => (
-        <div className="text-nowrap">
-          <Value value={cell} decimals={2} compact />
-          <br />
-          <ValueChange
-            className="pl-2"
-            value={row[`collateral_change_${timePeriod}d`]}
-            decimals={2}
-            hideIfZero
-            compact
-            icon
-          />
-        </div>
+        <>
+          {isTokenCurrency ? (
+            <Value value={cell} decimals={2} compact />
+          ) : (
+            <Value value={cell * row.osm_price} decimals={2} prefix="$" compact />
+          )}
+          {isTokenCurrency ? (
+            <ValueChange
+              className="pl-2"
+              value={row[`collateral_change_${timePeriod}d`]}
+              decimals={2}
+              hideIfZero
+              compact
+              icon
+            />
+          ) : (
+            <ValueChange
+              className="pl-2"
+              value={row[`collateral_change_${timePeriod}d`] * row.osm_price}
+              decimals={2}
+              prefix="$"
+              hideIfZero
+              compact
+              icon
+            />
+          )}
+        </>
       ),
       headerAlign: "right",
       align: "right",
@@ -322,7 +338,30 @@ function Wallet(props) {
       </div>
 
       <div className="d-flex flex-direction-row justify-content-between mt-4">
-        <div className="d-flex align-items-center">
+        <div className="d-flex react-bootstrap-table-filter align-items-center">
+          <div className={styles.currencySelector}>
+            <label>Show amounts in: </label>
+            <ul>
+              <li
+                className={classnames({
+                  [styles.currencySelectorActive]: !isTokenCurrency,
+                })}
+                onClick={() => setIsTokenCurrency(false)}
+              >
+                $
+              </li>
+              <li
+                className={classnames({
+                  [styles.currencySelectorActive]: isTokenCurrency,
+                })}
+                onClick={() => setIsTokenCurrency(true)}
+              >
+                Token
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="d-flex react-bootstrap-table-filter align-items-center justify-content-end">
           Show vaults:{" "}
           <TimeSwitch
             activeOption={showAllVaults}
@@ -330,7 +369,7 @@ function Wallet(props) {
             options={vaultOptions}
           />
         </div>
-        <div className="d-flex align-items-center justify-content-end">
+        <div className="d-flex react-bootstrap-table-filter align-items-center justify-content-end">
           Period:{" "}
           <TimeSwitch
             activeOption={timePeriod}
