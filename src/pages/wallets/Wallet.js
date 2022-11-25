@@ -133,29 +133,32 @@ function Wallet(props) {
       formatter: (cell, row) => (
         <>
           {isTokenCurrency ? (
-            <Value value={cell} decimals={2} compact />
+            <>
+              <Value value={cell} decimals={2} compact />
+              <br />
+              <ValueChange
+                className="pl-2"
+                value={row[`collateral_change_${timePeriod}d`]}
+                decimals={2}
+                hideIfZero
+                compact
+                icon
+              />
+            </>
           ) : (
-            <Value value={cell * row.osm_price} decimals={2} prefix="$" compact />
-          )}
-          {isTokenCurrency ? (
-            <ValueChange
-              className="pl-2"
-              value={row[`collateral_change_${timePeriod}d`]}
-              decimals={2}
-              hideIfZero
-              compact
-              icon
-            />
-          ) : (
-            <ValueChange
-              className="pl-2"
-              value={row[`collateral_change_${timePeriod}d`] * row.osm_price}
-              decimals={2}
-              prefix="$"
-              hideIfZero
-              compact
-              icon
-            />
+            <>
+              <Value value={cell * row.osm_price} decimals={2} prefix="$" compact />
+              <br />
+              <ValueChange
+                className="pl-2"
+                value={row[`collateral_change_${timePeriod}d`] * row.osm_price}
+                decimals={2}
+                prefix="$"
+                hideIfZero
+                compact
+                icon
+              />
+            </>
           )}
         </>
       ),
