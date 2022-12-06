@@ -28,8 +28,9 @@ import Assets from "../../pages/assets/Assets.js";
 import AuctionKickSim from "../../pages/auctionKickSim/AuctionKickSim.js";
 import AuctionsThroughput from "../../pages/auctionThroughputs/AuctionsThroughput.js";
 import AuctionThroughput from "../../pages/auctionThroughputs/AuctionThroughput.js";
-import AaveD3M from "../../pages/d3m/AaveD3M.js";
 import Changelog from "../../pages/changelog/Changelog.js";
+import AaveD3M from "../../pages/d3m/AaveD3M.js";
+import CompD3M from "../../pages/d3m/CompD3M.js";
 import D3M from "../../pages/d3m/D3M.js";
 import RevenueD3M from "../../pages/d3m/RevenueD3M.js";
 import DaiGrowth from "../../pages/daiGrowth/DaiGrowth.js";
@@ -237,7 +238,8 @@ function Layout(props) {
               element={<LiquidationsPerDateIlk />}
             />
             <Route path="/d3m/" element={<D3M />} />
-            <Route path="/d3m/:protocol/" element={<AaveD3M />} />
+            <Route path="/d3m/aave/" element={<AaveD3M />} />
+            <Route path="/d3m/compound/" element={<CompD3M />} />
             <Route path="/d3m/:protocol/revenue/" element={<RevenueD3M />} />
             <Route path="/oracles/" element={<OSM />} />
             <Route path="/oracles/:symbol/" element={<OracleHistoricStats />} />

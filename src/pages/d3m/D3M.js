@@ -3,16 +3,16 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from "react";
-import { Badge, Col, Row } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import Loader from "../../components/Loader/Loader.js";
-import { withErrorBoundary } from "../../hoc.js";
-import { useFetch, usePageTitle } from "../../hooks";
-import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
-import StatsBar from "../../components/Stats/StatsBar.js";
+import { Badge, Col, Row } from "reactstrap";
 import Card from "../../components/Card/Card.js";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
+import Loader from "../../components/Loader/Loader.js";
+import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
+import StatsBar from "../../components/Stats/StatsBar.js";
 import Value from "../../components/Value/Value.js";
+import { withErrorBoundary } from "../../hoc.js";
+import { useFetch, usePageTitle } from "../../hooks";
 
 function D3M(props) {
   usePageTitle("D3M");
@@ -81,13 +81,7 @@ function D3M(props) {
             <Col xl={6} key={row.protocol}>
               <Card
                 role="button"
-                onClick={() =>
-                  navigate(
-                    row.protocol_slug === "compound"
-                      ? `/d3m/${row.protocol_slug}/revenue/`
-                      : `/d3m/${row.protocol_slug}/`
-                  )
-                }
+                onClick={() => navigate(`/d3m/${row.protocol_slug}/`)}
               >
                 <div>
                   <div className="d-flex align-items-center mb-4">
