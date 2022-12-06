@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Col, Row } from "reactstrap";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
 import Loader from "../../components/Loader/Loader.js";
@@ -40,6 +40,23 @@ function Ilk(props) {
     navigate(`/vault-types/${ilk}/vaults/`);
   }
 
+  const assetData = (
+    <>
+      <Col xl={9} className="mb-2">
+        <Row>
+          <Col xl={12} className="mb-4">
+            <LiquidationCurveCard ilk={ilk} />
+          </Col>
+          <Col xl={12} className="mb-4">
+            <OSM ilk={ilk} isLp={type === "lp"} />
+          </Col>
+        </Row>
+      </Col>
+    </>
+  );
+
+  const extraData = <DataTabs ilk={ilk} symbol={collateral} />;
+
   return (
     <>
       <div className="d-flex align-items-center mb-4">
@@ -67,18 +84,9 @@ function Ilk(props) {
             </Col>
           </Row>
         </Col>
-        <Col xl={9} className="mb-2">
-          <Row>
-            <Col xl={12} className="mb-4">
-              <LiquidationCurveCard ilk={ilk} />
-            </Col>
-            <Col xl={12} className="mb-4">
-              <OSM ilk={ilk} isLp={type === "lp"} />
-            </Col>
-          </Row>
-        </Col>
+        {type === "asset" && assetData}
       </Row>
-      {type !== "lp" ? <DataTabs ilk={ilk} symbol={collateral} /> : null}
+      {type === "asset" && extraData}
     </>
   );
 }
