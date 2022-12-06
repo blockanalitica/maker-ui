@@ -29,7 +29,7 @@ import styles from "./Wallet.module.scss";
 function Wallet(props) {
   const { address } = useParams();
   let navigate = useNavigate();
-  const [daysAgo, setDaysAgo] = useState(90);
+
   const [timePeriod, setTimePeriod] = useState(7);
   const [showAllVaults, setShowAllVaults] = useState(null);
   const [isTokenCurrency, setIsTokenCurrency] = useState(false);
@@ -66,14 +66,6 @@ function Wallet(props) {
     { key: 1, value: "1 day" },
     { key: 7, value: "7 days" },
     { key: 30, value: "30 days" },
-  ];
-
-  const timeOptions = [
-    { key: 7, value: "7 day" },
-    { key: 30, value: "30 days" },
-    { key: 90, value: "90 days" },
-    { key: 180, value: "180 days" },
-    { key: 0, value: "all" },
   ];
 
   const vaultOptions = [
@@ -318,7 +310,7 @@ function Wallet(props) {
 
   return (
     <>
-      <div className="d-flex align-items-center flex-grow-1">
+      <div className="d-flex align-items-center flex-grow-1 mb-4">
         {blockie ? (
           <img
             className={classnames("me-3", styles.roundedCircle, styles.walletLogo)}
@@ -340,10 +332,10 @@ function Wallet(props) {
         </div>
       </div>
 
-      <div className="d-flex flex-direction-row justify-content-between mt-4">
-        <div className="d-flex react-bootstrap-table-filter align-items-center">
+      <div className="d-flex flex-direction-row justify-content-between mb-2">
+        <div className="d-flexalign-items-center">
           <div className={styles.currencySelector}>
-            <label>Show amounts in: </label>
+            <label className="gray">Show amounts in: </label>
             <ul>
               <li
                 className={classnames({
@@ -364,16 +356,16 @@ function Wallet(props) {
             </ul>
           </div>
         </div>
-        <div className="d-flex react-bootstrap-table-filter align-items-center justify-content-end">
-          Show vaults:{" "}
+        <div className="d-flex align-items-center justify-content-end">
+          <span className="gray">Show vaults:</span>{" "}
           <TimeSwitch
             activeOption={showAllVaults}
             onChange={setShowAllVaults}
             options={vaultOptions}
           />
         </div>
-        <div className="d-flex react-bootstrap-table-filter align-items-center justify-content-end">
-          Period:{" "}
+        <div className="d-flex align-items-center justify-content-end">
+          <span className="gray">Period:</span>{" "}
           <TimeSwitch
             activeOption={timePeriod}
             onChange={setTimePeriod}
@@ -394,20 +386,9 @@ function Wallet(props) {
         ]}
         columns={columns}
       />
-      <h3 className="my-4">debt history</h3>
-      <div className="d-flex align-items-center justify-content-end">
-        Period:{" "}
-        <TimeSwitch
-          activeOption={daysAgo}
-          onChange={setDaysAgo}
-          options={timeOptions}
-        />
-      </div>
-      <DebtChart
-        address={addressParam}
-        showAllVaults={showAllVaults}
-        daysAgo={daysAgo}
-      />
+
+      <DebtChart address={addressParam} showAllVaults={showAllVaults} />
+
       <h3 className="my-4">events</h3>
       <EventsTable address={addressParam} showAllVaults={showAllVaults} />
     </>
