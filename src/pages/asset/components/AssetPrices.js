@@ -47,7 +47,7 @@ function AssetPrices(props) {
     },
     {
       title: "medianizer price",
-      bigValue: <Value value={data.mkt_price} decimals={2} prefix="$" />,
+      bigValue: <Value value={data.medianizer_price} decimals={2} prefix="$" />,
       smallValue: (
         <ValueChange
           value={data.medianizer_price_diff}
