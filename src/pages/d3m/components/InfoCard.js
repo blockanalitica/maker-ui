@@ -6,7 +6,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import Card from "../../../components/Card/Card.js";
-import ProgressBar from "../../../components/ProgressBar/ProgressBar.js";
 import Value from "../../../components/Value/Value.js";
 import { withErrorBoundary } from "../../../hoc.js";
 import styles from "./InfoCard.module.scss";
@@ -21,24 +20,24 @@ function InfoCard(props) {
     progressLabel = "warning";
   }
 
-  const extraData = (
-    <>
-      <li className="mb-2">
-        <div className="section-title">total real supply</div>
-        <Value value={stats.real_supply} prefix="$" compact className="text-big" />
-      </li>
-      <li>
-        <div className="section-title mb-1">exposure / real supply</div>
-        <ProgressBar
-          animated
-          value={stats.supply_utilization * 100}
-          color={progressLabel}
-        >
-          <Value value={stats.supply_utilization * 100} decimals={2} suffix="%" />
-        </ProgressBar>
-      </li>
-    </>
-  );
+  // const extraData = (
+  //   <>
+  //     <li className="mb-2">
+  //       <div className="section-title">total real supply</div>
+  //       <Value value={stats.real_supply} prefix="$" compact className="text-big" />
+  //     </li>
+  //     <li>
+  //       <div className="section-title mb-1">exposure / real supply</div>
+  //       <ProgressBar
+  //         animated
+  //         value={stats.supply_utilization * 100}
+  //         color={progressLabel}
+  //       >
+  //         <Value value={stats.supply_utilization * 100} decimals={2} suffix="%" />
+  //       </ProgressBar>
+  //     </li>
+  //   </>
+  // );
 
   return (
     <Card className="mb-4" fullHeight={false}>
