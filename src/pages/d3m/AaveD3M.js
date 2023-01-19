@@ -60,7 +60,7 @@ function AaveD3M(props) {
           <InfoCard stats={stats} protocol={protocol} />
         </Col>
         <Col xl={9}>
-          <RatesChart />
+          <RatesChart protocol={protocol} />
         </Col>
       </Row>
     </>

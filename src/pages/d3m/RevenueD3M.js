@@ -2,32 +2,31 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
+import queryString from "query-string";
 import React, { useState } from "react";
+import LoadingOverlay from "react-loading-overlay";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   Button,
   Col,
   FormGroup,
   Input,
   Label,
-  Row,
   Modal,
   ModalBody,
   ModalHeader,
+  Row,
   UncontrolledTooltip,
 } from "reactstrap";
-import queryString from "query-string";
-import LoadingOverlay from "react-loading-overlay";
-import { useNavigate, useParams } from "react-router-dom";
 import CryptoIcon from "../../components/CryptoIcon/CryptoIcon.js";
-import { withErrorBoundary } from "../../hoc.js";
-import { useFetch, usePageTitle, useQueryParams } from "../../hooks";
-import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
-import DaiBorrowCurveGraph from "./components/DaiBorrowCurveGraph.js";
-import Loader from "../../components/Loader/Loader.js";
 import InfoIcon from "../../components/Icon/InfoIcon.js";
+import Loader from "../../components/Loader/Loader.js";
 import StatsBar from "../../components/Stats/StatsBar.js";
 import Value from "../../components/Value/Value.js";
 import ValueChange from "../../components/Value/ValueChange.js";
+import { withErrorBoundary } from "../../hoc.js";
+import { useFetch, usePageTitle, useQueryParams } from "../../hooks";
+import DaiBorrowCurveGraph from "./components/DaiBorrowCurveGraph.js";
 
 function RevenueD3M(props) {
   const { protocol } = useParams();
@@ -285,44 +284,44 @@ function RevenueD3M(props) {
         />
       ),
     },
-    {
-      title: "real supply",
-      bigValue: (
-        <Value
-          value={result.d3m_exposure + stats.real_supply}
-          decimals={2}
-          prefix="$"
-          compact
-        />
-      ),
-      smallValue: (
-        <ValueChange
-          value={result.d3m_exposure}
-          decimals={2}
-          prefix="$"
-          compact
-          icon
-          hideIfZero
-        />
-      ),
-    },
-    {
-      title: "exposure / real supply",
-      normalValue: (
-        <div className="text-center mt-2">
-          <ProgressBar
-            animated
-            value={(result.d3m_exposure_total / stats.real_supply) * 100}
-          >
-            <Value
-              value={(result.d3m_exposure_total / stats.real_supply) * 100}
-              decimals={2}
-              suffix="%"
-            />
-          </ProgressBar>
-        </div>
-      ),
-    },
+    // {
+    //   title: "real supply",
+    //   bigValue: (
+    //     <Value
+    //       value={result.d3m_exposure + stats.real_supply}
+    //       decimals={2}
+    //       prefix="$"
+    //       compact
+    //     />
+    //   ),
+    //   smallValue: (
+    //     <ValueChange
+    //       value={result.d3m_exposure}
+    //       decimals={2}
+    //       prefix="$"
+    //       compact
+    //       icon
+    //       hideIfZero
+    //     />
+    //   ),
+    // },
+    // {
+    //   title: "exposure / real supply",
+    //   normalValue: (
+    //     <div className="text-center mt-2">
+    //       <ProgressBar
+    //         animated
+    //         value={(result.d3m_exposure_total / stats.real_supply) * 100}
+    //       >
+    //         <Value
+    //           value={(result.d3m_exposure_total / stats.real_supply) * 100}
+    //           decimals={2}
+    //           suffix="%"
+    //         />
+    //       </ProgressBar>
+    //     </div>
+    //   ),
+    // },
   ];
 
   return (

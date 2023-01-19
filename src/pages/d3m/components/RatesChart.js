@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { React, useState } from "react";
-import { useParams } from "react-router-dom";
 import LoadingOverlay from "react-loading-overlay";
 import Graph from "../../../components/Graph/Graph.js";
 import Loader from "../../../components/Loader/Loader.js";
@@ -14,7 +13,7 @@ import { tooltipLabelNumber } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
 
 function RatesChart(props) {
-  const { protocol } = useParams();
+  const { protocol } = props;
   const [daysAgo, setDaysAgo] = useState(30);
   const timeOptions = [
     { key: 7, value: "7 days" },
@@ -22,6 +21,7 @@ function RatesChart(props) {
     { key: 90, value: "90 days" },
   ];
 
+  console.log(protocol);
   const { data, isLoading, isPreviousData, isError, ErrorFallbackComponent } = useFetch(
     `/d3ms/${protocol}/rates/`,
     { days_ago: daysAgo },
@@ -34,14 +34,14 @@ function RatesChart(props) {
     return <ErrorFallbackComponent />;
   }
 
-  const { aave_borrow_rates, target_borrow_rates } = data;
+  const { borrow_rates, target_borrow_rates } = data;
 
   const series = [];
   series.push({
-    label: "aave borrow rate",
-    data: aave_borrow_rates.map((row) => ({
-      x: row["datetime"],
-      y: row["variable_borrow_rate"] * 100,
+    label: `${protocol} borrow rate`,
+    data: borrow_rates.map((row) => ({
+      x: row["dt"],
+      y: row["borrow_rate"] * 100,
     })),
   });
   series.push({

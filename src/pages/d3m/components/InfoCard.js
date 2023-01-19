@@ -63,7 +63,7 @@ function InfoCard(props) {
                 className="text-big"
               />
             </li>
-            {protocol === "aave" && extraData}
+            {/* {protocol === "aave" && extraData} */}
           </ul>
           <Link to={`/d3m/${protocol}/revenue/`} key={protocol}>
             <Button color="primary">revenue calculator</Button>
