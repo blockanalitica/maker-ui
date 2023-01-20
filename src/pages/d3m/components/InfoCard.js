@@ -13,12 +13,12 @@ import styles from "./InfoCard.module.scss";
 function InfoCard(props) {
   const { stats, protocol } = props;
 
-  let progressLabel = "success";
-  if (stats.supply_utilization > 0.3) {
-    progressLabel = "danger";
-  } else if (stats.supply_utilization > 0.2) {
-    progressLabel = "warning";
-  }
+  // let progressLabel = "success";
+  // if (stats.supply_utilization > 0.3) {
+  //   progressLabel = "danger";
+  // } else if (stats.supply_utilization > 0.2) {
+  //   progressLabel = "warning";
+  // }
 
   // const extraData = (
   //   <>
