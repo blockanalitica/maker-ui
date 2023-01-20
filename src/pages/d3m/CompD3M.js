@@ -11,6 +11,7 @@ import Value from "../../components/Value/Value.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useFetch, usePageTitle } from "../../hooks";
 import InfoCard from "./components/InfoCard.js";
+import RatesChart from "./components/RatesChart.js";
 
 function CompD3M(props) {
   usePageTitle("Compound D3M");
@@ -58,9 +59,9 @@ function CompD3M(props) {
         <Col xl={3}>
           <InfoCard stats={stats} protocol={protocol} />
         </Col>
-        {/* <Col xl={9}>
-          <RatesChart />
-        </Col> */}
+        <Col xl={9}>
+          <RatesChart protocol={protocol} />
+        </Col>
       </Row>
     </>
   );
