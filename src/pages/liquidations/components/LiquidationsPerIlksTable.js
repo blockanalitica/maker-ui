@@ -105,7 +105,7 @@ function LiquidationsPerIlksTable(props) {
           },
           {
             dataField: "keepers",
-            text: "unqiue keepers",
+            text: "unique keepers",
             formatter: (cell, row) => (
               <>
                 <Value value={cell} decimals={0} />
