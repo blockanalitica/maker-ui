@@ -12,6 +12,7 @@ import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
 import Loader from "../../components/Loader/Loader.js";
 import StatsBar from "../../components/Stats/StatsBar.js";
 import RemoteTable from "../../components/Table/RemoteTable.js";
+import VaultsAtRiskSimulationBarChart from "./VaultsAtRiskSimulationBarChart.js";
 import Value from "../../components/Value/Value.js";
 import { withErrorBoundary } from "../../hoc.js";
 import { useDidMountEffect, useFetch, usePageTitle, useQueryParams } from "../../hooks";
@@ -133,6 +134,12 @@ function VaultsAtRiskSimulation(props) {
           <Row className="mb-4">
             <Col>
               <StatsBar stats={stats} />
+            </Col>
+          </Row>
+          <Row className="mb-5">
+            <Col xl={12}>
+              <h4 className="my-2">ILK debt for {drop} % drop per ILK</h4>
+              <VaultsAtRiskSimulationBarChart data={data} drop={drop} />
             </Col>
           </Row>
           <Row>
