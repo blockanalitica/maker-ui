@@ -4,6 +4,7 @@
 
 import classnames from "classnames";
 import React from "react";
+import VaultsAtRiskSimulationBarChart from "./VaultsAtRiskSimulationBarChart.js";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge, Button, Col, Row } from "reactstrap";
@@ -72,15 +73,22 @@ function VaultsAtRisk(props) {
     },
   ];
 
+  data.results = data.vaults;
+
   return (
     <>
       <Row className="mb-4">
         <Col>
+          <h3 className="mb-0">vaults At Risk</h3>
           <StatsBar stats={stats} />
         </Col>
       </Row>
       {hasVaults ? (
         <Row>
+          <Col xl={12}>
+            <h4 className="my-2">debt per ILK</h4>
+            <VaultsAtRiskSimulationBarChart data={data} />
+          </Col>
           <Col xl={3} className="mb-4 text-center">
             {osmPrices.map((osm) => {
               const osmStats = [
