@@ -27,6 +27,7 @@ function TVLSection(props) {
     { id: "WETH", text: "ETH" },
     { id: "WBTC", text: "WBTC" },
     { id: "stETH", text: "stETH" },
+    { id: "rETH", text: "rETH" },
   ];
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
