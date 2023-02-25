@@ -26,7 +26,7 @@ function TVLSection(props) {
   let tabs = [
     { id: "WETH", text: "ETH" },
     { id: "WBTC", text: "WBTC" },
-    // { id: "stETH", text: "stETH" },
+    { id: "stETH", text: "stETH" },
   ];
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
