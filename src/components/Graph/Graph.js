@@ -65,7 +65,7 @@ const PROTOCOLS_PALETTE = {
   maker: "#F4B731",
   compoundV3: "#00d360",
   euler: "#e5615e",
-  alchemix: "#f5c09a80",
+  alchemix: "#f5c09a",
 };
 
 export const ASSETS_PALETTE = {
