@@ -3,17 +3,17 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useState } from "react";
-import { Col, Row } from "reactstrap";
-import SideTabNav from "../../../components/SideTab/SideTabNav.js";
-import { withErrorBoundary } from "../../../hoc.js";
-import TimeSwitch from "../../../components/TimeSwitch/TimeSwitch.js";
-import CryptoIcon from "../../../components/CryptoIcon/CryptoIcon.js";
 import BootstrapTable from "react-bootstrap-table-next";
+import { Col, Row } from "reactstrap";
+import CryptoIcon from "../../../components/CryptoIcon/CryptoIcon.js";
+import Loader from "../../../components/Loader/Loader.js";
+import SideTabNav from "../../../components/SideTab/SideTabNav.js";
+import TimeSwitch from "../../../components/TimeSwitch/TimeSwitch.js";
 import Value from "../../../components/Value/Value.js";
 import ValueChange from "../../../components/Value/ValueChange.js";
-import RatesChart from "./RatesChart.js";
-import Loader from "../../../components/Loader/Loader.js";
+import { withErrorBoundary } from "../../../hoc.js";
 import { useFetch } from "../../../hooks";
+import RatesChart from "./RatesChart.js";
 
 function RatesSection(props) {
   const [type, setType] = useState("dai");
@@ -159,7 +159,7 @@ function RatesSection(props) {
                 text: "supply net",
                 formatter: (cell, row) => (
                   <>
-                    <Value value={cell} decimals={2} suffix="%" />
+                    <Value value={cell * 100} decimals={2} suffix="%" />
                     <br />
                     <ValueChange
                       className="pl-2"
