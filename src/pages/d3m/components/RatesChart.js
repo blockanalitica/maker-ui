@@ -66,6 +66,7 @@ function RatesChart(props) {
         ticks: {
           callback: (value) => compact(value, 2, true) + "%",
         },
+        beginAtZero: true,
       },
     },
     plugins: {
