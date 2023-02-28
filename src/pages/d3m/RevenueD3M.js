@@ -324,7 +324,8 @@ function RevenueD3M(props) {
           value={
             result.d3m_revenue +
             result.d3m_revenue_rewards -
-            stats.balance * stats.supply_rate
+            (stats.balance * stats.supply_rate +
+              stats.balance * stats.supply_reward_rate)
           }
           decimals={2}
           prefix="$"
