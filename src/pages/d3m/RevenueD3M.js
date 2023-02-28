@@ -93,6 +93,7 @@ function RevenueD3M(props) {
     balance,
     borrow_rate: borrowRate,
     supply_rate: supplyRate,
+    supply_reward_rate: supplyRewardRate,
     total_supply: totalSupply,
     utilization,
   } = stats;
@@ -162,6 +163,16 @@ function RevenueD3M(props) {
     </p>
   );
 
+  let rewards = null;
+  if (supplyRewardRate && supplyRewardRate > 0) {
+    rewards = (
+      <>
+        <Value value={supplyRewardRate * 100} decimals={2} suffix="%" prefix={" + "} />{" "}
+        <CryptoIcon name={"COMP"} size="1rem" />
+      </>
+    );
+  }
+
   const statsCurrent = [
     {
       title: "current exposure",
@@ -173,7 +184,12 @@ function RevenueD3M(props) {
     },
     {
       title: "current supply rate",
-      bigValue: <Value value={supplyRate * 100} decimals={2} suffix="%" />,
+      bigValue: (
+        <>
+          <Value value={supplyRate * 100} decimals={2} suffix="%" />
+          {rewards}
+        </>
+      ),
     },
     {
       title: "current supply",
@@ -184,6 +200,24 @@ function RevenueD3M(props) {
       bigValue: <Value value={utilization * 100} decimals={2} suffix="%" />,
     },
   ];
+
+  let simulated_rewards = null;
+  if (
+    result.simulation_supply_reward_rate &&
+    result.simulation_supply_reward_rate > 0
+  ) {
+    simulated_rewards = (
+      <>
+        <Value
+          value={result.simulation_supply_reward_rate * 100}
+          decimals={2}
+          suffix="%"
+          prefix={" + "}
+        />{" "}
+        <CryptoIcon name={"COMP"} size="1rem" />
+      </>
+    );
+  }
 
   const statsSimulated = [
     {
@@ -220,7 +254,10 @@ function RevenueD3M(props) {
     {
       title: "simulated supply rate",
       bigValue: (
-        <Value value={result.simulation_supply_rate * 100} decimals={2} suffix="%" />
+        <>
+          <Value value={result.simulation_supply_rate * 100} decimals={2} suffix="%" />
+          {simulated_rewards}
+        </>
       ),
       smallValue: (
         <ValueChange
@@ -235,7 +272,9 @@ function RevenueD3M(props) {
     {
       title: "simulated supply",
       bigValue: (
-        <Value value={result.simulation_dai_supply} decimals={2} prefix="$" compact />
+        <>
+          <Value value={result.simulation_dai_supply} decimals={2} prefix="$" compact />
+        </>
       ),
       smallValue: (
         <ValueChange
@@ -284,6 +323,7 @@ function RevenueD3M(props) {
         />
       ),
     },
+
     // {
     //   title: "real supply",
     //   bigValue: (
@@ -323,6 +363,25 @@ function RevenueD3M(props) {
     //   ),
     // },
   ];
+
+  if (result.d3m_revenue_rewards > 0) {
+    statsOther.push({
+      title: "rewards",
+      bigValue: (
+        <Value value={result.d3m_revenue_rewards} decimals={2} prefix="$" compact />
+      ),
+      smallValue: (
+        <ValueChange
+          value={result.d3m_revenue_rewards - stats.balance * stats.supply_reward_rate}
+          decimals={2}
+          prefix="$"
+          compact
+          icon
+          hideIfZero
+        />
+      ),
+    });
+  }
 
   return (
     <>
