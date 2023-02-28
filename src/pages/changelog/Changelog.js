@@ -25,52 +25,54 @@ function Changelog(props) {
           <li>
             Improvements to the Total Value Locked (TVL) section on the DeFi page
             <ul>
-              <li>The TVL chart now includes assets: ETH, WBTC, stETH, rETH, and DAI</li>
-              <li>The TVL chart now includes markets from: Maker, Compound v2, Euler, Compound v3, Aave v2, and Aave v3</li>
+              <li>
+                The TVL chart now includes assets: ETH, WBTC, stETH, rETH, and DAI
+              </li>
+              <li>
+                The TVL chart now includes markets from: Maker, Compound v2, Euler,
+                Compound v3, Aave v2, and Aave v3
+              </li>
             </ul>
           </li>
           <li>
             Improvements to the Vaults at Risk Simulator on the Vaults at Risk page
             <ul>
-              <li>Added a “Vaults at Risk” chart to help visualise current ILK debt risks, with debt amount on the y-axis and ILKs on the x-axis</li>
-              <li>The chart categorises ILK debt into (i) no risk, (ii) low risk, (iii) medium risk, and (iv) high risk</li>
-              <li>Hovering over a particular ILK will provide more detailed information of total debt and debt amount at the respective risk levels</li>
+              <li>
+                Added a “Vaults at Risk” chart to help visualise current ILK debt risks,
+                with debt amount on the y-axis and ILKs on the x-axis
+              </li>
+              <li>
+                The chart categorises ILK debt into (i) no risk, (ii) low risk, (iii)
+                medium risk, and (iv) high risk
+              </li>
+              <li>
+                Hovering over a particular ILK will provide more detailed information of
+                total debt and debt amount at the respective risk levels
+              </li>
             </ul>
           </li>
           <li>Added Antalpha under Whales tab</li>
         </ul>
         <h4 className={styles.changeSection}>Changed</h4>
         <ul className={styles.changes}>
-          <li>
-            Compound D3M Revenue Calculator Adjustments
-          </li>
-          <li>
-            Data pipeline improvement
-          </li>
+          <li>Compound D3M Revenue Calculator Adjustments</li>
+          <li>Data pipeline improvement</li>
         </ul>
 
         <h3 className={styles.date}>January 2023</h3>
         <h4 className={styles.changeSection}>Changed</h4>
         <ul className={styles.changes}>
-          <li>
-            Small bug fixes
-          </li>
-          <li>
-            Moved D3M to new contract
-          </li>
+          <li>Small bug fixes</li>
+          <li>Moved D3M to new contract</li>
         </ul>
 
         <h3 className={styles.date}>November 2022</h3>
         <h4 className={styles.changeSection}>Changed</h4>
         <ul className={styles.changes}>
-          <li>
-            Data pipeline improvements
-          </li>
-          <li>
-            Small improvements and bug fixes
-          </li>
+          <li>Data pipeline improvements</li>
+          <li>Small improvements and bug fixes</li>
         </ul>
-    
+
         <h3 className={styles.date}>October 2022</h3>
         <h4 className={styles.changeSection}>Added</h4>
         <ul className={styles.changes}>
