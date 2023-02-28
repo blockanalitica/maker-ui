@@ -311,6 +311,31 @@ function RevenueD3M(props) {
   const statsOther = [
     {
       title: "profit",
+      bigValue: (
+        <Value
+          value={result.d3m_revenue + result.d3m_revenue_rewards}
+          decimals={2}
+          prefix="$"
+          compact
+        />
+      ),
+      smallValue: (
+        <ValueChange
+          value={
+            result.d3m_revenue +
+            result.d3m_revenue_rewards -
+            stats.balance * stats.supply_rate
+          }
+          decimals={2}
+          prefix="$"
+          compact
+          icon
+          hideIfZero
+        />
+      ),
+    },
+    {
+      title: "DAI profit",
       bigValue: <Value value={result.d3m_revenue} decimals={2} prefix="$" compact />,
       smallValue: (
         <ValueChange
@@ -366,7 +391,7 @@ function RevenueD3M(props) {
 
   if (result.d3m_revenue_rewards > 0) {
     statsOther.push({
-      title: "rewards",
+      title: "COMP rewards",
       bigValue: (
         <Value value={result.d3m_revenue_rewards} decimals={2} prefix="$" compact />
       ),
