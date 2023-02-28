@@ -54,6 +54,15 @@ function VaultEventsTable(props) {
           {
             dataField: "block_number",
             text: "Block",
+            formatter: (cell, row) => (
+              <a
+                href={`https://ethtx.info/mainnet/${row.tx_hash}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {cell}
+              </a>
+            ),
             sort: true,
           },
 

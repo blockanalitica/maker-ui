@@ -3,10 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import _ from "lodash";
+import Graph from "../../../components/Graph/Graph.js";
 import { withErrorBoundary } from "../../../hoc.js";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
-import Graph from "../../../components/Graph/Graph.js";
 
 function RatesChart(props) {
   const { data, type } = props;
