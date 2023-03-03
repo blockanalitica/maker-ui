@@ -117,6 +117,7 @@ function VaultHistoryGraph(props) {
         ticks: {
           callback: (value) => "$" + compact(value, 2, true),
         },
+        beginAtZero: true,
       },
       y1: {
         position: "left",
@@ -127,6 +128,7 @@ function VaultHistoryGraph(props) {
         ticks: {
           callback: (value) => value + "%",
         },
+        beginAtZero: true,
       },
       y2: {
         position: "left",

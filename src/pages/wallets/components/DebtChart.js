@@ -6,12 +6,12 @@ import _ from "lodash";
 import React, { useState } from "react";
 import Graph from "../../../components/Graph/Graph.js";
 import Loader from "../../../components/Loader/Loader.js";
+import TimeSwitch from "../../../components/TimeSwitch/TimeSwitch.js";
 import { withErrorBoundary } from "../../../hoc.js";
 import { useFetch } from "../../../hooks";
+import { parseUTCDateTimestamp } from "../../../utils/datetime.js";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
-import { parseUTCDateTimestamp } from "../../../utils/datetime.js";
-import TimeSwitch from "../../../components/TimeSwitch/TimeSwitch.js";
 
 function DebtChart(props) {
   const { address, showAllVaults } = props;
@@ -79,6 +79,7 @@ function DebtChart(props) {
           display: true,
           text: "debt",
         },
+        beginAtZero: true,
       },
     },
     plugins: {

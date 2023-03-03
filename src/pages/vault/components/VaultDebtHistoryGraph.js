@@ -71,6 +71,7 @@ function VaultDebtHistoryGraph(props) {
         ticks: {
           callback: (value) => "$" + compact(value, 2, true),
         },
+        beginAtZero: true,
       },
       y2: {
         position: "left",

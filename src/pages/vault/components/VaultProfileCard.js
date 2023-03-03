@@ -5,16 +5,16 @@
 import React from "react";
 import { Badge } from "reactstrap";
 import CryptoIcon from "../../../components/CryptoIcon/CryptoIcon.js";
+import StatsBar from "../../../components/Stats/StatsBar.js";
 import Value from "../../../components/Value/Value.js";
 import { withErrorBoundary } from "../../../hoc.js";
-import StatsBar from "../../../components/Stats/StatsBar.js";
 
 function VaultProfileCard(props) {
   const { data } = props;
 
   const badgeMap = {
     low: "success",
-    meidum: "warning",
+    medium: "warning",
     high: "danger",
   };
 
