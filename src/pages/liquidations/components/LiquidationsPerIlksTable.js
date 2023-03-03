@@ -2,16 +2,16 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CryptoIcon from "../../../components/CryptoIcon/CryptoIcon.js";
 import Loader from "../../../components/Loader/Loader.js";
-import LinkTable from "../../../components/Table/LinkTable.js";
+import RemoteTable from "../../../components/Table/RemoteTable.js";
 import Value from "../../../components/Value/Value.js";
 import { withErrorBoundary } from "../../../hoc.js";
 import { useFetch } from "../../../hooks";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import styles from "./LiquidationsPerIlksTable.module.scss";
 
 function LiquidationsPerIlksTable(props) {
@@ -46,7 +46,7 @@ function LiquidationsPerIlksTable(props) {
 
   return (
     <div className="mt-4">
-      <LinkTable
+      <RemoteTable
         loading={isPreviousData}
         keyField="ilk"
         hover={true}
