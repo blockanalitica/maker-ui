@@ -28,21 +28,27 @@ function LiquidationCurveBarChart(props) {
   grouped = _.groupBy(results, "protection_score");
 
   const series = [];
-  Object.entries(grouped).forEach(([key, rows]) => {
-    let item = {
-      label: key + " risk",
-      protection_score: key,
-      data: rows.map((row) =>
-        row.drop <= drop
-          ? {
-              x: row["drop"],
-              y: row["debt"],
-            }
-          : true
-      ),
-    };
-    series.push(item);
-  });
+  Object.entries(grouped)
+    .sort(([aKey], [bKey]) => {
+      const order = { low: 0, medium: 1, high: 2 };
+      return order[aKey] - order[bKey];
+    })
+    .forEach(([key, rows]) => {
+      let item = {
+        label: key + " risk",
+        protection_score: key,
+        data: rows.map((row) =>
+          row.drop <= drop
+            ? {
+                x: row["drop"],
+                y: row["debt"],
+              }
+            : true
+        ),
+      };
+      series.push(item);
+    });
+
   const options = {
     fill: true,
     aspectRatio: 1.5,
