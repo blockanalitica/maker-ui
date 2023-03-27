@@ -13,8 +13,8 @@ An open source [Maker risk dashboard](https://maker.blockanalitica.com)
 Install it and run:
 
 ```sh
-yarn install
-yarn run start
+npm ci
+npm run start
 ```
 
 ## Contribution
