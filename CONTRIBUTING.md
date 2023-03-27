@@ -9,7 +9,7 @@ SPDX-License-Identifier: CC0-1.0
 ## Lint
 
 ```bash
-yarn run lint
+npm run lint
 ```
 
 ## Code style

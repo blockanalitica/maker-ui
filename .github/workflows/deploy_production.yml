@@ -6,7 +6,7 @@ name: MKR Production
 on:
   push:
     branches:
-      - production
+      - main
 
 jobs:
   build-and-deploy:
@@ -15,25 +15,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: production
+          ref: main
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: yarn
-      - name: Update yarn
-        run: yarn set version 3.1.x
-      - name: Yarn Install
-        run: |
-          yarn install
+          cache: npm
+      - name: Install Dependencies
+        run: npm ci --force
       - name: Lint
-        run: |
-          yarn run lint
+        run: npm run lint
       - name: REUSE Compliance Check
         uses: fsfe/reuse-action@v1
       - name: Build
-        run: |
-          yarn run build:production
+        run: npm run build:production
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
