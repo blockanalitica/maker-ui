@@ -6,7 +6,7 @@ name: MKR Production
 on:
   push:
     branches:
-      - production
+      - main
 
 jobs:
   build-and-deploy:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: production
+          ref: main
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
