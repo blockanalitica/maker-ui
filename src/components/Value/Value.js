@@ -47,10 +47,6 @@ function Value(props) {
     value = formatToDecimals(value, decimals);
   }
 
-  if (isNaN(value)) {
-    value = 0;
-  }
-
   return (
     <>
       <span id={id} {...rest}>
