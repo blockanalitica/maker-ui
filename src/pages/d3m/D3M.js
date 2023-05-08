@@ -26,6 +26,14 @@ function D3M(props) {
   }
   const { stats, results } = data;
 
+  const onClickProtocol = (protocol_slug) => {
+    if (protocol_slug === "spark") {
+      window.open("https://spark.blockanalitica.com", "_blank", "noopener noreferrer");
+    } else {
+      navigate(`/d3m/${protocol_slug}/`);
+    }
+  };
+
   const statsBarValues = [
     {
       title: "total exposure",
@@ -48,7 +56,7 @@ function D3M(props) {
   ];
   return (
     <>
-      <StatsBar className="mb-4" stats={statsBarValues} />
+      <StatsBar className="mb-5" stats={statsBarValues} />
       <Row className="mb-5">
         {results.map((row) => {
           const statsD3M = [
@@ -72,17 +80,19 @@ function D3M(props) {
             {
               title: "borrow rate target",
               bigValue: (
-                <Value value={row.target_borrow_rate * 100} decimals={2} suffix="%" />
+                <Value
+                  value={row.target_borrow_rate * 100}
+                  decimals={2}
+                  suffix="%"
+                  dashIfZero
+                />
               ),
             },
           ];
 
           return (
-            <Col xl={6} key={row.protocol}>
-              <Card
-                role="button"
-                onClick={() => navigate(`/d3m/${row.protocol_slug}/`)}
-              >
+            <Col xl={6} key={row.protocol} className="mb-4">
+              <Card role="button" onClick={() => onClickProtocol(row.protocol_slug)}>
                 <div>
                   <div className="d-flex align-items-center mb-4">
                     <CryptoIcon name={row.protocol} size="3rem" className="me-2" />

@@ -2,20 +2,32 @@
 //
 // SPDX-License-Identifier: Apache-2.0
 
+import { uniqueId } from "lodash";
 import PropTypes from "prop-types";
 import React from "react";
 import { UncontrolledTooltip } from "reactstrap";
-import { uniqueId } from "lodash";
 import { compact as compactNumber, formatToDecimals } from "../../utils/number.js";
 
 function Value(props) {
-  let { value, prefix, suffix, decimals, compact, compact100k, hideIfZero, ...rest } =
-    props;
+  let {
+    value,
+    prefix,
+    suffix,
+    decimals,
+    compact,
+    compact100k,
+    hideIfZero,
+    dashIfZero,
+    ...rest
+  } = props;
 
   const id = uniqueId("value_tooltip_");
 
   if (value === undefined || value === null || (hideIfZero && value === 0)) {
     return "";
+  }
+  if (value === undefined || value === null || (dashIfZero && value === 0)) {
+    return "-";
   }
   let tooltip = null;
 
@@ -33,6 +45,10 @@ function Value(props) {
     );
   } else {
     value = formatToDecimals(value, decimals);
+  }
+
+  if (isNaN(value)) {
+    value = 0;
   }
 
   return (
