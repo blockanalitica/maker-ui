@@ -78,15 +78,8 @@ function D3M(props) {
               ),
             },
             {
-              title: "borrow rate target",
-              bigValue: (
-                <Value
-                  value={row.target_borrow_rate * 100}
-                  decimals={2}
-                  suffix="%"
-                  dashIfZero
-                />
-              ),
+              title: "profit",
+              bigValue: <Value value={row.profit} decimals={2} prefix="$" dashIfZero />,
             },
           ];
 
