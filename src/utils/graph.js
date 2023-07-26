@@ -129,7 +129,6 @@ export const pieGraphDataLimiter = (data, labelKey, valueKey, percentLimit = 2) 
   }
 
   const series = [{ data: values }];
-  console.log(series[0]["data"]);
   return { series, labels };
 };
 
