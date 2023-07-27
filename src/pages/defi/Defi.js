@@ -9,6 +9,7 @@ import { usePageTitle } from "../../hooks";
 import RatesSection from "./components/RatesSection.js";
 import TVLSection from "./components/TVLSection.js";
 import ETHShare from "./components/ETHShare.js";
+import ETHShareHistoric from "./components/ETHShareHistoric.js";
 function Defi(props) {
   usePageTitle("DeFi");
 
@@ -36,6 +37,9 @@ function Defi(props) {
       <Row className="mb-4">
         <Col xl={6}>
           <ETHShare />
+        </Col>
+        <Col xl={6}>
+          <ETHShareHistoric />
         </Col>
       </Row>
     </>
