@@ -95,7 +95,7 @@ function ETHShareHistoric(props) {
   return (
     <div>
       <div className="mb-4 flex-grow-1 d-flex align-items-center">
-        <h1 className="h3 m-0">ETH captured share</h1>
+        <h1 className="h3 m-0">ETH captured historic</h1>
       </div>
 
       <Row className="mb-4">
