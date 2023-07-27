@@ -66,6 +66,7 @@ const PROTOCOLS_PALETTE = {
   compoundV3: "#00d360",
   euler: "#e5615e",
   alchemix: "#f5c09a",
+  spark: "#f38701",
 };
 
 export const ASSETS_PALETTE = {

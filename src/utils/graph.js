@@ -107,7 +107,6 @@ export const piePercentLabels = (
 export const pieGraphDataLimiter = (data, labelKey, valueKey, percentLimit = 2) => {
   const sortedObjs = _.sortBy(data, valueKey).reverse();
   const total = data.reduce((total, row) => total + row[valueKey], 0);
-
   const labels = [];
   const values = [];
   let otherValue = 0;
