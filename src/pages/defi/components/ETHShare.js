@@ -22,7 +22,7 @@ function ETHShare(props) {
     spark: "#f38701",
   };
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "/defi/eth-market-share/"
+    "/defi/eth-market-share-router/"
   );
   if (isLoading) {
     return <Loader />;

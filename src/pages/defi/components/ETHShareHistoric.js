@@ -22,7 +22,7 @@ function ETHShareHistoric(props) {
   ];
 
   const { data, isLoading, isError, ErrorFallbackComponent } = useFetch(
-    "/defi/eth-market-share-historic/",
+    "/defi/eth-market-share-historic-router/",
     {
       days_ago: timePeriod,
     }
