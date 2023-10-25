@@ -39,12 +39,12 @@ function VaultEventsTable(props) {
       <h3 className="mb-4">events</h3>
       <RemoteTable
         loading={isPreviousData}
-        keyField="timestamp"
+        keyField="datetime"
         hover={false}
         data={data.results}
         columns={[
           {
-            dataField: "timestamp",
+            dataField: "datetime",
             text: "Date",
             formatter: (cell, row) => <DateTimeAgo dateTime={parseUTCDateTime(cell)} />,
             sort: true,
@@ -67,7 +67,7 @@ function VaultEventsTable(props) {
           },
 
           {
-            dataField: "human_operation",
+            dataField: "operation",
             text: "Event",
           },
           {
@@ -84,7 +84,7 @@ function VaultEventsTable(props) {
                       <small>
                         (
                         <ValueChange
-                          value={cell * row.osm_price}
+                          value={cell * row.collateral_price}
                           prefix="$"
                           decimals={2}
                           compact

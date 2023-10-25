@@ -87,7 +87,7 @@ function VaultHistoryGraph(props) {
       type: "scatter",
       radius: 5,
       data: events.map((row) => ({
-        x: parseUTCDateTimestamp(row["timestamp"]),
+        x: row["datetime"],
         y: 0,
         name: row["human_operation"],
       })),

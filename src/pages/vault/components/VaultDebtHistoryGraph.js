@@ -7,7 +7,7 @@ import Graph from "../../../components/Graph/Graph.js";
 import Loader from "../../../components/Loader/Loader.js";
 import { withErrorBoundary } from "../../../hoc.js";
 import { useFetch } from "../../../hooks";
-import { parseUTCDateTimestamp } from "../../../utils/datetime.js";
+import { parseUTCDateTime } from "../../../utils/datetime.js";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
 
@@ -40,8 +40,8 @@ function VaultDebtHistoryGraph(props) {
       label: "debt",
       stepped: true,
       data: debts.map((row) => ({
-        x: parseUTCDateTimestamp(row["timestamp"]),
-        y: row["after_principal"],
+        x: parseUTCDateTime(row["datetime"]),
+        y: row["debt"],
       })),
     },
     {
@@ -52,9 +52,9 @@ function VaultDebtHistoryGraph(props) {
       type: "scatter",
       radius: 5,
       data: events.map((row) => ({
-        x: parseUTCDateTimestamp(row["timestamp"]),
+        x: parseUTCDateTime(row["datetime"]),
         y: 0,
-        name: row["human_operation"],
+        name: row["operation"],
       })),
     },
   ];
