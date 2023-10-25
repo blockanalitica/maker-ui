@@ -9,7 +9,7 @@ import Loader from "../../../components/Loader/Loader.js";
 import TimeSwitch from "../../../components/TimeSwitch/TimeSwitch.js";
 import { withErrorBoundary } from "../../../hoc.js";
 import { useFetch } from "../../../hooks";
-import { parseUTCDateTimestamp } from "../../../utils/datetime.js";
+import { parseUTCDateTime } from "../../../utils/datetime.js";
 import { tooltipLabelNumber, tooltipTitleDateTime } from "../../../utils/graph.js";
 import { compact } from "../../../utils/number.js";
 
@@ -48,7 +48,7 @@ function DebtChart(props) {
       label: (rows.length > 0 ? rows[0]["ilk"] : "") + " " + key,
       stepped: true,
       data: rows.map((row) => ({
-        x: parseUTCDateTimestamp(row["timestamp"]),
+        x: parseUTCDateTime(row["timestamp"]),
         y: row["after_principal"],
       })),
     });

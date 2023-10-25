@@ -76,7 +76,7 @@ function EventsTable(props) {
           sort: true,
         },
         {
-          dataField: "human_operation",
+          dataField: "operation",
           text: "Event",
         },
         {
@@ -93,7 +93,7 @@ function EventsTable(props) {
                     <small>
                       (
                       <ValueChange
-                        value={cell * row.osm_price}
+                        value={cell * row.collateral_price}
                         prefix="$"
                         decimals={2}
                         compact
