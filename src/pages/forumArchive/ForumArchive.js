@@ -61,7 +61,7 @@ function ForumArchive(props) {
 
   return (
     <>
-      <h1 className="mb-4 h3">Risk core unit forum archive</h1>
+      <h1 className="mb-4 h3">BA Labs forum archive</h1>
       <h2 className="mb-4 h4 gray">{category ? category : "All posts"}</h2>
       <Row>
         <Col xl={9} className="mb-4">
