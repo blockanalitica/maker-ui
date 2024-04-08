@@ -15,7 +15,7 @@ import DateTimeAgo from "../../components/DateTime/DateTimeAgo.js";
 import { parseUTCDateTime } from "../../utils/datetime.js";
 
 function ForumArchive(props) {
-  usePageTitle("Risk Core Unit Forum Archive");
+  usePageTitle("BA Labs Forum Archive");
 
   const navigate = useNavigate();
   const pageSize = 10;
