@@ -339,6 +339,10 @@ function Layout(props) {
       <footer className="d-flex justify-content-center align-items-baseline gray p-3 small mt-4">
         <img src={baLogo} alt="blockanalitica" className={styles.footerLogo} />
         &copy;2022
+        <span class="px-2">|</span>
+        <a href="https://blockanalitica.com/terms-of-service/" className="gray small">
+          Terms of Service
+        </a>
       </footer>
     </>
   );
