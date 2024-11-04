@@ -204,7 +204,7 @@ function copyPublicFolder() {
 
 function copyRobotsTxt() {
   let path = "/robots.txt";
-  if (process.env.PUBLIC_URL !== "https://maker.blockanalitica.com") {
+  if (process.env.PUBLIC_URL !== "https://maker-old.blockanalitica.com") {
     path = "/staging.robots.txt";
   }
 
